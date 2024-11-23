@@ -1,18 +1,3 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  background-color: #f0f0f0;
-  color: #000000;
-}
-
-.content {
-  flex-grow: 1;
-  padding: 20px;
-}
-
 .container {
   width: 90%;
   max-width: 800px;
@@ -29,26 +14,31 @@ body {
 /* Header Section */
 .header-section {
   display: flex;
-  justify-content: center; /* Center the header content */
+  justify-content: center;
+  /* Center the header content */
   align-items: center;
   padding: 10px;
   background-color: rgba(0, 16, 46, 1);
-  cursor: pointer; /* Make header clickable */
+  cursor: pointer;
+  /* Make header clickable */
 }
 
 .header-section a {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; /* Make entire header clickable */
+  width: 100%;
+  /* Make entire header clickable */
   text-decoration: none;
   color: inherit;
 }
 
 .header-section img {
   max-width: 100%;
-  height: 100px; /* Limit the height to 100px */
-  width: auto; /* Maintain aspect ratio */
+  height: 100px;
+  /* Limit the height to 100px */
+  width: auto;
+  /* Maintain aspect ratio */
   border-radius: 8px;
   display: block;
 }
@@ -78,37 +68,48 @@ body {
   padding: 8px;
 }
 
-.table td:nth-child(4) { /* Description column */
+.table td:nth-child(4) {
+  /* Description column */
   width: 40%;
 }
 
-.table td:nth-child(7) { /* Weight column */
+.table td:nth-child(7) {
+  /* Weight column */
   width: 5%;
 }
 
-.table td:nth-child(8) { /* Price column */
+.table td:nth-child(8) {
+  /* Price column */
   width: 10%;
 }
 
 /* Add hover hand only for weight and price inputs */
 .table td:nth-child(7):hover input,
 .table td:nth-child(8):hover input {
-  cursor: pointer; /* Hover hand */
+  cursor: pointer;
+  /* Hover hand */
 }
 
 /* Style for editable inputs (price and weight) */
 input[type="number"] {
-  width: 80px; /* Ensure inputs fit within the column */
-  border: 1px solid #ccc; /* Thin border for editable fields */
-  background-color: transparent; /* Transparent background */
-  text-align: center; /* Center-align text */
-  border-radius: 4px; /* Slightly rounded edges */
+  width: 80px;
+  /* Ensure inputs fit within the column */
+  border: 1px solid #ccc;
+  /* Thin border for editable fields */
+  background-color: transparent;
+  /* Transparent background */
+  text-align: center;
+  /* Center-align text */
+  border-radius: 4px;
+  /* Slightly rounded edges */
 }
 
 input[type="number"]:hover,
 input[type="number"]:focus {
-  border: 1px solid #000; /* Darker border on hover/focus */
-  outline: none; /* Remove focus outline */
+  border: 1px solid #000;
+  /* Darker border on hover/focus */
+  outline: none;
+  /* Remove focus outline */
 }
 
 /* Hover effect for entire row, excluding inputs */
@@ -130,8 +131,10 @@ input[type="number"]:focus {
 .page-title {
   text-align: center;
   font-size: 24px;
-  margin: 20px 0; /* Space around the title */
-  color: #000000; /* Title color */
+  margin: 20px 0;
+  /* Space around the title */
+  color: #000000;
+  /* Title color */
 }
 
 .error {
@@ -167,21 +170,22 @@ button[mat-raised-button]:disabled {
 /* Responsive Design */
 @media (max-width: 500px) {
   .container {
-      padding: 10px;
+    padding: 10px;
   }
 
   .header-section {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .header-section img {
-      max-height: 80px; /* Smaller height for mobile devices */
+    max-height: 80px;
+    /* Smaller height for mobile devices */
   }
 
   .table th,
   .table td {
-      font-size: 14px;
+    font-size: 14px;
   }
 }
 

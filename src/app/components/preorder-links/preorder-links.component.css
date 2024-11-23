@@ -4,8 +4,10 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
-    background-color: #f0f0f0; /* Light grey background for the body */
-    color: #000000; /* Black text color */
+    background-color: #f0f0f0;
+    /* Light grey background for the body */
+    color: #000000;
+    /* Black text color */
 }
 
 .container {
@@ -13,8 +15,10 @@ body {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #ffffff; /* White background for the container */
-    color: #000000; /* Black text color for the container */
+    background-color: #ffffff;
+    /* White background for the container */
+    color: #000000;
+    /* Black text color for the container */
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -22,57 +26,75 @@ body {
 }
 
 .image-container {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
     border-radius: 8px;
-    background-color:  rgba(0, 16, 46, 1);;
+    background-color: rgba(0, 16, 46, 1);
+    ;
 }
 
 .image-container img {
     max-width: 100%;
-    height: 100px; /* Adjust height to match the order page */
+    height: 100px;
+    /* Adjust height to match the order page */
     border-radius: 8px;
 }
 
 .underlined {
     font-size: 28px;
-    margin-top: 20px; /* Adjust this value as needed */
-    margin-bottom: 20px; /* Adjust this value as needed */
-    text-decoration: none; /* Remove underline */
+    margin-top: 20px;
+    /* Adjust this value as needed */
+    margin-bottom: 20px;
+    /* Adjust this value as needed */
+    text-decoration: none;
+    /* Remove underline */
 }
 
 .filters {
     margin: 20px 0;
     display: flex;
-    flex-direction: column; /* Stack the filter groups vertically */
-    gap: 10px; /* Adds white space between each filter group */
-    align-items: flex-start; /* Align items to the left */
-    font-size: 18px; /* Increase font size */
+    flex-direction: column;
+    /* Stack the filter groups vertically */
+    gap: 10px;
+    /* Adds white space between each filter group */
+    align-items: flex-start;
+    /* Align items to the left */
+    font-size: 18px;
+    /* Increase font size */
 }
 
 .filter-group {
     display: flex;
-    align-items: center; /* Align items horizontally */
-    gap: 5px; /* Reduce space between the label and the input/select */
+    align-items: center;
+    /* Align items horizontally */
+    gap: 5px;
+    /* Reduce space between the label and the input/select */
 }
 
 .filter-label {
-    font-size: 18px; /* Increase font size to match the select box */
-    font-family: Arial, sans-serif; /* Ensure same font */
-    margin: 0; /* Remove margin */
+    font-size: 18px;
+    /* Increase font size to match the select box */
+    font-family: Arial, sans-serif;
+    /* Ensure same font */
+    margin: 0;
+    /* Remove margin */
 }
 
 .filters select,
 .filters input {
-    font-size: 18px; /* Match the font size of the label */
-    font-family: Arial, sans-serif; /* Ensure same font */
+    font-size: 18px;
+    /* Match the font size of the label */
+    font-family: Arial, sans-serif;
+    /* Ensure same font */
     padding: 5px;
-    width: 100px; /* Set a consistent width */
-    text-align: left; /* Left-align the text */
-    margin: 0; /* Remove margin */
+    width: 100px;
+    /* Set a consistent width */
+    text-align: left;
+    /* Left-align the text */
+    margin: 0;
+    /* Remove margin */
 }
 
 .order-grid {
@@ -84,15 +106,20 @@ body {
 .order-grid th,
 .order-grid td {
     border: 1px solid #ccc;
-    padding: 12px; /* Increase padding */
+    padding: 12px;
+    /* Increase padding */
     text-align: left;
-    word-wrap: break-word; /* Ensure text wraps within the table cells */
-    font-size: 16px; /* Increase font size */
+    word-wrap: break-word;
+    /* Ensure text wraps within the table cells */
+    font-size: 16px;
+    /* Increase font size */
 }
 
 .order-grid th {
-    background-color: #d3d3d3; /* Light grey background for table headers */
-    color: #333; /* Dark grey text color for table headers */
+    background-color: #d3d3d3;
+    /* Light grey background for table headers */
+    color: #333;
+    /* Dark grey text color for table headers */
     font-weight: bold;
 }
 
@@ -104,19 +131,25 @@ body {
 
 @media (min-width: 601px) {
     .filters {
-        flex-direction: row; /* Align filter groups in a row */
-        justify-content: space-between; /* Distribute space between filter groups */
+        flex-direction: row;
+        /* Align filter groups in a row */
+        justify-content: space-between;
+        /* Distribute space between filter groups */
     }
 
     .filter-group {
-        flex-direction: column; /* Align label and input vertically */
-        align-items: flex-start; /* Align items to the left */
-        width: auto; /* Let the width be determined by content */
+        flex-direction: column;
+        /* Align label and input vertically */
+        align-items: flex-start;
+        /* Align items to the left */
+        width: auto;
+        /* Let the width be determined by content */
     }
 
     .filters select,
     .filters input {
-        width: auto; /* Let the width be determined by content */
+        width: auto;
+        /* Let the width be determined by content */
     }
 }
 
@@ -128,20 +161,26 @@ body {
     }
 
     .filters {
-        flex-direction: column; /* Stack filter groups vertically */
+        flex-direction: column;
+        /* Stack filter groups vertically */
     }
 
     .filter-group {
-        width: 100%; /* Full width for each filter group */
-        align-items: flex-start; /* Align items to the left */
+        width: 100%;
+        /* Full width for each filter group */
+        align-items: flex-start;
+        /* Align items to the left */
     }
 
     .filters label,
     .filters select,
     .filters input {
-        width: 100%; /* Full width for label and input */
-        margin-bottom: 5px; /* Reduce bottom margin */
-        text-align: left; /* Left-align the text */
+        width: 100%;
+        /* Full width for label and input */
+        margin-bottom: 5px;
+        /* Reduce bottom margin */
+        text-align: left;
+        /* Left-align the text */
     }
 
     .order-grid th,
@@ -150,9 +189,12 @@ body {
     }
 
     #customer-search::placeholder {
-        font-size: 16px; /* Adjust the font size as needed */
-        color: #999; /* Optional: Change the placeholder text color */
+        font-size: 16px;
+        /* Adjust the font size as needed */
+        color: #999;
+        /* Optional: Change the placeholder text color */
     }
+
     .image-container {
         border-radius: 0;
         padding: 0;
