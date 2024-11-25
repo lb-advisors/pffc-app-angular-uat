@@ -171,27 +171,43 @@
     background-color: whitesmoke;
     cursor: pointer;
 }
-
-/* Responsive design adjustments */
-@media (max-width: 500px) {
+/* Mobile Adjustments */
+@media (max-width: 768px) {
     .filters {
-        flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr; /* Single column for all filters */
+      gap: 10px; /* Space between filters */
     }
-
-    .search-bar input {
-        width: 100%;
-        margin-bottom: 10px;
+  
+    .filter-group {
+      width: 100%; /* Make filter groups take full width */
+      max-width: 300px; /* Prevent them from being too wide */
+      margin: 0 auto; /* Center the filter groups horizontally */
     }
-
-    .inventory-grid th,
-    .inventory-grid td {
-        font-size: 14px;
+  
+    .filters select,
+    .filters input[type="text"],
+    .filters input[type="number"] {
+      width: 100%; /* Inputs and selects fill the available space */
+      font-size: 14px; /* Ensure readability on small screens */
+      padding: 5px; /* Provide enough padding for touch interaction */
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
     }
-
-    .container {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        border: 0;
+  
+    .filter-group label {
+      font-size: 14px; /* Make labels readable */
+      margin-bottom: 5px; /* Add spacing between label and input */
+      color: #333;
+      text-align: center; /* Center the labels */
     }
-}
+  
+    /* Special Case: Center Last Filter */
+    .filter-group:last-child {
+      grid-column: span 3; /* Ensure the last filter spans all columns if necessary */
+      justify-self: center; /* Center align the filter */
+    }
+  }
+  
+    

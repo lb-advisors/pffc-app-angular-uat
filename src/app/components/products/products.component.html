@@ -4,7 +4,7 @@
     <a [routerLink]="['/home']" class="image-container">
       <img src="assets/logo.png" alt="Company Logo">
     </a>
-    
+
     <h2 class="inventory-title">Products</h2>
 
     <!-- Search Bar Section -->
@@ -13,7 +13,7 @@
     </div>
 
     <!-- Button Row for Relevant Items and Additional Filters -->
-    <div class="button-row" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
+    <div class="button-row">
       <!-- Relevant Items Toggle Button -->
       <button (click)="toggleRelevantItemsFilter()" class="relevant-items-btn">
         {{ showRelevantItems ? 'Show All Items' : 'Relevant Items' }}
@@ -36,7 +36,7 @@
     </div>
 
     <!-- Centered Filters Section -->
-    <div class="filters" style="display: flex; justify-content: center; gap: 20px; margin-bottom: 20px;">
+    <div class="filters">
       <!-- Origin Filter Dropdown -->
       <div class="filter-group">
         <label for="originFilter">Origin</label>
