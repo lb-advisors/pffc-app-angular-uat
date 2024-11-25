@@ -1,9 +1,9 @@
 .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 20px;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
 
 .logo-container {
     display: flex;
@@ -38,7 +38,7 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    
+
 }
 
 h1 {
@@ -81,7 +81,6 @@ button[mat-raised-button]:disabled {
 
 @media (max-width: 600px) {
     .container {
-        width: 100%;
         padding: 0 10px;
     }
 
