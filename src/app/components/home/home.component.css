@@ -86,4 +86,49 @@
     width: 80%;
     margin: 10px 0;
   }
+
+  
+  .grid-image {
+    width: 90%; /* Adjust the size of the images to fit the screen */
+    height: auto; /* Maintain the aspect ratio */
+    margin: 0 auto; /* Center the images */
+  }
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single-column grid for mobile */
+    gap: 10px; /* Spacing between images */
+  }
+
+  /* Image 1 */
+  .image1 {
+    width: 90%; /* Adjust the size to fit within the screen */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center the image */
+  }
+
+  /* Image 2 */
+  .image2 {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    transform: scale(1); /* Reset scaling for mobile */
+  }
+
+  /* Image 3 */
+  .image3 {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    transform: scale(1); /* Reset scaling for mobile */
+  }
+
+  /* Image 4 */
+  .image4 {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    transform: scale(1); /* Reset scaling for mobile */
+  }
 }
+
