@@ -105,9 +105,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   onRowClick(item: InventoryItem, event: Event): void {
-    const tagName = (event.target as HTMLElement).tagName;
-
-    if (tagName !== 'BUTTON' && tagName !== 'INPUT') {
+    const target = event.target as HTMLElement;
+    const tagName = target.tagName;
+  
+    // Prevent pop-up for button, input, or delete-icon clicks
+    if (tagName !== 'BUTTON' && tagName !== 'INPUT' && !target.classList.contains('delete-icon')) {
       this.dialog.open(ProductDetailsDialogComponent, {
         data: {
           ...item,
@@ -116,6 +118,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       });
     }
   }
+  
 
   onButtonClick(event: Event): void {
     event.stopPropagation(); // Prevents the row click event
