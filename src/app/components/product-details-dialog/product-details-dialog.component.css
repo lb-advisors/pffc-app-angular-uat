@@ -26,9 +26,8 @@ mat-dialog-content {
     overflow-y: auto;
 }
 
-
 .margins {
-    margin-top: 4px; /* Reduced top margin */
+    margin-top: 2px; /* Reduced top margin */
     font-weight: bold;
 }
 
@@ -42,30 +41,40 @@ mat-dialog-content {
     display: flex;
     justify-content: space-between;
     align-items: center; /* Vertically aligns each field */
-    padding: 4px;
+    padding: 8px; 
 }
 
 .field {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centers each field on the y-axis */
-    padding: 4px; /* Reduced padding */
+    padding: 6px; /* Reduced padding */
 }
 
 .field-label {
     font-weight: bold;
     text-decoration: underline;
-    margin-bottom: 2px; /* Slightly reduced space under label */
+    margin-bottom: 8px; /* Slightly reduced space under label */
 }
 
 .image-container {
     text-align: center;
-    margin-bottom: 1rem;
-  }
-  
-  .product-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-  }
-  
+   /* margin-bottom: 1.5rem; /* Add space below the image */
+}
+
+.product-image {
+    max-width: 100%; /* Allow the image to stretch up to the container width */
+    max-height: 70vh; /* Ensure it doesn't take more than 70% of viewport height */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Add slight rounding to the corners */
+   /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow for visibility */
+    object-fit: contain; /* Ensure the entire image fits within bounds */
+}
+
+/* Optional: Adjust mat-dialog-content for better centering */
+mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
