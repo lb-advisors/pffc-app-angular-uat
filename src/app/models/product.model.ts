@@ -1,5 +1,3 @@
-// src/app/models/products.model.ts
-
 export interface InventoryItem {
   compItemId: number;
   compDescription: string;
@@ -7,14 +5,16 @@ export interface InventoryItem {
   origin: string;
   notes?: string;
   woh?: number | null;
-  unitType?: string | number | undefined; // Allow string, number, or undefined
-  packSize?: string | number | undefined; // Allow string, number, or undefined
+  unitType?: string | number | undefined;
+  packSize?: string | number | undefined;
   packLock?: number | null;
   compCost?: number;
   yield?: number;
   laborPackCost?: number;
-  buyer?: string | undefined; // Allow string or undefined
+  buyer?: string | undefined;
   sixtySales?: number;
   tenSales?: number;
   preOrderHours?: number | null;
+  fileUrl?: string; // Mapped from photoUrl
+  thumbnailUrl?: string; // New field for thumbnails
 }

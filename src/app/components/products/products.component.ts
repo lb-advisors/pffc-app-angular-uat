@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ProductDetailsDialogComponent } from '../product-details-dialog/product-details-dialog.component';
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
   standalone: true,
@@ -43,6 +44,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
   uniquePackSizes: (string | number)[] = [];
   uniqueBuyers: (string | number)[] = [];
 
+  readonly maxFileSize = 4 * 1024 * 1024; // 4 MB
+
   private searchSubject = new Subject<string>();
   private searchSubscription!: Subscription;
 
@@ -61,7 +64,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
       this.loadData();
     });
 
-    // Listen to changes in min compCost input
     this.minCompCostControl.valueChanges.subscribe((value) => {
       this.minCompCost = value ? parseFloat(value) : 0;
       this.onCompCostChange();
@@ -70,9 +72,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   loadData(): void {
     this.productService.getProducts(this.page, this.size, this.searchTerm).subscribe({
-      next: (products: InventoryItem[]) => {
+      next: (response: InventoryItem[]) => {
         const currentData = this.inventoryItemsSubject.value;
-        const newData = products.filter((item) => !currentData.some((currentItem) => currentItem.compItemId === item.compItemId));
+        const newData = response.filter((item) => !currentData.some((currentItem) => currentItem.compItemId === item.compItemId));
 
         let filteredData = this.showRelevantItems ? newData.filter((item) => item.tenSales && item.tenSales > 0) : newData;
 
@@ -98,7 +100,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
           );
         });
 
-        this.populateUniqueDropdowns(products);
+        this.populateUniqueDropdowns(response);
         this.inventoryItemsSubject.next([...currentData, ...fullyFilteredData]);
       },
     });
@@ -160,6 +162,35 @@ export class ProductsComponent implements OnInit, OnDestroy {
     const searchTerm = (event.target as HTMLInputElement).value;
     this.page = 0;
     this.searchSubject.next(searchTerm);
+  }
+
+  onFileSelected(item: InventoryItem, event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      if (file.type.startsWith('image/') && file.size <= this.maxFileSize) {
+        this.uploadFile(item, file);
+      } else {
+        console.error('Invalid file type or size exceeds 4MB');
+      }
+    }
+  }
+
+  uploadFile(item: InventoryItem, file: File): void {
+    this.productService.uploadProductImage(item.compItemId, file).subscribe({
+      next: (event) => {
+        if (event.type === HttpEventType.Response) {
+          const updatedItem = event.body as InventoryItem;
+          Object.assign(item, updatedItem);
+        }
+      },
+      error: (err) => console.error('Upload failed', err),
+    });
+  }
+
+  triggerFileInput(itemId: string): void {
+    const fileInput = document.getElementById(`file-${itemId}`) as HTMLInputElement;
+    fileInput.click();
   }
 
   private trimComparator(prev: string, curr: string): boolean {
