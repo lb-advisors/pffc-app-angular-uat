@@ -33,7 +33,7 @@ mat-dialog-content {
 
 .margin-values {
     background-color: #f0f0f0;
-    padding: 8px;
+    padding: 4px;
     border-radius: 4px;
 }
 
@@ -41,8 +41,8 @@ mat-dialog-content {
     display: flex;
     justify-content: space-between;
     align-items: flex-start; /* Aligns fields at the top */
-    padding: 8px;
-    gap: 16px; /* Adds space between fields */
+    padding: 4px;
+    gap: 6px; /* Adds space between fields */
 }
 
 .field {
