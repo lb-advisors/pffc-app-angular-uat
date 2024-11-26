@@ -199,10 +199,20 @@ export class ProductsComponent implements OnInit, OnDestroy {
     });
   }
 
-  triggerFileInput(itemId: string): void {
+  triggerFileInput(itemId: string, event: Event): void {
+    event.stopPropagation(); // Prevents row click from firing
+    console.log('Upload button clicked for itemId:', itemId);
     const fileInput = document.getElementById(`file-${itemId}`) as HTMLInputElement;
-    fileInput.click();
+    if (fileInput) {
+      console.log('File input element found:', fileInput);
+      fileInput.click();
+    } else {
+      console.error('File input element not found for itemId:', itemId);
+    }
   }
+  
+  
+  
 
   private trimComparator(prev: string, curr: string): boolean {
     return prev.trim() === curr.trim();
