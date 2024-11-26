@@ -106,11 +106,22 @@ export class ProductsComponent implements OnInit, OnDestroy {
     });
   }
 
-  onRowClick(item: InventoryItem): void {
-    this.dialog.open(ProductDetailsDialogComponent, {
-      data: item,
-      width: '400px',
-    });
+  onRowClick(item: InventoryItem, event: Event): void {
+    if ((event.target as HTMLElement).tagName !== 'BUTTON') {
+      this.dialog.open(ProductDetailsDialogComponent, {
+        data: {
+          ...item, // Pass all properties of the clicked item
+          photoUrl: item.fileUrl, // Optionally map fields if needed
+          thumbnailUrl: item.thumbnailUrl, // Pass additional data if required
+        },
+        width: '400px',
+      });
+    }
+  }
+  
+
+  onButtonClick(event: Event): void {
+    event.stopPropagation(); // Prevents the row click event
   }
 
   toggleRelevantItemsFilter(): void {

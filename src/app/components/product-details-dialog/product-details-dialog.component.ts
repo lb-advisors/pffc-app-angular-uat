@@ -19,6 +19,8 @@ interface ProductDetails {
   sixtySales?: number;
   tenSales?: number;
   preOrderHours?: number;
+  photoUrl?: string; // New optional field for image URL
+  thumbnailUrl?: string; // New optional field for thumbnail
 }
 
 @Component({
@@ -29,7 +31,12 @@ interface ProductDetails {
   imports: [CommonModule, MatDialogModule], // Import MatDialogModule here
 })
 export class ProductDetailsDialogComponent {
-  constructor(public dialogRef: MatDialogRef<ProductDetailsDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: ProductDetails) {}
+  constructor(
+    public dialogRef: MatDialogRef<ProductDetailsDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: ProductDetails
+  ) {
+    console.log('Dialog opened with data:', data); // Debug log
+  }
 
   close(): void {
     this.dialogRef.close();

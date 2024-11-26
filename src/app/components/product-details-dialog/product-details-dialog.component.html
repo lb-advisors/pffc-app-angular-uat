@@ -2,6 +2,11 @@
 <div class="special-instructions">{{ data.compInstructions || 'N/A' }}</div>
 
 <mat-dialog-content>
+  <!-- Display Image if Available -->
+  <div *ngIf="data.photoUrl || data.thumbnailUrl" class="image-container">
+    <img [src]="data.thumbnailUrl || data.photoUrl" alt="Product Image" class="product-image" />
+  </div>
+
   <div class="margins">
     <div class="margin-values">
       <div class="margin-group">
