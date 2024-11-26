@@ -15,6 +15,6 @@ export interface InventoryItem {
   sixtySales?: number;
   tenSales?: number;
   preOrderHours?: number | null;
-  fileUrl?: string; // Mapped from photoUrl
+  photoUrl?: string; // Mapped from photoUrl
   thumbnailUrl?: string; // New field for thumbnails
 }

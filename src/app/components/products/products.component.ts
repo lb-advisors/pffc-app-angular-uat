@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '../../services/products.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -44,15 +44,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
   uniquePackSizes: (string | number)[] = [];
   uniqueBuyers: (string | number)[] = [];
 
-  readonly maxFileSize = 4 * 1024 * 1024; // 4 MB
-
   private searchSubject = new Subject<string>();
   private searchSubscription!: Subscription;
 
   private inventoryItemsSubject = new BehaviorSubject<InventoryItem[]>([]);
   inventoryItems$ = this.inventoryItemsSubject.asObservable();
 
-  constructor(private productService: ProductService, private dialog: MatDialog) {}
+  constructor(private cdr: ChangeDetectorRef, private productService: ProductService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loadData();
@@ -107,18 +105,17 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   onRowClick(item: InventoryItem, event: Event): void {
-    if ((event.target as HTMLElement).tagName !== 'BUTTON') {
+    const tagName = (event.target as HTMLElement).tagName;
+
+    if (tagName !== 'BUTTON' && tagName !== 'INPUT') {
       this.dialog.open(ProductDetailsDialogComponent, {
         data: {
-          ...item, // Pass all properties of the clicked item
-          photoUrl: item.fileUrl, // Optionally map fields if needed
-          thumbnailUrl: item.thumbnailUrl, // Pass additional data if required
+          ...item,
         },
         width: '400px',
       });
     }
   }
-  
 
   onButtonClick(event: Event): void {
     event.stopPropagation(); // Prevents the row click event
@@ -178,12 +175,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   onFileSelected(item: InventoryItem, event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
-      const file = input.files[0];
-      if (file.type.startsWith('image/') && file.size <= this.maxFileSize) {
-        this.uploadFile(item, file);
-      } else {
-        console.error('Invalid file type or size exceeds 4MB');
-      }
+      this.uploadFile(item, input.files[0]);
     }
   }
 
@@ -193,26 +185,15 @@ export class ProductsComponent implements OnInit, OnDestroy {
         if (event.type === HttpEventType.Response) {
           const updatedItem = event.body as InventoryItem;
           Object.assign(item, updatedItem);
+          this.cdr.markForCheck();
         }
       },
-      error: (err) => console.error('Upload failed', err),
     });
   }
 
-  triggerFileInput(itemId: string, event: Event): void {
-   // event.stopPropagation(); // Prevents row click from firing
-    console.log('Upload button clicked for itemId:', itemId);
-    const fileInput = document.getElementById(`file-${itemId}`) as HTMLInputElement;
-    if (fileInput) {
-      console.log('File input element found:', fileInput);
-      fileInput.click();
-    } else {
-      console.error('File input element not found for itemId:', itemId);
-    }
+  triggerFileInput(fileInput: HTMLInputElement): void {
+    fileInput.click();
   }
-  
-  
-  
 
   private trimComparator(prev: string, curr: string): boolean {
     return prev.trim() === curr.trim();

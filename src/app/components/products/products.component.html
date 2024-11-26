@@ -31,8 +31,7 @@
 
       <!-- Yield Filter Button -->
       <button (click)="toggleYieldFilter()" class="filter-btn">
-        {{ showYield ? 'Show All Yield' : 'Yield < 100%' }}
-      </button>
+        {{ showYield ? 'Show All Yield' : 'Yield < 100%' }} </button>
     </div>
 
     <!-- Centered Filters Section -->
@@ -49,13 +48,7 @@
       <!-- CompCost Min Filter -->
       <div class="filter-group minfilter">
         <label for="comp-cost-min">Min CompCost</label>
-        <input
-          type="number"
-          id="comp-cost-min"
-          [(ngModel)]="minCompCost"
-          (input)="onCompCostChange()"
-          placeholder="Min"
-        />
+        <input type="number" id="comp-cost-min" [(ngModel)]="minCompCost" (input)="onCompCostChange()" placeholder="Min" />
       </div>
 
       <!-- Pack Size Filter Dropdown -->
@@ -95,30 +88,20 @@
           <td>{{ item.woh }}</td>
           <td>{{ item.sixtySales }}</td>
           <td>
-            <div *ngIf="!item.fileUrl; else uploadedImageBlock" class="custom-file-input">
-              <input
-                type="file"
-                id="file-{{ item.compItemId }}"
-                (change)="onFileSelected(item, $event)"
-                accept="image/*"
-                hidden
-              />
-              <button
-              type="button"
-              class="button"
-              (click)="triggerFileInput(item.compItemId.toString(), $event)"
-            >
-              Upload Image
-            </button>
-            
+            <div *ngIf="!item.photoUrl; else uploadedImageBlock" class="custom-file-input">
+              <input type="file" #fileInput (change)="onFileSelected(item, $event)" accept="image/*" hidden />
+              <button type="button" class="button" (click)="triggerFileInput(fileInput)">
+                Upload Image
+              </button>
+
             </div>
             <ng-template #uploadedImageBlock>
-              <div class="image-container2">
-                <img [src]="item.thumbnailUrl || item.fileUrl" alt="Product Image" class="uploaded-image" />
+              <div class="image-container">
+                <img [src]="item.thumbnailUrl || item.photoUrl" alt="Product Image" class="uploaded-image" />
               </div>
             </ng-template>
           </td>
-        </tr>        
+        </tr>
       </tbody>
     </table>
 
