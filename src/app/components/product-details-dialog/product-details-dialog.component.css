@@ -40,38 +40,48 @@ mat-dialog-content {
 .margin-group, .field-group {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Vertically aligns each field */
-    padding: 8px; 
+    align-items: flex-start; /* Aligns fields at the top */
+    padding: 8px;
+    gap: 16px; /* Adds space between fields */
 }
 
 .field {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers each field on the y-axis */
-    padding: 6px; /* Reduced padding */
+    align-items: center; /* Centers each field */
+    justify-content: flex-start; /* Aligns the label and value at the top */
+    text-align: center; /* Aligns text consistently */
+    padding: 2px;
+    min-width: 100px; /* Ensures consistent width for fields */
+    min-height: 60px; /* Ensures consistent height for all fields */
 }
 
 .field-label {
     font-weight: bold;
     text-decoration: underline;
-    margin-bottom: 8px; /* Slightly reduced space under label */
+    margin-bottom: 4px; /* Adjusted spacing for alignment */
+    min-height: 20px; /* Ensures consistent height for labels */
+    line-height: 20px; /* Ensures text stays vertically aligned */
+}
+
+.field-value {
+    min-height: 20px; /* Ensures consistent height for values */
+    line-height: 20px; /* Ensures text stays vertically aligned */
+    color: #333; /* Optional: Value color */
 }
 
 .image-container {
     text-align: center;
-   /* margin-bottom: 1.5rem; /* Add space below the image */
 }
 
 .product-image {
-    max-width: 100%; /* Allow the image to stretch up to the container width */
+    max-width: 70%; /* Allow the image to stretch up to the container width */
     max-height: 70vh; /* Ensure it doesn't take more than 70% of viewport height */
     height: auto; /* Maintain aspect ratio */
     border-radius: 8px; /* Add slight rounding to the corners */
-   /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow for visibility */
     object-fit: contain; /* Ensure the entire image fits within bounds */
 }
 
-/* Optional: Adjust mat-dialog-content for better centering */
 mat-dialog-content {
     display: flex;
     flex-direction: column;

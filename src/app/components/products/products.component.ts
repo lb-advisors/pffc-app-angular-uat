@@ -112,7 +112,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
         data: {
           ...item,
         },
-        width: '400px',
+        width: '550px',
       });
     }
   }
