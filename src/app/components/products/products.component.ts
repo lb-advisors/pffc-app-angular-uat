@@ -200,7 +200,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   triggerFileInput(itemId: string, event: Event): void {
-    event.stopPropagation(); // Prevents row click from firing
+   // event.stopPropagation(); // Prevents row click from firing
     console.log('Upload button clicked for itemId:', itemId);
     const fileInput = document.getElementById(`file-${itemId}`) as HTMLInputElement;
     if (fileInput) {
