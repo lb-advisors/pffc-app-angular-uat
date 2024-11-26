@@ -210,4 +210,23 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.uniquePackSizes = [...new Set(products.map((item) => item.packSize))].filter(Boolean).sort((a, b) => Number(a) - Number(b)) as (string | number)[];
     this.uniqueBuyers = [...new Set(products.map((item) => item.buyer))].filter(Boolean).sort() as string[];
   }
+  
+  deletePhoto(item: InventoryItem): void {
+    if (confirm('Are you sure you want to delete this photo?')) {
+      this.productService.deleteProductPhoto(item.compItemId).subscribe({
+        next: () => {
+          // Clear the photoUrl from the item
+          item.photoUrl = undefined; // Replace 'null' with 'undefined'
+          this.cdr.markForCheck(); // Trigger change detection
+          alert('Photo deleted successfully.');
+        },
+        error: (err: any) => {
+          console.error('Error deleting photo:', err);
+          alert('Failed to delete the photo. Please try again.');
+        },
+      });
+    }
+  }
+  
+  
 }

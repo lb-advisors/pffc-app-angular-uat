@@ -35,4 +35,12 @@ export class ProductService {
       observe: 'events',
     });
   }
+
+  /**
+   * Delete a photo for a specific product
+   */
+  deleteProductPhoto(productId: number): Observable<void> {
+    const url = `${this.apiUrl}/products/${productId}/photos`; // Full API endpoint
+    return this.http.delete<void>(url); // Use DELETE HTTP method
+  }
 }

@@ -31,7 +31,8 @@
 
       <!-- Yield Filter Button -->
       <button (click)="toggleYieldFilter()" class="filter-btn">
-        {{ showYield ? 'Show All Yield' : 'Yield < 100%' }} </button>
+        {{ showYield ? 'Show All Yield' : 'Yield < 100%' }}
+      </button>
     </div>
 
     <!-- Centered Filters Section -->
@@ -93,18 +94,19 @@
               <button type="button" class="button" (click)="triggerFileInput(fileInput)">
                 Upload Image
               </button>
-
             </div>
             <ng-template #uploadedImageBlock>
               <div class="image-container2">
                 <img [src]="item.thumbnailUrl || item.photoUrl" alt="Product Image" class="uploaded-image" />
+                <div class="delete-icon" (click)="deletePhoto(item)">&#x2715;</div>
               </div>
-            </ng-template>
+            </ng-template>            
           </td>
         </tr>
       </tbody>
     </table>
 
+    <!-- Message for No Data -->
     <ng-template #noData>
       <p>No products available.</p>
     </ng-template>
