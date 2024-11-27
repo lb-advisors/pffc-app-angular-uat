@@ -1,11 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-a, a:visited {
+a,
+a:visited {
     color: blue;
 }
 
 a:hover {
     color: lightblue;
     /* Same color as unvisited and visited */
+}
+
+.error-snackbar {
+    --mdc-snackbar-supporting-text-color: #A66;
+    --mat-snack-bar-button-color: #A66;
+    --mdc-snackbar-container-color: #FEE;
+}
+
+.success-snackbar {
+    --mdc-snackbar-supporting-text-color: #9a9;
+    --mat-snack-bar-button-color: #9A9;
+    --mdc-snackbar-container-color: #EFE;
+}
+
+.warning-snackbar {
+    --mdc-snackbar-supporting-text-color: #C9971C;
+    --mat-snack-bar-button-color: #C9971C;
+    --mdc-snackbar-container-color: #FDF7DF;
+}
+
+.info-snackbar {
+    --mdc-snackbar-supporting-text-color: #9AA;
+    --mat-snack-bar-button-color: #9AA;
+    --mdc-snackbar-container-color: #EFF;
 }

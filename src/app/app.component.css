@@ -13,19 +13,23 @@
 a {
     padding: 10px;
     text-decoration: none;
-    color: #333; /* Dark grey text color */
-    font-size: 14px; /* Smaller font size */
+    color: #333;
+    /* Dark grey text color */
+    font-size: 14px;
+    /* Smaller font size */
     display: flex;
     align-items: center;
 }
 
 a:hover,
 a:active {
-    color: #333; /* Dark grey text color */
+    color: #333;
+    /* Dark grey text color */
 }
 
 a.active-link {
-    background-color: #d3d3d3 !important; /* Light grey background for selected link */
+    background-color: #d3d3d3 !important;
+    /* Light grey background for selected link */
 }
 
 .valign-center {
@@ -44,22 +48,26 @@ a.active-link {
 
 mat-icon {
     vertical-align: middle;
-    margin-right: 5px; /* Space between icon and text */
+    margin-right: 5px;
+    /* Space between icon and text */
 }
 
 .header {
     display: flex;
     align-items: center;
-    justify-content: center; /* Center the nav links */
+    justify-content: center;
+    /* Center the nav links */
     background-color: #ffffff;
     width: 100%;
-    padding: 5px 0; /* Reduce padding to make the nav bar less tall */
+    padding: 5px 0;
+    /* Reduce padding to make the nav bar less tall */
 }
 
 mat-toolbar {
     background-color: #ffffff;
     width: 100%;
-    color: #333; /* Dark grey text color */
+    color: #333;
+    /* Dark grey text color */
 }
 
 .text-align-center {
@@ -68,13 +76,16 @@ mat-toolbar {
 
 .nav-links-center {
     display: flex;
-    justify-content: center; /* Center the links horizontally */
-    align-items: center; /* Center the links vertically */
+    justify-content: center;
+    /* Center the links horizontally */
+    align-items: center;
+    /* Center the links vertically */
     width: 100%;
 }
 
 .gs-logo {
-    height: 50px; /* Increase the size */
+    height: 50px;
+    /* Increase the size */
     border-radius: 10%;
 }
 
@@ -90,47 +101,22 @@ mat-sidenav-container {
 }
 
 .home-link {
-    display: none; /* Hide original Home link */
+    display: none;
+    /* Hide original Home link */
 }
 
 .nav-icon {
     width: 24px;
     height: 24px;
-    margin-right: 5px; /* Space between icon and text */
+    margin-right: 5px;
+    /* Space between icon and text */
 }
 
 .dev-mode {
-    color: darkblue;;
+    color: darkblue;
+    ;
 }
 
 .warning {
     background-color: red;
 }
-
-.error-snackbar {
-    background: #f44336;
-    color: white;
-  }
-  
-  .success-snackbar {
-    background: #4caf50;
-    color: white;
-  }
-  
-  .warning-snackbar {
-    background: #ff9800;
-    color: white;
-  }
-  
-  .info-snackbar {
-    background: #2196f3;
-    color: white;
-  }
-  
-  /* Style for the action button in all snackbars */
-  .error-snackbar .mat-simple-snackbar-action,
-  .success-snackbar .mat-simple-snackbar-action,
-  .warning-snackbar .mat-simple-snackbar-action,
-  .info-snackbar .mat-simple-snackbar-action {
-    color: white;
-  }
