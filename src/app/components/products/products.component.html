@@ -92,7 +92,7 @@
             <div *ngIf="!item.photoUrl; else uploadedImageBlock" class="custom-file-input">
               <input type="file" #fileInput (change)="onFileSelected(item, $event)" accept="image/*" hidden />
               <button type="button" class="button" (click)="triggerFileInput(fileInput)">
-                Upload Image
+                Upload
               </button>
             </div>
             <ng-template #uploadedImageBlock>

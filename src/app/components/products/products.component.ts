@@ -77,11 +77,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
         let filteredData = this.showRelevantItems ? newData.filter((item) => item.tenSales && item.tenSales > 0) : newData;
 
         if (this.showSixtySales) {
-          filteredData = filteredData.filter((item) => item.sixtySales && item.sixtySales > 0);
+          filteredData = filteredData.filter((item) => item.sixtySales !== null && item.sixtySales !== undefined && item.sixtySales > 0);
         }
 
         if (this.showWoh) {
-          filteredData = filteredData.filter((item) => item.woh && item.woh > 0);
+          filteredData = filteredData.filter((item) => item.woh !== null && item.woh !== undefined && item.woh > 0);
         }
 
         if (this.showYield) {
