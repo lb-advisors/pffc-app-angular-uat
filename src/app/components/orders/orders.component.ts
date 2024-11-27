@@ -81,7 +81,7 @@ export class OrdersComponent implements OnInit {
       .subscribe({
         error: (error) => {
           console.error('Failed to load sales reps:', error);
-          this.snackbarService.showSnackBar('Failed to load sales reps.');
+          this.snackbarService.showError('Failed to load sales reps.');
         },
       });
   }
@@ -106,7 +106,7 @@ export class OrdersComponent implements OnInit {
       },
       error: (error) => {
         console.error('Failed to load orders:', error);
-        this.snackbarService.showSnackBar('Failed to load orders.');
+        this.snackbarService.showError('Failed to load orders.');
       },
     });
   }

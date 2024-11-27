@@ -75,17 +75,17 @@ export class DriverRouteComponent implements OnInit {
           this.selectedFile = file;
           this.uploadFile(deliveryRoute, file);
         } else {
-          this.snackBarService.showSnackBar('File size exceeds 4 MB.');
+          this.snackBarService.showError('File size exceeds 4 MB.');
         }
       } else {
-        this.snackBarService.showSnackBar('Please select an image file');
+        this.snackBarService.showError('Please select an image file');
         this.selectedFile = null;
       }
     }
   }
 
   uploadFile(deliveryRoute: DeliveryStop, file: File) {
-    this.snackBarService.showSnackBar('Your file is being uploaded');
+    this.snackBarService.showSuccess('Your file is being uploaded');
     this.driverRouteService.uploadPhoto(deliveryRoute.id, file).subscribe({
       next: (event) => {
         switch (event.type) {

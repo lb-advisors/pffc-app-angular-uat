@@ -14,13 +14,13 @@ export class GlobalErrorHandlerService implements ErrorHandler {
     if (error instanceof HttpErrorResponse) {
       // Check network connectivity
       if (!navigator.onLine) {
-        this.snackBarService.showSnackBar('No internet connection');
+        this.snackBarService.showError('No internet connection');
         return;
       }
 
       // Handle client-side errors
       if (error.error instanceof ErrorEvent) {
-        this.snackBarService.showSnackBar(error.error.message);
+        this.snackBarService.showError(error.error.message);
         return;
       }
 
@@ -28,38 +28,38 @@ export class GlobalErrorHandlerService implements ErrorHandler {
       switch (error.status) {
         case 401:
           this.authService.logout();
-          this.snackBarService.showSnackBar('Unauthorized. Please enter your credentials.');
+          this.snackBarService.showError('Unauthorized. Please enter your credentials.');
           this.router.navigate(['/login']);
           break;
 
         case 403: {
           this.authService.logout();
           const errorMessage = error.error?.message || 'Try again.';
-          this.snackBarService.showSnackBar(`Access denied. ${errorMessage}.`);
+          this.snackBarService.showError(`Access denied. ${errorMessage}.`);
           break;
         }
         case 423: {
           this.authService.logout();
           const errorMessage = error.error?.message || 'Try again.';
-          this.snackBarService.showSnackBar(`Access denied. ${errorMessage}.`);
+          this.snackBarService.showError(`Access denied. ${errorMessage}.`);
           break;
         }
         case 404:
-          this.snackBarService.showSnackBar('Resource not found.');
+          this.snackBarService.showError('Resource not found.');
           break;
 
         case 413:
-          this.snackBarService.showSnackBar('File too large.');
+          this.snackBarService.showError('File too large.');
           break;
         case 500: {
           const errorMessage = error.error?.message || 'Please try again later.';
-          this.snackBarService.showSnackBar(`Error: ${errorMessage}`);
+          this.snackBarService.showError(`Error: ${errorMessage}`);
           break;
         }
         default: {
           console.error('An error occurred:', error);
           const errorMessage = error.error?.message || 'An unexpected error occurred.';
-          this.snackBarService.showSnackBar(`Error: ${errorMessage}`);
+          this.snackBarService.showError(`Error: ${errorMessage}`);
         }
       }
 
@@ -73,7 +73,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
     } else {
       // Handle client-side/non-HTTP errors
       console.error('Client-side error:', error);
-      this.snackBarService.showSnackBar('An unexpected error occurred');
+      this.snackBarService.showError('An unexpected error occurred');
     }
   }
 }

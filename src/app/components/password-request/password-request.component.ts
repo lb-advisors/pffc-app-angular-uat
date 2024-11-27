@@ -37,7 +37,7 @@ export class PasswordRequestComponent {
 
     this.authService.passwordRequest(username).subscribe({
       next: () => {
-        this.snackbarService.showSnackBar(`An email has been sent to ${username} to reset your password`);
+        this.snackbarService.showInfo(`An email has been sent to ${username} to reset your password`);
         this.router.navigate(['/login']);
       },
     });

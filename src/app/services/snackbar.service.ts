@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-import { 
-  MatSnackBar, 
-  MatSnackBarHorizontalPosition, 
-  MatSnackBarRef, 
-  MatSnackBarVerticalPosition, 
-  TextOnlySnackBar 
-} from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarRef, MatSnackBarVerticalPosition, TextOnlySnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
@@ -22,16 +16,12 @@ export class SnackbarService {
     error: 'error-snackbar',
     success: 'success-snackbar',
     warning: 'warning-snackbar',
-    info: 'info-snackbar'
+    info: 'info-snackbar',
   };
 
   constructor(private matSnackBar: MatSnackBar) {}
 
-  showSnackBar(
-    message: string, 
-    style?: 'error' | 'success' | 'warning' | 'info',
-    duration: number = this.duration
-  ) {
+  private showSnackBar(message: string, style?: 'error' | 'success' | 'warning' | 'info', duration: number = this.duration) {
     // Close any existing snackbar
     this.closeSnackBar();
 
@@ -74,4 +64,4 @@ export class SnackbarService {
       this.snackBarRef.dismiss();
     }
   }
-} 
+}

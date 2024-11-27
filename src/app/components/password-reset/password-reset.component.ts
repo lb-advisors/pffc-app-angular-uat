@@ -60,7 +60,7 @@ export class PasswordResetComponent implements OnInit {
 
     this.authService.passwordReset(password, this.token).subscribe({
       next: () => {
-        this.snackbarService.showSnackBar('Your password has been reset');
+        this.snackbarService.showSuccess('Your password has been reset');
         this.router.navigate(['/login']); // Navigate to /products on success
       },
     });

@@ -105,7 +105,7 @@ export class OrderFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.snackBarService.showSnackBar('Submitting Order...');
+    this.snackBarService.showInfo('Submitting Order...');
 
     if (this.orderForm.valid) {
       const order: OrderRequest = this.orderForm.value;
@@ -124,7 +124,7 @@ export class OrderFormComponent implements OnInit {
           this.router.navigate(['/customer', this.customerId, 'order-confirmation'], {
             state: { order: orderConfirmation, companyId: this.order.companyId },
           });
-          this.snackBarService.showSnackBar('Order submitted successfully');
+          this.snackBarService.showSuccess('Order submitted successfully');
         },
         error: (error) => {
           const errorCode = error.status;
@@ -134,7 +134,7 @@ export class OrderFormComponent implements OnInit {
               state: { order: error.error, companyId: this.order.companyId },
             });
           }
-          this.snackBarService.showSnackBar(errorMessage);
+          this.snackBarService.showError(errorMessage);
 
           console.error('Error submitting order', error);
         },

@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ProductDetailsDialogComponent } from '../product-details-dialog/product-details-dialog.component';
 import { HttpEventType } from '@angular/common/http';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 
 @Component({
   standalone: true,
@@ -50,7 +51,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   private inventoryItemsSubject = new BehaviorSubject<InventoryItem[]>([]);
   inventoryItems$ = this.inventoryItemsSubject.asObservable();
 
-  constructor(private cdr: ChangeDetectorRef, private productService: ProductService, private dialog: MatDialog) {}
+  constructor(private snackBarService: SnackbarService, private cdr: ChangeDetectorRef, private productService: ProductService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loadData();
@@ -107,7 +108,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   onRowClick(item: InventoryItem, event: Event): void {
     const target = event.target as HTMLElement;
     const tagName = target.tagName;
-  
+
     // Prevent pop-up for button, input, or delete-icon clicks
     if (tagName !== 'BUTTON' && tagName !== 'INPUT' && !target.classList.contains('delete-icon')) {
       this.dialog.open(ProductDetailsDialogComponent, {
@@ -118,7 +119,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
       });
     }
   }
-  
 
   onButtonClick(event: Event): void {
     event.stopPropagation(); // Prevents the row click event
@@ -183,12 +183,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   uploadFile(item: InventoryItem, file: File): void {
+    this.snackBarService.showInfo('Uploading file...');
     this.productService.uploadProductImage(item.compItemId, file).subscribe({
       next: (event) => {
         if (event.type === HttpEventType.Response) {
           const updatedItem = event.body as InventoryItem;
           Object.assign(item, updatedItem);
           this.cdr.markForCheck();
+          this.snackBarService.closeSnackBar();
         }
       },
     });
@@ -213,23 +215,17 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.uniquePackSizes = [...new Set(products.map((item) => item.packSize))].filter(Boolean).sort((a, b) => Number(a) - Number(b)) as (string | number)[];
     this.uniqueBuyers = [...new Set(products.map((item) => item.buyer))].filter(Boolean).sort() as string[];
   }
-  
+
   deletePhoto(item: InventoryItem): void {
     if (confirm('Are you sure you want to delete this photo?')) {
       this.productService.deleteProductPhoto(item.compItemId).subscribe({
         next: () => {
           // Clear the photoUrl from the item
-          item.photoUrl = undefined; // Replace 'null' with 'undefined'
-          this.cdr.markForCheck(); // Trigger change detection
-          alert('Photo deleted successfully.');
-        },
-        error: (err: any) => {
-          console.error('Error deleting photo:', err);
-          alert('Failed to delete the photo. Please try again.');
+          item.photoUrl = undefined;
+          this.cdr.markForCheck();
+          this.snackBarService.showSuccess('Photo deleted successfully.');
         },
       });
     }
   }
-  
-  
 }

@@ -81,7 +81,7 @@ export class PreorderFormComponent implements OnInit {
     const modifiedPreOrders = this.getModifiedPreOrders();
     modifiedPreOrders.forEach((preOrder) => {
       this.preorderService.updatePreOrderWeightAndPrice(this.vendorId, preOrder).subscribe(() => {
-        this.snackBarService.showSnackBar('The data has been updated.');
+        this.snackBarService.showSuccess('The data has been updated.');
       });
     });
   }

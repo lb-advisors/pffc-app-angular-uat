@@ -32,10 +32,10 @@ export class VendorLinksComponent implements OnInit {
     navigator.clipboard
       .writeText(link)
       .then(() => {
-        this.snackbarService.showSnackBar('Link copied to clipboard!');
+        this.snackbarService.showSuccess('Link copied to clipboard!');
       })
       .catch((err) => {
-        this.snackbarService.showSnackBar('Failed to copy link: ', err);
+        this.snackbarService.showError('Failed to copy link: ', err);
         console.error('Failed to copy link: ', err);
       });
   }
