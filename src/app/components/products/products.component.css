@@ -173,7 +173,7 @@
 }
 
 .image-container2 {
-    position: relative;
+    /* position: relative; */
     display: inline-block;
 }
 
@@ -262,9 +262,9 @@
         justify-self: center;
         /* Center align the filter */
     }
+}
 
-    .sticky {
-        top: 0px;
-        position: sticky;
-    }
+.sticky {
+    top: 0px;
+    position: sticky;
 }
