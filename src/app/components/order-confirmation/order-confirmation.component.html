@@ -1,12 +1,12 @@
 <div class="container">
- 
-    <app-logo [companyId]="companyId"></app-logo>
-  
+
+  <app-logo [companyId]="companyId"></app-logo>
+
   <h2>Hello {{ orderData.customerName }},</h2>
   <p>Thank you for your order. Here are the details of your order:</p>
   <br>
   <table class="order-grid" id="order-grid">
-    <thead>
+    <thead class="sticky">
       <tr>
         <th>Description</th>
         <th>Unit Type</th>

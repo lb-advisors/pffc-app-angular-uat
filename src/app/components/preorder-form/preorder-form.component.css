@@ -203,3 +203,8 @@ button[mat-raised-button]:disabled {
 .currency-input input {
   padding-left: 20px;
 }
+
+.sticky {
+  top: 0px;
+  position: sticky;
+}

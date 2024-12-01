@@ -1,19 +1,10 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .container {
     width: 90%;
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #ccc;
-   border-radius: 8px; 
+    border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -23,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 10px;
-   border-radius: 8px; 
+    border-radius: 8px;
     background-color: rgba(0, 16, 46, 1);
     /* Dark blue background */
 }
@@ -32,7 +23,7 @@ body {
     max-width: 100%;
     height: 100px;
     /* Adjust height to match the order page */
-     border-radius: 8px;
+    border-radius: 8px;
 }
 
 h2 {
@@ -102,17 +93,20 @@ ul li {
 
 .order-grid th:nth-child(1),
 .order-grid td:nth-child(1) {
-  width: 40%; /* Wider description column */
+    width: 40%;
+    /* Wider description column */
 }
 
 .order-grid th:nth-child(4),
 .order-grid td:nth-child(4) {
-  width: 17%; /* Adjust width for price column */
+    width: 17%;
+    /* Adjust width for price column */
 }
 
 .order-grid th:nth-child(3),
 .order-grid td:nth-child(3) {
-  width: 17%; /* Adjust width for total column */
+    width: 17%;
+    /* Adjust width for total column */
 }
 
 
@@ -165,57 +159,68 @@ ul li {
         /* Remove border */
     }
 
-  
+
     .image-container img {
         border-radius: 0 !important;
     }
 
     .order-grid tr.bold-row {
-    font-weight: bold;
-    background-color: #dedede;
+        font-weight: bold;
+        background-color: #dedede;
     }
 
 
-.error-message {
-    font-size: 20px;
-}
+    .error-message {
+        font-size: 20px;
+    }
 
-.submitted-date {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 6px;
-}
+    .submitted-date {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 6px;
+    }
 
 
-.button {
-    background-color: #d3d3d3;
-    color: 333;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
+    .button {
+        background-color: #d3d3d3;
+        color: 333;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
 
-.no-wrap {
-    white-space: nowrap;
-}
+    .no-wrap {
+        white-space: nowrap;
+    }
 
-.table th:nth-child(2),
-.table td:nth-child(2) {
-  width: 17%; /* Adjust width for price column */
-}
-.table th:nth-child(3),
-.table td:nth-child(3) {
-  width: 17%; /* Adjust width for price column */
-}
+    .table th:nth-child(2),
+    .table td:nth-child(2) {
+        width: 17%;
+        /* Adjust width for price column */
+    }
 
-.table th:nth-child(4),
-.table td:nth-child(4) {
-  width: 17%; /* Adjust width for price column */
-}
-.table th:nth-child(5),
-.table td:nth-child(5) {
-width: 17%; /* Adjust width for price column */
-}
+    .table th:nth-child(3),
+    .table td:nth-child(3) {
+        width: 17%;
+        /* Adjust width for price column */
+    }
+
+    .table th:nth-child(4),
+    .table td:nth-child(4) {
+        width: 17%;
+        /* Adjust width for price column */
+    }
+
+    .table th:nth-child(5),
+    .table td:nth-child(5) {
+        width: 17%;
+        /* Adjust width for price column */
+    }
+
+    .sticky {
+        top: 0px;
+        position: sticky;
+    }
 
 }

@@ -31,8 +31,7 @@
 
       <!-- Yield Filter Button -->
       <button (click)="toggleYieldFilter()" class="filter-btn">
-        {{ showYield ? 'Show All Yield' : 'Yield < 100%' }}
-      </button>
+        {{ showYield ? 'Show All Yield' : 'Yield < 100%' }} </button>
     </div>
 
     <!-- Centered Filters Section -->
@@ -73,7 +72,7 @@
 
     <!-- Inventory Grid Table -->
     <table class="inventory-grid" *ngIf="inventoryItems$ | async as products; else noData">
-      <thead>
+      <thead class="sticky">
         <tr>
           <th>ID</th>
           <th>Description</th>
@@ -100,7 +99,7 @@
                 <img [src]="item.thumbnailUrl || item.photoUrl" alt="Product Image" class="uploaded-image" />
                 <div class="delete-icon" (click)="deletePhoto(item)">&#x2715;</div>
               </div>
-            </ng-template>            
+            </ng-template>
           </td>
         </tr>
       </tbody>
