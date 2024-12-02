@@ -87,20 +87,27 @@ mat-dialog-content {
 .delete-icon {
     position: absolute;
     top: 8px;
+    /* Distance from the top edge */
     right: 8px;
-    background-color: red;
+    /* Distance from the right edge */
+    width: 16px;
+    height: 16px;
+    background-color: #d9534f;
+    /* Red background color */
     color: white;
-    font-size: 18px;
-    width: 24px;
-    height: 24px;
+    /* White "X" */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Optional: Slight shadow */
 }
 
 .delete-icon:hover {
-    background-color: darkred;
+    background-color: #c9302c;
+    /* Darker red on hover */
 }

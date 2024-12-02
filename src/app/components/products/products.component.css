@@ -24,9 +24,7 @@
     border-radius: 8px;
     background-color: rgba(0, 16, 46, 1);
     text-decoration: none;
-    /* Remove underline */
     color: inherit;
-    /* Inherit color from container */
 }
 
 .image-container img {
@@ -64,10 +62,8 @@
     border: none;
     border-radius: 4px;
     padding: 6px 12px;
-    /* Reduced padding to make buttons less fat */
     cursor: pointer;
     font-size: 14px;
-    /* Slightly reduced font size */
     margin: 0px;
     width: 120px;
 }
@@ -88,32 +84,12 @@
     margin-bottom: 20px;
 }
 
-.filter-btn,
-.relevant-items-btn {
-    background-color: #a9a9a9;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    padding: 6px 12px;
-    cursor: pointer;
-    font-size: 14px;
-    margin: 0;
-    width: 120px;
-}
-
-.filter-btn:hover,
-.relevant-items-btn:hover {
-    background-color: #888888;
-}
-
 .filter-group {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 120px;
 }
-
-
 
 .filter-group label {
     font-size: 14px;
@@ -122,7 +98,8 @@
 }
 
 .filters select,
-.filters input[type="text"] {
+.filters input[type="text"],
+.filters input[type="number"] {
     font-size: 14px;
     padding: 5px;
     border: 1px solid #ccc;
@@ -131,7 +108,6 @@
     height: 28px;
     box-sizing: border-box;
     max-width: 120px;
-    /* Added max-width to prevent expansion */
 }
 
 #comp-cost-min {
@@ -143,9 +119,7 @@
     height: 28px;
     box-sizing: border-box;
     max-width: 120px;
-    /* Added max-width to prevent expansion */
 }
-
 
 .inventory-grid {
     width: 100%;
@@ -172,74 +146,26 @@
     cursor: pointer;
 }
 
-.image-container2 {
-    /* position: relative; */
-    display: inline-block;
-}
-
-.uploaded-image {
-    width: 100%;
-    /* Adjust as needed for your design */
-    border-radius: 8px;
-    /* Optional: Rounded corners for the image */
-}
-
-.delete-icon {
-    position: absolute;
-    top: 8px;
-    /* Distance from the top edge */
-    right: 8px;
-    /* Distance from the right edge */
-    width: 16px;
-    height: 16px;
-    background-color: #d9534f;
-    /* Red background color */
-    color: white;
-    /* White "X" */
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    /* Optional: Slight shadow */
-}
-
-.delete-icon:hover {
-    background-color: #c9302c;
-    /* Darker red on hover */
-}
-
 /* Mobile Adjustments */
 @media (max-width: 768px) {
     .filters {
         display: grid;
         grid-template-columns: 1fr;
-        /* Single column for all filters */
         gap: 10px;
-        /* Space between filters */
     }
 
     .filter-group {
         width: 100%;
-        /* Make filter groups take full width */
         max-width: 300px;
-        /* Prevent them from being too wide */
         margin: 0 auto;
-        /* Center the filter groups horizontally */
     }
 
     .filters select,
     .filters input[type="text"],
     .filters input[type="number"] {
         width: 100%;
-        /* Inputs and selects fill the available space */
         font-size: 14px;
-        /* Ensure readability on small screens */
         padding: 5px;
-        /* Provide enough padding for touch interaction */
         border: 1px solid #ccc;
         border-radius: 4px;
         box-sizing: border-box;
@@ -247,24 +173,29 @@
 
     .filter-group label {
         font-size: 14px;
-        /* Make labels readable */
         margin-bottom: 5px;
-        /* Add spacing between label and input */
         color: #333;
         text-align: center;
-        /* Center the labels */
-    }
-
-    /* Special Case: Center Last Filter */
-    .filter-group:last-child {
-        grid-column: span 3;
-        /* Ensure the last filter spans all columns if necessary */
-        justify-self: center;
-        /* Center align the filter */
     }
 }
 
 .sticky {
     top: 0px;
     position: sticky;
+}
+
+
+.description-cell {
+    display: flex;
+    align-items: center; /* Aligns the dot and text vertically */
+    gap: 8px; /* Adds spacing between the dot and text */
+}
+
+.blue-dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(0, 16, 46, 1);;
+    border-radius: 50%;
+    display: inline-block;
+    /*box-shadow: 0 0 4px rgba(0, 0, 255, 0.6); /* Optional: Add a glow effect */
 }

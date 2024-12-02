@@ -9,8 +9,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ProductDetailsDialogComponent } from '../product-details-dialog/product-details-dialog.component';
-import { HttpEventType } from '@angular/common/http';
-import { SnackbarService } from 'src/app/services/snackbar.service';
 
 @Component({
   standalone: true,
@@ -51,7 +49,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
   private inventoryItemsSubject = new BehaviorSubject<InventoryItem[]>([]);
   inventoryItems$ = this.inventoryItemsSubject.asObservable();
 
-  constructor(private snackBarService: SnackbarService, private cdr: ChangeDetectorRef, private productService: ProductService, private dialog: MatDialog) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private productService: ProductService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.loadData();
@@ -109,8 +111,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
     const target = event.target as HTMLElement;
     const tagName = target.tagName;
 
-    // Prevent pop-up for button, input, or delete-icon clicks
-    if (tagName !== 'BUTTON' && tagName !== 'INPUT' && !target.classList.contains('delete-icon')) {
+    // Prevent pop-up for button or input clicks
+    if (tagName !== 'BUTTON' && tagName !== 'INPUT') {
       this.dialog.open(ProductDetailsDialogComponent, {
         data: {
           ...item,
@@ -118,10 +120,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
         width: '550px',
       });
     }
-  }
-
-  onButtonClick(event: Event): void {
-    event.stopPropagation(); // Prevents the row click event
   }
 
   toggleRelevantItemsFilter(): void {
@@ -175,31 +173,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.searchSubject.next(searchTerm);
   }
 
-  onFileSelected(item: InventoryItem, event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0) {
-      this.uploadFile(item, input.files[0]);
-    }
-  }
-
-  uploadFile(item: InventoryItem, file: File): void {
-    this.snackBarService.showInfo('Uploading file...');
-    this.productService.uploadProductImage(item.compItemId, file).subscribe({
-      next: (event) => {
-        if (event.type === HttpEventType.Response) {
-          const updatedItem = event.body as InventoryItem;
-          Object.assign(item, updatedItem);
-          this.cdr.markForCheck();
-          this.snackBarService.closeSnackBar();
-        }
-      },
-    });
-  }
-
-  triggerFileInput(fileInput: HTMLInputElement): void {
-    fileInput.click();
-  }
-
   private trimComparator(prev: string, curr: string): boolean {
     return prev.trim() === curr.trim();
   }
@@ -214,18 +187,5 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.uniqueOrigins = [...new Set(products.map((item) => item.origin))].filter(Boolean).sort() as string[];
     this.uniquePackSizes = [...new Set(products.map((item) => item.packSize))].filter(Boolean).sort((a, b) => Number(a) - Number(b)) as (string | number)[];
     this.uniqueBuyers = [...new Set(products.map((item) => item.buyer))].filter(Boolean).sort() as string[];
-  }
-
-  deletePhoto(item: InventoryItem): void {
-    if (confirm('Are you sure you want to delete this photo?')) {
-      this.productService.deleteProductPhoto(item.compItemId).subscribe({
-        next: () => {
-          // Clear the photoUrl from the item
-          item.photoUrl = undefined;
-          this.cdr.markForCheck();
-          this.snackBarService.showSuccess('Photo deleted successfully.');
-        },
-      });
-    }
   }
 }

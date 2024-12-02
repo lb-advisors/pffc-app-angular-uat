@@ -14,29 +14,22 @@
 
     <!-- Button Row for Relevant Items and Additional Filters -->
     <div class="button-row">
-      <!-- Relevant Items Toggle Button -->
       <button (click)="toggleRelevantItemsFilter()" class="relevant-items-btn">
         {{ showRelevantItems ? 'Show All Items' : 'Relevant Items' }}
       </button>
-
-      <!-- Sixty Sales Filter Button -->
       <button (click)="toggleSixtySalesFilter()" class="filter-btn">
         {{ showSixtySales ? 'Show All Sixty Sales' : 'Sixty Sales > 0' }}
       </button>
-
-      <!-- WOH Filter Button -->
       <button (click)="toggleWohFilter()" class="filter-btn">
         {{ showWoh ? 'Show All WOH' : 'WOH > 0' }}
       </button>
-
-      <!-- Yield Filter Button -->
       <button (click)="toggleYieldFilter()" class="filter-btn">
-        {{ showYield ? 'Show All Yield' : 'Yield < 100%' }} </button>
+        {{ showYield ? 'Show All Yield' : 'Yield < 100%' }}
+      </button>
     </div>
 
     <!-- Centered Filters Section -->
     <div class="filters">
-      <!-- Origin Filter Dropdown -->
       <div class="filter-group">
         <label for="originFilter">Origin</label>
         <select id="originFilter" (change)="onFilterChange()" [(ngModel)]="originFilter">
@@ -44,14 +37,10 @@
           <option *ngFor="let origin of uniqueOrigins" [value]="origin">{{ origin }}</option>
         </select>
       </div>
-
-      <!-- CompCost Min Filter -->
       <div class="filter-group minfilter">
         <label for="comp-cost-min">Min CompCost</label>
         <input type="number" id="comp-cost-min" [(ngModel)]="minCompCost" (input)="onCompCostChange()" placeholder="Min" />
       </div>
-
-      <!-- Pack Size Filter Dropdown -->
       <div class="filter-group">
         <label for="packSizeFilter">Pack Size</label>
         <select id="packSizeFilter" (change)="onFilterChange()" [(ngModel)]="packSizeFilter">
@@ -59,8 +48,6 @@
           <option *ngFor="let packSize of uniquePackSizes" [value]="packSize">{{ packSize }}</option>
         </select>
       </div>
-
-      <!-- Buyer Filter Dropdown -->
       <div class="filter-group">
         <label for="buyerFilter">Buyer</label>
         <select id="buyerFilter" (change)="onFilterChange()" [(ngModel)]="buyerFilter">
@@ -78,29 +65,19 @@
           <th>Description</th>
           <th>WOH</th>
           <th>Sixty Sales</th>
-          <th>Image</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of products" (click)="onRowClick(item, $event)">
           <td>{{ item.compItemId }}</td>
-          <td>{{ item.compDescription }}</td>
+          <td>
+            <div class="description-cell">
+              <span *ngIf="item.photoUrl || item.thumbnailUrl" class="blue-dot"></span>
+              {{ item.compDescription }}
+            </div>
+          </td>
           <td>{{ item.woh }}</td>
           <td>{{ item.sixtySales }}</td>
-          <td>
-            <div *ngIf="!item.photoUrl; else uploadedImageBlock" class="custom-file-input">
-              <input type="file" #fileInput (change)="onFileSelected(item, $event)" accept="image/*" hidden />
-              <button type="button" class="button" (click)="triggerFileInput(fileInput)">
-                Upload
-              </button>
-            </div>
-            <ng-template #uploadedImageBlock>
-              <div class="image-container2">
-                <img [src]="item.thumbnailUrl || item.photoUrl" alt="Product Image" class="uploaded-image" />
-                <div class="delete-icon" (click)="deletePhoto(item)">&#x2715;</div>
-              </div>
-            </ng-template>
-          </td>
         </tr>
       </tbody>
     </table>
