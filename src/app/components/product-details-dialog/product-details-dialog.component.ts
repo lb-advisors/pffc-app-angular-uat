@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
+import { HttpEventType } from '@angular/common/http';
+import { ProductService } from '../../services/products.service'; // Ensure the correct path
 
 interface ProductDetails {
   compItemId: number;
@@ -19,8 +21,8 @@ interface ProductDetails {
   sixtySales?: number;
   tenSales?: number;
   preOrderHours?: number;
-  photoUrl?: string; // New optional field for image URL
-  thumbnailUrl?: string; // New optional field for thumbnail
+  photoUrl?: string; // Field for image URL
+  thumbnailUrl?: string; // Field for thumbnail
 }
 
 @Component({
@@ -28,12 +30,13 @@ interface ProductDetails {
   selector: 'app-product-details-dialog',
   templateUrl: './product-details-dialog.component.html',
   styleUrls: ['./product-details-dialog.component.css'],
-  imports: [CommonModule, MatDialogModule], // Import MatDialogModule here
+  imports: [CommonModule, MatDialogModule],
 })
 export class ProductDetailsDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<ProductDetailsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: ProductDetails
+    @Inject(MAT_DIALOG_DATA) public data: ProductDetails,
+    private productService: ProductService // Inject ProductService for API calls
   ) {
     console.log('Dialog opened with data:', data); // Debug log
   }
@@ -56,6 +59,46 @@ export class ProductDetailsDialogComponent {
         return 'side';
       default:
         return 'Unknown';
+    }
+  }
+
+  triggerFileInput(fileInput: HTMLInputElement): void {
+    fileInput.click();
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      this.productService.uploadProductImage(this.data.compItemId, file).subscribe({
+        next: (event) => {
+          if (event.type === HttpEventType.Response) {
+            const updatedItem = event.body as ProductDetails;
+            this.data.photoUrl = updatedItem.photoUrl;
+            this.data.thumbnailUrl = updatedItem.thumbnailUrl;
+            console.log('Image uploaded successfully:', updatedItem);
+          }
+        },
+        error: (err) => {
+          console.error('Error uploading image:', err);
+        },
+      });
+    }
+  }
+
+  deletePhoto(): void {
+    if (confirm('Are you sure you want to delete this photo?')) {
+      this.productService.deleteProductPhoto(this.data.compItemId).subscribe({
+        next: () => {
+          this.data.photoUrl = undefined;
+          this.data.thumbnailUrl = undefined;
+          alert('Photo deleted successfully.');
+          console.log('Photo deleted for product:', this.data.compItemId);
+        },
+        error: (err) => {
+          console.error('Error deleting photo:', err);
+        },
+      });
     }
   }
 }

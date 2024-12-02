@@ -12,22 +12,26 @@ h2 {
     background-color: #f0f0f0;
     text-align: center;
     color: #666;
-    margin: 0; /* No margin */
-    padding: 4px 0; /* Reduced padding */
+    margin: 0;
+    padding: 4px 0;
 }
 
 mat-dialog-content {
     font-size: 16px;
-    padding: 0 16px 16px 16px; /* Removed top padding */
+    padding: 0 16px 16px 16px;
     border: 1px solid #ddd;
     border-radius: 8px;
     max-width: 90vw;
     max-height: 90vh;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .margins {
-    margin-top: 2px; /* Reduced top margin */
+    margin-top: 2px;
     font-weight: bold;
 }
 
@@ -40,51 +44,63 @@ mat-dialog-content {
 .margin-group, .field-group {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Aligns fields at the top */
+    align-items: flex-start;
     padding: 4px;
-    gap: 6px; /* Adds space between fields */
+    gap: 6px;
 }
 
 .field {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers each field */
-    justify-content: flex-start; /* Aligns the label and value at the top */
-    text-align: center; /* Aligns text consistently */
+    align-items: center;
+    text-align: center;
     padding: 2px;
-    min-width: 100px; /* Ensures consistent width for fields */
-    min-height: 60px; /* Ensures consistent height for all fields */
+    min-width: 100px;
+    min-height: 60px;
 }
 
 .field-label {
     font-weight: bold;
     text-decoration: underline;
-    margin-bottom: 4px; /* Adjusted spacing for alignment */
-    min-height: 20px; /* Ensures consistent height for labels */
-    line-height: 20px; /* Ensures text stays vertically aligned */
-}
-
-.field-value {
-    min-height: 20px; /* Ensures consistent height for values */
-    line-height: 20px; /* Ensures text stays vertically aligned */
-    color: #333; /* Optional: Value color */
+    margin-bottom: 4px;
+    min-height: 20px;
+    line-height: 20px;
 }
 
 .image-container {
     text-align: center;
 }
 
-.product-image {
-    max-width: 70%; /* Allow the image to stretch up to the container width */
-    max-height: 70vh; /* Ensure it doesn't take more than 70% of viewport height */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 8px; /* Add slight rounding to the corners */
-    object-fit: contain; /* Ensure the entire image fits within bounds */
+.image-wrapper {
+    position: relative;
+    display: inline-block;
 }
 
-mat-dialog-content {
+.product-image {
+    max-width: 70%;
+    max-height: 70vh;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.delete-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.delete-icon:hover {
+    background-color: darkred;
 }

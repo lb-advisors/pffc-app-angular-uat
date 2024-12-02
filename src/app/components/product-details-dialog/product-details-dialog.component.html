@@ -3,11 +3,20 @@
 
 <mat-dialog-content>
   <!-- Display Image if Available -->
-  <div *ngIf="data.photoUrl || data.thumbnailUrl" class="image-container">
-    <img [src]="data.photoUrl || data.thumbnailUrl" alt="Product Image" class="product-image" />
+  <div class="image-container">
+    <ng-container *ngIf="data.photoUrl || data.thumbnailUrl; else uploadButton">
+      <div class="image-wrapper">
+        <img [src]="data.photoUrl || data.thumbnailUrl" alt="Product Image" class="product-image" />
+        <div class="delete-icon" (click)="deletePhoto()">&#x2715;</div>
+      </div>
+    </ng-container>
+    <ng-template #uploadButton>
+      <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden />
+      <button type="button" class="button" (click)="triggerFileInput(fileInput)">Upload Image</button>
+    </ng-template>
   </div>
-  
 
+  <!-- Rest of the content remains the same -->
   <div class="margins">
     <div class="margin-values">
       <div class="margin-group">
@@ -94,4 +103,5 @@
       <span>{{ data.preOrderHours }}</span>
     </div>
   </div>
+  <!-- Other details remain unchanged -->
 </mat-dialog-content>
