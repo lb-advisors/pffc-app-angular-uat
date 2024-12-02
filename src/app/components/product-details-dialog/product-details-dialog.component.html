@@ -16,48 +16,55 @@
     </ng-template>
   </div>
 
-  <!-- Rest of the content remains the same -->
-  <div class="margins">
-    <div class="margin-values">
-      <div class="margin-group">
-        <div class="field">
-          <span class="field-label">16%</span>
-          <span>{{ ((data.compCost ?? 0) * (data.yield ?? 0) + (data.laborPackCost ?? 0)) / 0.84 | number:'1.2-2' }}</span>
+  <!-- Toggleable Information -->
+  <button class="toggle-button" (click)="toggleInfoVisibility()">
+    {{ showInfo ? 'Hide Info' : 'Show Info' }}
+  </button>
+
+  <div class="info-section" *ngIf="showInfo">
+    <div class="margins">
+      <div class="margin-values">
+        <div class="margin-group">
+          <div class="field">
+            <span class="field-label">16%</span>
+            <span>{{ ((data.compCost ?? 0) * (data.yield ?? 0) + (data.laborPackCost ?? 0)) / 0.84 | number:'1.2-2' }}</span>
+          </div>
+          <div class="field">
+            <span class="field-label">18%</span>
+            <span>{{ ((data.compCost ?? 0) * (data.yield ?? 0) + (data.laborPackCost ?? 0)) / 0.82 | number:'1.2-2' }}</span>
+          </div>
+          <div class="field">
+            <span class="field-label">20%</span>
+            <span>{{ ((data.compCost ?? 0) * (data.yield ?? 0) + (data.laborPackCost ?? 0)) / 0.80 | number:'1.2-2' }}</span>
+          </div>
+          <div class="field">
+            <span class="field-label">22%</span>
+            <span>{{ ((data.compCost ?? 0) * (data.yield ?? 0) + (data.laborPackCost ?? 0)) / 0.78 | number:'1.2-2' }}</span>
+          </div>
         </div>
-        <div class="field">
-          <span class="field-label">18%</span>
-          <span>{{ ((data.compCost ?? 0) * (data.yield ?? 0) + (data.laborPackCost ?? 0)) / 0.82 | number:'1.2-2' }}</span>
-        </div>
-        <div class="field">
-          <span class="field-label">20%</span>
-          <span>{{ ((data.compCost ?? 0) * (data.yield ?? 0) + (data.laborPackCost ?? 0)) / 0.80 | number:'1.2-2' }}</span>
-        </div>
-        <div class="field">
-          <span class="field-label">22%</span>
-          <span>{{ ((data.compCost ?? 0) * (data.yield ?? 0) + (data.laborPackCost ?? 0)) / 0.78 | number:'1.2-2' }}</span>
-        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="field">
+        <span class="field-label">Cost</span>
+        <span>{{ (data.compCost ?? 0) * (data.yield ?? 0) | number:'1.2-2' }}</span>
+      </div>
+      <div class="field">
+        <span class="field-label">Yield</span>
+        <span>{{ (data.yield ?? 0) * 100 | number:'1.0-0' }}%</span>
+      </div>
+      <div class="field">
+        <span class="field-label">Labor Pack</span>
+        <span>{{ data.laborPackCost | number:'1.2-2' }}</span>
+      </div>
+      <div class="field">
+        <span class="field-label">Finish</span>
+        <span>{{ ((data.compCost ?? 0) * (data.yield ?? 0) + (data.laborPackCost ?? 0)) | number:'1.2-2' }}</span>
       </div>
     </div>
   </div>
 
-  <div class="field-group">
-    <div class="field">
-      <span class="field-label">Cost</span>
-      <span>{{ (data.compCost ?? 0) * (data.yield ?? 0) | number:'1.2-2' }}</span>
-    </div>
-    <div class="field">
-      <span class="field-label">Yield</span>
-      <span>{{ (data.yield ?? 0) * 100 | number:'1.0-0' }}%</span>
-    </div>
-    <div class="field">
-      <span class="field-label">Labor Pack</span>
-      <span>{{ data.laborPackCost | number:'1.2-2' }}</span>
-    </div>
-    <div class="field">
-      <span class="field-label">Finish</span>
-      <span>{{ ((data.compCost ?? 0) * (data.yield ?? 0) + (data.laborPackCost ?? 0)) | number:'1.2-2' }}</span>
-    </div>
-  </div>
 
   <div class="field-group">
     <div class="field">

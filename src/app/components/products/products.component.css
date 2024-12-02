@@ -194,7 +194,7 @@
 .blue-dot {
     width: 10px;
     height: 10px;
-    background-color: rgba(0, 16, 46, 1);;
+    background-color: rgba(0, 16, 46, 1);
     border-radius: 50%;
     display: inline-block;
     /*box-shadow: 0 0 4px rgba(0, 0, 255, 0.6); /* Optional: Add a glow effect */

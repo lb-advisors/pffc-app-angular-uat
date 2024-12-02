@@ -33,12 +33,18 @@ interface ProductDetails {
   imports: [CommonModule, MatDialogModule],
 })
 export class ProductDetailsDialogComponent {
+  showInfo = false; // Controls visibility of the info section
+
   constructor(
     public dialogRef: MatDialogRef<ProductDetailsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ProductDetails,
     private productService: ProductService // Inject ProductService for API calls
   ) {
     console.log('Dialog opened with data:', data); // Debug log
+  }
+
+  toggleInfoVisibility(): void {
+    this.showInfo = !this.showInfo;
   }
 
   close(): void {
