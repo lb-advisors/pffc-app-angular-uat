@@ -26,6 +26,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   showSixtySales = false;
   showWoh = false;
   showYield = false;
+  showWithImages = false; // New filter for rows with images
 
   // Filter dropdowns
   originFilter: string = '';
@@ -91,6 +92,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
           filteredData = filteredData.filter((item) => item.yield && item.yield < 1);
         }
 
+        if (this.showWithImages) {
+          filteredData = filteredData.filter((item) => item.photoUrl || item.thumbnailUrl);
+        }
+
         const fullyFilteredData = filteredData.filter((item) => {
           const compCost = item.compCost ?? 0;
           return (
@@ -145,6 +150,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   toggleYieldFilter(): void {
     this.showYield = !this.showYield;
+    this.page = 0;
+    this.inventoryItemsSubject.next([]);
+    this.loadData();
+  }
+
+  toggleWithImagesFilter(): void {
+    this.showWithImages = !this.showWithImages;
     this.page = 0;
     this.inventoryItemsSubject.next([]);
     this.loadData();
