@@ -8,7 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { CommonModule } from '@angular/common'; // Import CommonModule
+import { CommonModule } from '@angular/common'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app/app-routing.module';
@@ -25,7 +25,7 @@ bootstrapApplication(AppComponent, {
       BrowserModule,
       AppRoutingModule,
       RouterModule,
-      CommonModule, // Add CommonModule here
+      CommonModule, 
       FormsModule,
       ReactiveFormsModule,
       MatSlideToggleModule,

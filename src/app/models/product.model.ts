@@ -1,20 +1,20 @@
 export interface InventoryItem {
   compItemId: number;
   compDescription: string;
-  compInstructions?: string;
+  compInstructions: string;
   origin: string;
-  notes?: string;
-  woh?: number | null;
-  unitType?: string | number | undefined;
-  packSize?: string | number | undefined;
-  packLock?: number | null;
-  compCost?: number;
-  yield?: number;
-  laborPackCost?: number;
-  buyer?: string | undefined;
-  sixtySales?: number;
-  tenSales?: number;
-  preOrderHours?: number | null;
-  photoUrl?: string; // Mapped from photoUrl
-  thumbnailUrl?: string; // New field for thumbnails
+  notes: string;
+  woh: number | null;
+  unitType: number | undefined;
+  packSize: number | undefined;
+  packLock: number | undefined;
+  compCost: number | undefined;
+  yield: number | undefined;
+  laborPackCost: number | undefined;
+  buyer: string | undefined;
+  sixtySales: number;
+  tenSales: number;
+  preOrderHours: number | undefined;
+  photoUrl: string | undefined;
+  thumbnailUrl: string | undefined;
 }
