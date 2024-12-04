@@ -16,5 +16,4 @@ export interface InventoryItem {
   tenSales: number;
   preOrderHours: number | undefined;
   photoUrl: string | undefined;
-  thumbnailUrl: string | undefined;
 }

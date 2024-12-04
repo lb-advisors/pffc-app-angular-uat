@@ -24,11 +24,10 @@
         {{ showWoh ? 'Show All WOH' : 'WOH > 0' }}
       </button>
       <button (click)="toggleYieldFilter()" class="filter-btn">
-        {{ showYield ? 'Show All Yield' : 'Yield < 100%' }}
-      </button>
-      <button (click)="toggleWithImagesFilter()" class="filter-btn">
-        {{ showWithImages ? 'Show All Items' : 'With Images' }}
-      </button>
+        {{ showYield ? 'Show All Yield' : 'Yield < 100%' }} </button>
+          <button (click)="toggleWithImagesFilter()" class="filter-btn">
+            {{ showWithImages ? 'Show All Items' : 'With Images' }}
+          </button>
     </div>
 
     <!-- Centered Filters Section -->
@@ -75,7 +74,7 @@
           <td>{{ item.compItemId }}</td>
           <td>
             <div class="description-cell">
-              <span *ngIf="item.photoUrl || item.thumbnailUrl" class="blue-dot"></span>
+              <span *ngIf="item.photoUrl" class="blue-dot"></span>
               {{ item.compDescription }}
             </div>
           </td>

@@ -50,11 +50,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   private inventoryItemsSubject = new BehaviorSubject<InventoryItem[]>([]);
   inventoryItems$ = this.inventoryItemsSubject.asObservable();
 
-  constructor(
-    private cdr: ChangeDetectorRef,
-    private productService: ProductService,
-    private dialog: MatDialog
-  ) {}
+  constructor(private cdr: ChangeDetectorRef, private productService: ProductService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loadData();
@@ -93,7 +89,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
         }
 
         if (this.showWithImages) {
-          filteredData = filteredData.filter((item) => item.photoUrl || item.thumbnailUrl);
+          filteredData = filteredData.filter((item) => item.photoUrl);
         }
 
         const fullyFilteredData = filteredData.filter((item) => {

@@ -68,7 +68,7 @@ export class ProductDetailsDialogComponent {
         // Compress the image
         console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(imageBase64));
 
-        this.imageCompress.compressFile(imageBase64, DOC_ORIENTATION.Default, 50, 50, 1920, 1080).then((compressedImage) => {
+        this.imageCompress.compressFile(imageBase64, DOC_ORIENTATION.Default, 50, 50, 960, 540).then((compressedImage) => {
           // Convert base64 back to Blob
           const blob = this.dataURItoBlob(compressedImage);
           console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(compressedImage));
@@ -84,7 +84,6 @@ export class ProductDetailsDialogComponent {
               if (event.type === HttpEventType.Response) {
                 const updatedItem = event.body as InventoryItem;
                 this.data.photoUrl = updatedItem.photoUrl;
-                this.data.thumbnailUrl = updatedItem.thumbnailUrl;
                 this.snackBarService.showSuccess('File uploaded successfully');
               }
             },
@@ -99,7 +98,6 @@ export class ProductDetailsDialogComponent {
       this.productService.deleteProductPhoto(this.data.compItemId).subscribe({
         next: () => {
           this.data.photoUrl = undefined;
-          this.data.thumbnailUrl = undefined;
           this.snackBarService.showSuccess('Photo deleted successfully.');
         },
       });

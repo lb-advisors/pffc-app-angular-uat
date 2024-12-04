@@ -4,9 +4,9 @@
 <mat-dialog-content>
   <!-- Display Image if Available -->
   <div class="image-container">
-    <ng-container *ngIf="data.photoUrl || data.thumbnailUrl; else uploadButton">
+    <ng-container *ngIf="data.photoUrl; else uploadButton">
       <div class="image-wrapper">
-        <img [src]="data.photoUrl || data.thumbnailUrl" alt="Product Image" class="product-image" />
+        <img [src]="data.photoUrl" alt="Product Image" class="product-image" />
         <div class="delete-icon" (click)="deletePhoto()">&#x2715;</div>
       </div>
     </ng-container>
