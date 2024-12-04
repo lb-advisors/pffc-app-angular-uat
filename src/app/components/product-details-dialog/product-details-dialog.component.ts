@@ -65,19 +65,13 @@ export class ProductDetailsDialogComponent {
       reader.onload = () => {
         const imageBase64 = reader.result as string;
 
-        // Compress the image
-        console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(imageBase64));
-
         this.imageCompress.compressFile(imageBase64, DOC_ORIENTATION.Default, 50, 50, 960, 540).then((compressedImage) => {
           // Convert base64 back to Blob
           const blob = this.dataURItoBlob(compressedImage);
-          console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(compressedImage));
 
           const compressedFile = new File([blob], file.name.replace(/\..+$/, '.jpeg'), {
             type: 'image/jpeg',
           });
-
-          console.log('Uploaded file size:', compressedFile.size);
 
           this.productService.uploadProductImage(this.data.compItemId, compressedFile).subscribe({
             next: (event) => {
@@ -106,13 +100,18 @@ export class ProductDetailsDialogComponent {
 
   // Utility to convert base64 to Blob
   private dataURItoBlob(dataURI: string): Blob {
+    // Split the URI into data and mime type
     const byteString = atob(dataURI.split(',')[1]);
     const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // Convert the byte string into an array of bytes (Uint8Array)
     const arrayBuffer = new ArrayBuffer(byteString.length);
     const intArray = new Uint8Array(arrayBuffer);
     for (let i = 0; i < byteString.length; i++) {
       intArray[i] = byteString.charCodeAt(i);
     }
-    return new Blob([arrayBuffer], { type: mimeString });
+
+    // Return a Blob with the appropriate MIME type
+    return new Blob([intArray], { type: mimeString });
   }
 }
