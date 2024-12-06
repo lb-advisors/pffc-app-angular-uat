@@ -25,9 +25,9 @@
       </button>
       <button (click)="toggleYieldFilter()" class="filter-btn">
         {{ showYield ? 'Show All Yield' : 'Yield < 100%' }} </button>
-          <button (click)="toggleWithImagesFilter()" class="filter-btn">
-            {{ showWithImages ? 'Show All Items' : 'With Images' }}
-          </button>
+      <button (click)="toggleWithImagesFilter()" class="filter-btn">
+        {{ showWithImages ? 'Show All Items' : 'With Images' }}
+      </button>
     </div>
 
     <!-- Centered Filters Section -->
@@ -42,13 +42,6 @@
       <div class="filter-group minfilter">
         <label for="comp-cost-min">Min CompCost</label>
         <input type="number" id="comp-cost-min" [(ngModel)]="minCompCost" (input)="onCompCostChange()" placeholder="Min" />
-      </div>
-      <div class="filter-group">
-        <label for="packSizeFilter">Pack Size</label>
-        <select id="packSizeFilter" (change)="onFilterChange()" [(ngModel)]="packSizeFilter">
-          <option value="">All Pack Sizes</option>
-          <option *ngFor="let packSize of uniquePackSizes" [value]="packSize">{{ packSize }}</option>
-        </select>
       </div>
       <div class="filter-group">
         <label for="buyerFilter">Buyer</label>
@@ -70,11 +63,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of products" (click)="onRowClick(item, $event)">
+        <tr
+          *ngFor="let item of products"
+          (click)="onRowClick(item, $event)"
+          [class.has-image]="item.photoUrl"
+        >
           <td>{{ item.compItemId }}</td>
           <td>
             <div class="description-cell">
-              <span *ngIf="item.photoUrl" class="blue-dot"></span>
               {{ item.compDescription }}
             </div>
           </td>
