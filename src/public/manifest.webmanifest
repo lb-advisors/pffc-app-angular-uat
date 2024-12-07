@@ -4,8 +4,8 @@
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
-  "start_url": "/uat-angular/",
-  "scope": "/uat-angular/",
+  "start_url": "/uat-angularterst/",
+  "scope": "/uat-angulartest/",
   "icons": [
     {
       "src": "icons/android-icon-36x36.png",
