@@ -147,58 +147,64 @@
 }
 
 @media (max-width: 768px) {
+
     /* Ensure .inventory-grid fits within .container */
     .inventory-grid {
-      width: 100%;
-      table-layout: fixed; /* Ensure columns don't expand beyond the container */
-      word-wrap: break-word; /* Wrap text to prevent overflow */
-      overflow-x: hidden;
+        width: 100%;
+        table-layout: fixed;
+        /* Ensure columns don't expand beyond the container */
+        word-wrap: break-word;
+        /* Wrap text to prevent overflow */
+        overflow-x: hidden;
     }
-  
+
     .inventory-grid th,
     .inventory-grid td {
-      white-space: normal; /* Allow wrapping of content inside cells */
-      font-size: 12px; /* Adjust font size for better fit on mobile */
+        white-space: normal;
+        /* Allow wrapping of content inside cells */
+        font-size: 12px;
+        /* Adjust font size for better fit on mobile */
     }
-  
-    .container {
-      overflow-x: hidden; /* Prevent container from causing horizontal scroll */
-    }
-  
+
     /* Adjust filters layout to two rows */
     .filters {
-      display: grid;
-      grid-template-columns: 1fr 1fr; /* Two filters per row */
-      gap: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* Two filters per row */
+        gap: 10px;
     }
-  
+
     .filter-group {
-      width: 100%;
-      max-width: none; /* Allow full width for smaller screens */
-      text-align: center;
+        width: 100%;
+        max-width: none;
+        /* Allow full width for smaller screens */
+        text-align: center;
     }
-  
+
     /* Handle case where one filter appears on the second row */
-    .filters > :nth-child(3) {
-      grid-column: span 2; /* Center the third filter on the second row */
-      justify-self: center;
+    .filters> :nth-child(3) {
+        grid-column: span 2;
+        /* Center the third filter on the second row */
+        justify-self: center;
     }
-  
+
     /* Adjust the size of filter inputs */
     .filters select,
     .filters input[type="text"],
     .filters input[type="number"] {
-      width: 100%;
-      font-size: 12px;
-      padding: 5px;
-      box-sizing: border-box;
+        width: 100%;
+        font-size: 12px;
+        padding: 5px;
+        box-sizing: border-box;
     }
+
     .inventory-grid tr.has-image {
-        background-color: #e6f7ff; /* Light blue background */
-      }
-  
-  }
-  
+        background-color: #e6f7ff;
+        /* Light blue background */
+    }
+
+}
+
 
 .sticky {
     top: 0px;
@@ -208,8 +214,10 @@
 
 .description-cell {
     display: flex;
-    align-items: center; /* Aligns the dot and text vertically */
-    gap: 8px; /* Adds spacing between the dot and text */
+    align-items: center;
+    /* Aligns the dot and text vertically */
+    gap: 8px;
+    /* Adds spacing between the dot and text */
 }
 
 .blue-dot {
@@ -222,5 +230,6 @@
 }
 
 .inventory-grid tr.has-image {
-    background-color: #e6f7ff; /* Light blue background */
-  }
+    background-color: #e6f7ff;
+    /* Light blue background */
+}
