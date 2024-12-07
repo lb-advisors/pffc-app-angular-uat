@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges } from '@angular/core';
-import { Router, RouterLink, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({

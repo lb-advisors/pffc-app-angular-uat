@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '../../services/products.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -50,7 +50,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   private inventoryItemsSubject = new BehaviorSubject<InventoryItem[]>([]);
   inventoryItems$ = this.inventoryItemsSubject.asObservable();
 
-  constructor(private cdr: ChangeDetectorRef, private productService: ProductService, private dialog: MatDialog) {}
+  constructor(private productService: ProductService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loadData();

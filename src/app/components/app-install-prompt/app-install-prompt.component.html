@@ -1,0 +1,7 @@
+@if ( (isPwa$ | async) === true) {
+<div class="install-banner">
+  <button mat-raised-button color="primary" (click)="promptInstall()">
+    Install as an Application
+  </button>
+</div>
+}

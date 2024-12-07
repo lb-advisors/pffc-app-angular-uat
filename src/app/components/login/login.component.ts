@@ -9,13 +9,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { catchError, throwError } from 'rxjs';
 import { LoginResponse } from 'src/app/models/login-response.model ';
+import { AppInstallPromptComponent } from '../app-install-prompt/app-install-prompt.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, RouterModule, AppInstallPromptComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
