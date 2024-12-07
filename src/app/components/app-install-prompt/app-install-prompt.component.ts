@@ -19,11 +19,13 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
   isPwa$: Observable<boolean>;
   isIosButNotStandalone: boolean;
   isPwa: boolean;
+  plat: boolean;
 
   constructor(private pwaService: PwaService, private platform: Platform, private snackbarService: SnackbarService) {
     this.isPwa$ = this.pwaService.isPwa$;
     this.isPwa = !!navigator.serviceWorker.controller;
     this.isIosButNotStandalone = !this.isPwa && platform.IOS;
+    this.plat = platform.IOS;
   }
 
   ngOnInit() {
