@@ -1,7 +1,9 @@
+import { Platform } from '@angular/cdk/platform';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PwaService } from 'src/app/services/pwa.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 
 @Component({
   standalone: true,
@@ -15,9 +17,12 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
   private beforeInstallPromptHandler: any;
   deferredPrompt: any;
   isPwa$: Observable<boolean>;
+  isIosButNotStandalone: boolean; // iOs
 
-  constructor(private cdr: ChangeDetectorRef, public pwaService: PwaService) {
+  constructor(private pwaService: PwaService, private platform: Platform, private snackbarService: SnackbarService) {
     this.isPwa$ = this.pwaService.isPwa$;
+    const isStandalone = 'standalone' in window.navigator && window.navigator['standalone'];
+    this.isIosButNotStandalone = !isStandalone && platform.IOS;
   }
 
   ngOnInit() {
@@ -29,7 +34,6 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
       event.preventDefault();
       this.deferredPrompt = event;
       this.pwaService.updateValue(true);
-      this.cdr.markForCheck();
     };
 
     window.addEventListener('beforeinstallprompt', this.beforeInstallPromptHandler);
@@ -48,5 +52,9 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
         this.pwaService.updateValue(false);
       });
     }
+  }
+
+  showIosInstructions() {
+    this.snackbarService.showInfo("To install this web app on your device, tap the Menu button and then 'Add to Home Screen' button");
   }
 }
