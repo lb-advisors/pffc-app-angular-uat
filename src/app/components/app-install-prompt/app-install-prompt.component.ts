@@ -18,12 +18,12 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
   deferredPrompt: BeforeInstallPromptEvent | null = null;
   isPwa$: Observable<boolean>;
   isIosButNotPwa: boolean;
-  isStandalone: boolean;
+  isPwa: boolean;
   plat: boolean;
 
   constructor(private pwaService: PwaService, private platform: Platform, private snackbarService: SnackbarService) {
     this.isPwa$ = this.pwaService.isPwa$;
-    this.isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+    this.isPwa = this.isRunningAsPWA();
     this.isIosButNotPwa = this.isIOS() && !this.isRunningAsPWA();
     this.plat = this.isIOS();
   }
