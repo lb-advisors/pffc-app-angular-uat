@@ -18,14 +18,14 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
   deferredPrompt: BeforeInstallPromptEvent | null = null;
   isPwa$: Observable<boolean>;
   isIosButNotStandalone: boolean;
-  isPwa: boolean;
+  isStandalone: boolean;
   plat: boolean;
 
   constructor(private pwaService: PwaService, private platform: Platform, private snackbarService: SnackbarService) {
     this.isPwa$ = this.pwaService.isPwa$;
-    this.isPwa = !!navigator.serviceWorker.controller;
-    this.isIosButNotStandalone = !this.isPwa && platform.IOS;
-    this.plat = platform.IOS;
+    this.isStandalone = !!navigator.serviceWorker.controller;
+    this.isIosButNotStandalone = this.isIOS() && !this.isStandalone;
+    this.plat = this.isIOS();
   }
 
   ngOnInit() {
@@ -59,6 +59,11 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
 
   showIosInstructions() {
     this.snackbarService.showInfo("To install this web app on your device, tap the Menu button and then 'Add to Home Screen' button", 20000);
+  }
+
+  private isIOS(): boolean {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    return /iphone|ipad|ipod/.test(userAgent);
   }
 }
 
