@@ -20,6 +20,7 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
   isIosButNotPwa: boolean;
   isPwa: boolean;
   plat: boolean;
+  userAgent = window.navigator.userAgent.toLowerCase();
 
   constructor(private pwaService: PwaService, private platform: Platform, private snackbarService: SnackbarService) {
     this.isPwa$ = this.pwaService.isPwa$;
