@@ -14,8 +14,8 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppInstallPromptComponent implements OnInit, OnDestroy {
-  private beforeInstallPromptHandler: any;
-  deferredPrompt: any;
+  beforeInstallPromptHandler?: (event: BeforeInstallPromptEvent) => void;
+  deferredPrompt: BeforeInstallPromptEvent | null = null;
   isPwa$: Observable<boolean>;
   isIosButNotStandalone: boolean; // iOs
 
@@ -27,7 +27,7 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log('ngOnInit');
-    this.beforeInstallPromptHandler = (event: any) => {
+    this.beforeInstallPromptHandler = (event: BeforeInstallPromptEvent) => {
       console.log('beforeinstallprompt');
 
       // Prevent the mini-infobar from appearing
@@ -36,11 +36,11 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
       this.pwaService.updateValue(true);
     };
 
-    window.addEventListener('beforeinstallprompt', this.beforeInstallPromptHandler);
+    window.addEventListener('beforeinstallprompt', this.beforeInstallPromptHandler as EventListener);
   }
 
   ngOnDestroy() {
-    window.removeEventListener('beforeinstallprompt', this.beforeInstallPromptHandler);
+    window.removeEventListener('beforeinstallprompt', this.beforeInstallPromptHandler as EventListener);
     this.pwaService.updateValue(false);
   }
 
@@ -55,6 +55,12 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
   }
 
   showIosInstructions() {
-    this.snackbarService.showInfo("To install this web app on your device, tap the Menu button and then 'Add to Home Screen' button");
+    this.snackbarService.showInfo("To install this web app on your device, tap the Menu button and then 'Add to Home Screen' button", 20000);
   }
+}
+
+interface BeforeInstallPromptEvent extends Event {
+  readonly platforms: string[];
+  prompt(): Promise<void>;
+  userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>;
 }
