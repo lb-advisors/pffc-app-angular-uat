@@ -22,7 +22,7 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
   plat: boolean;
   userAgent = window.navigator.userAgent.toLowerCase();
 
-  constructor(private pwaService: PwaService, private platform: Platform, private snackbarService: SnackbarService) {
+  constructor(private pwaService: PwaService, private snackbarService: SnackbarService, public platform: Platform) {
     this.isPwa$ = this.pwaService.isPwa$;
     this.isPwa = this.isRunningAsPWA();
     this.isIosButNotPwa = this.isIOS() && !this.isRunningAsPWA();
