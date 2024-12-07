@@ -17,14 +17,14 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
   beforeInstallPromptHandler?: (event: BeforeInstallPromptEvent) => void;
   deferredPrompt: BeforeInstallPromptEvent | null = null;
   isPwa$: Observable<boolean>;
-  isIosButNotStandalone: boolean;
+  isIosButNotPwa: boolean;
   isStandalone: boolean;
   plat: boolean;
 
   constructor(private pwaService: PwaService, private platform: Platform, private snackbarService: SnackbarService) {
     this.isPwa$ = this.pwaService.isPwa$;
     this.isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-    this.isIosButNotStandalone = this.isIOS() && !this.isStandalone;
+    this.isIosButNotPwa = this.isIOS() && !this.isRunningAsPWA();
     this.plat = this.isIOS();
   }
 
@@ -64,6 +64,14 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
   private isIOS(): boolean {
     const userAgent = window.navigator.userAgent.toLowerCase();
     return /iphone|ipad|ipod/.test(userAgent);
+  }
+
+  private isRunningAsPWA(): boolean {
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+    const isIOSStandalone = (navigator as any).standalone === true;
+    const isFullscreen = window.innerHeight === screen.height;
+
+    return isStandalone || isIOSStandalone || isFullscreen;
   }
 }
 
