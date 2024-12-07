@@ -64,7 +64,7 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
 
   private isIOS(): boolean {
     const userAgent = window.navigator.userAgent.toLowerCase();
-    return /iphone|ipad|ipod/.test(userAgent);
+    return /iphone|ipad|ipod|mac/.test(userAgent) || this.platform.IOS;
   }
 
   private isRunningAsPWA(): boolean {
