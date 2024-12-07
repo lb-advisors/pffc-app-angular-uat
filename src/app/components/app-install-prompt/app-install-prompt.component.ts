@@ -23,7 +23,7 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
 
   constructor(private pwaService: PwaService, private platform: Platform, private snackbarService: SnackbarService) {
     this.isPwa$ = this.pwaService.isPwa$;
-    this.isStandalone = !!navigator.serviceWorker.controller;
+    this.isStandalone = window.matchMedia('(display-mode: standalone)').matches;
     this.isIosButNotStandalone = this.isIOS() && !this.isStandalone;
     this.plat = this.isIOS();
   }
