@@ -1,19 +1,13 @@
 @if ( (isPwa$ | async) === true) {
 <div class="install-banner">
   <button mat-raised-button color="primary" (click)="promptInstall()">
-    Install as an Application 1
+    Install as an Application
   </button>
 </div>
 } @else if (isIosButNotPwa) {
 <div class="install-banner">
   <button mat-raised-button color="primary" (click)="showIosInstructions()">
-    Install as an Application 2
+    Install as an Application
   </button>
-</div>}
-Just a test 4
-<br />
-isPwa: {{isPwa}}<br>
-isIos: {{plat}}<br>
-userAgent: {{userAgent}}<br>
-platform IOS: {{platform.IOS}}<br>
-platform ANDROID: {{platform.ANDROID}}<br>
+</div>
+}
