@@ -1,12 +1,12 @@
 @if ( (isPwa$ | async) === true) {
 <div class="install-banner">
   <button mat-raised-button color="primary" (click)="promptInstall()">
-    Install as an Application 1
+    Install as an Application
   </button>
 </div>
 } @else if (!isIosButNotStandalone) {
 <div class="install-banner">
   <button mat-raised-button color="primary" (click)="showIosInstructions()">
-    Install as an Application 2
+    Install as an Application
   </button>
 </div>}
