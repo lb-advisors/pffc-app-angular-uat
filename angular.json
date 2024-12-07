@@ -31,7 +31,7 @@
               "src/styles.css"
             ],
             "scripts": [],
-            "baseHref": "./",
+            "baseHref": "/",
             "deployUrl": "./",
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json"
@@ -51,7 +51,7 @@
                 }
               ],
               "outputHashing": "all",
-              "baseHref": "./",
+              "baseHref": "/",
               "deployUrl": "./"
             },
             "development": {

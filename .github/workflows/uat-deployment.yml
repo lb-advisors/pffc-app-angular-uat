@@ -64,7 +64,8 @@ jobs:
         run: npm ci
 
       - name: Build Angular app
-        run: npm run builddev
+        run: npm run
+        #builddev
 
       - name: Copy info.html to dist folder
         run: cp info.html dist/
