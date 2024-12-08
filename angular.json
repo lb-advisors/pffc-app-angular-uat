@@ -31,7 +31,6 @@
               "src/styles.css"
             ],
             "scripts": [],
-            "baseHref": "./",
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json"
           },
