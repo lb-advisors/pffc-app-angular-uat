@@ -148,6 +148,12 @@
 
 @media (max-width: 768px) {
 
+    .container {
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
     /* Ensure .inventory-grid fits within .container */
     .inventory-grid {
         width: 100%;

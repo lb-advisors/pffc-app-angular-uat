@@ -101,30 +101,6 @@
     text-decoration: underline;
 }
 
-@media (min-width: 601px) {
-    .filters {
-        flex-direction: row;
-        /* Align filter groups in a row */
-        justify-content: space-between;
-        /* Distribute space between filter groups */
-    }
-
-    .filter-group {
-        flex-direction: column;
-        /* Align label and input vertically */
-        align-items: flex-start;
-        /* Align items to the left */
-        width: auto;
-        /* Let the width be determined by content */
-    }
-
-    .filters select,
-    .filters input {
-        width: auto;
-        /* Let the width be determined by content */
-    }
-}
-
 @media (max-width: 600px) {
     .container {
         width: 100%;

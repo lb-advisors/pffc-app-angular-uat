@@ -30,10 +30,7 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log('ngOnInit');
     this.beforeInstallPromptHandler = (event: BeforeInstallPromptEvent) => {
-      console.log('beforeinstallprompt');
-
       // Prevent the mini-infobar from appearing
       event.preventDefault();
       this.deferredPrompt = event;
