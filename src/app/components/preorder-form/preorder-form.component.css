@@ -206,5 +206,6 @@ button[mat-raised-button]:disabled {
 
 .sticky {
   top: 0px;
+  position: -webkit-sticky;
   position: sticky;
 }

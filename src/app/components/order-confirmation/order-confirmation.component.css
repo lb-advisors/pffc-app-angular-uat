@@ -219,5 +219,6 @@ ul li {
 
 .sticky {
     top: 0px;
+    position: -webkit-sticky;
     position: sticky;
 }
