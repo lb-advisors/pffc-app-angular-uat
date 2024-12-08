@@ -140,7 +140,7 @@ body {
 
 .driver-routes-grid th {
     background-color: #d3d3d3;
-    color: #ffffff;
+    font-weight: bold;
     /* White text color for table headers */
     /*font-weight: bold; /* Bold font for headers */
     min-width: 75px;
@@ -196,7 +196,6 @@ body {
 
     .driver-routes-grid th {
         background-color: #d3d3d3;
-        color: #ffffff;
         /* White text color for table headers */
         font-size: 14px;
         /* Increase the font size */
