@@ -21,7 +21,7 @@ import { ReportsComponent } from './reports/reports.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, title: 'Home', canActivate: [AuthGuard] },
-  { path: 'driver', component: DriverRouteComponent, title: 'Driver Route', canActivate: [AuthGuard] },
+  { path: 'driver', component: DriverRouteComponent, title: "Drivers' Routes", canActivate: [AuthGuard] },
   { path: 'order-links', component: OrderLinksComponent, title: 'Order Links' },
   { path: 'login', component: LoginComponent, title: 'Login' },
   { path: 'logout', component: LogoutComponent, title: 'Logout' },
