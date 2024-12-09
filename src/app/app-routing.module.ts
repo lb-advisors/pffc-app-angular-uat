@@ -16,6 +16,7 @@ import { PreorderFormComponent } from './components/preorder-form/preorder-form.
 import { AuthGuard } from './guards/auth.guard';
 import { PasswordRequestComponent } from './components/password-request/password-request.component';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { ReportsComponent } from './reports/reports.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'data', component: DataComponent, title: 'Data', canActivate: [AuthGuard] },
   { path: 'orders', component: OrdersComponent, title: 'Orders', canActivate: [AuthGuard] },
   { path: 'preorder-links', component: VendorLinksComponent, title: 'Vendor Links', canActivate: [AuthGuard] },
-  { path: 'preorder-form/:vendorId', component: PreorderFormComponent, title: 'Preorder Form', canActivate: [AuthGuard] }, // New route for PreorderFormComponent
+  { path: 'preorder-form/:vendorId', component: PreorderFormComponent, title: 'Preorder Form', canActivate: [AuthGuard] },
+  { path: 'reports', component: ReportsComponent, title: 'Reports', canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'login' }, // Wildcard route to handle unmatched paths, redirect to login
 ];
 

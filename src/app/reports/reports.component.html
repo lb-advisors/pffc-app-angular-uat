@@ -1,0 +1,28 @@
+<div class="container">
+    <a [routerLink]="['/home']">
+        <app-logo [companyId]="companyId"></app-logo>
+    </a>
+
+    <h2 class="inventory-title">Reports</h2>
+
+    <div>Some sample charts available in Angular</div>
+
+    <div class="charts">
+        <canvas baseChart width="350" height="350" [type]="'line'" [data]="lineChartData" [options]="lineChartOptions" [legend]="lineChartLegend">
+        </canvas>
+
+        <canvas baseChart width="350" height="350" [type]="'pie'" [datasets]="pieChartDatasets" [labels]="pieChartLabels" [options]="pieChartOptions" [plugins]="pieChartPlugins"
+            [legend]="pieChartLegend">
+        </canvas>
+
+        <canvas baseChart width="350" height="350" [data]="barChartData" [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [type]="'bar'">
+        </canvas>
+
+        <canvas baseChart width="350" height="350" [labels]="doughnutChartLabels" [datasets]="doughnutChartDatasets" [options]="doughnutChartOptions" [legend]="true"
+            [type]="'doughnut'">
+        </canvas>
+
+    </div>
+
+
+</div>

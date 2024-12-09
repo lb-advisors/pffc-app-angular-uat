@@ -170,7 +170,9 @@ button[mat-raised-button]:disabled {
 /* Responsive Design */
 @media (max-width: 500px) {
   .container {
-    padding: 10px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px 0px 10px 0px;
   }
 
   .header-section {

@@ -90,24 +90,6 @@
     background-color: whitesmoke;
 }
 
-
-@media (min-width: 601px) {
-    .filters {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .filter-group {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .filters select,
-    .filters input {
-        width: auto;
-    }
-}
-
 @media (max-width: 600px) {
     .container {
         width: 100%;

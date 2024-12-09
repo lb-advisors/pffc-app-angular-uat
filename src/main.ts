@@ -19,6 +19,7 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@a
 import { RouterModule } from '@angular/router';
 import { AuthInterceptor } from './app/interceptors/auth.interceptor';
 import { provideServiceWorker } from '@angular/service-worker';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -45,6 +46,6 @@ bootstrapApplication(AppComponent, {
     provideAnimations(), provideServiceWorker('ngsw-worker.js', {
             enabled: !isDevMode(),
             registrationStrategy: 'registerWhenStable:30000'
-          }),
+          }), provideCharts(withDefaultRegisterables()),
   ],
 }).catch((err) => console.error(err));
