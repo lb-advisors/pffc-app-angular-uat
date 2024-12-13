@@ -59,14 +59,4 @@ export class AppComponent implements OnInit {
         });
     }
   }
-
-  //ngOnInit(): void {
-  //  // Check if we are on the order form
-  //  this.router.events.subscribe((event) => {
-  //    if (event instanceof NavigationEnd) {
-  //      const currentRoute = event.urlAfterRedirects;
-  //      this.isOrderForm = currentRoute.includes('order-') && !currentRoute.includes('order-links');
-  //    }
-  //  });
-  //}
 }
