@@ -19,7 +19,6 @@ import { SalesPerSalesRepCustomerComponent } from '../sales-per-customer/sales-p
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportsComponent implements OnInit {
-  companyId = 1; // TODO: don't hard-code company id
   pastMonths: number = 3;
 
   ngOnInit(): void {

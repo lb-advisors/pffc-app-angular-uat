@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./logo.component.css'],
 })
 export class LogoComponent implements OnChanges {
-  @Input() companyId!: number;
+  @Input() companyId: number = 1;
 
   imageSrc = 'assets/fogriver.png';
   imageBackgroundColor = '#000000';

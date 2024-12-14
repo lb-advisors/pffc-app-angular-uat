@@ -6,10 +6,11 @@ import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Va
 import { PreOrder } from 'src/app/models/preorder.model';
 import { PreorderService } from 'src/app/services/preorder.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
+import { LogoComponent } from '../logo/logo.component';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, LogoComponent],
   selector: 'app-preorder-form',
   templateUrl: './preorder-form.component.html',
   styleUrls: ['./preorder-form.component.css'],
@@ -90,7 +91,7 @@ export class PreorderFormComponent implements OnInit {
     return order.id;
   }
 
-  // TODO: shoudl not be hard-coded here
+  // TODO: should not be hard-coded here
   getUnitType(unitType: number): string {
     const unitTypeMap: { [key: number]: string } = {
       '1': 'Case',
