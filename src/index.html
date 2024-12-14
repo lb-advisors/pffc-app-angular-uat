@@ -31,7 +31,7 @@
       var redirectPath = (new URL(window.location)).searchParams.get('redirect');
       if (redirectPath) {
         console.log('redirectPath: ' + redirectPath)
-        //window.history.replaceState({}, '', redirectPath);
+        window.history.replaceState({}, '', redirectPath);
       }
     })();
   </script>
