@@ -109,6 +109,7 @@ export class OrderLinksComponent implements OnInit {
         this.snackbarService.showSuccess('Link copied to clipboard!');
       })
       .catch((err) => {
+        this.snackbarService.showError('Failed to copy link: ', err);
         console.error('Failed to copy link: ', err);
       });
   }

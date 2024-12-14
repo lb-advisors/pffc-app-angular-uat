@@ -28,7 +28,9 @@ export class VendorLinksComponent implements OnInit {
 
   // Copy Vendor Link to Clipboard
   copyLink(vendorId: number): void {
-    const link = `${window.location.origin}/preorder-form/${vendorId}`;
+    const baseUrl = window.location.href.replace('/preorder-links', '');
+    const link = `${baseUrl}/preorder-form/${vendorId}`;
+    window.location.href.replace('/order-links', '');
     navigator.clipboard
       .writeText(link)
       .then(() => {
