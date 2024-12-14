@@ -10,10 +10,11 @@
           "/favicon.ico",
           "/index.csr.html",
           "/index.html",
+          "/404.html",
           "/manifest.webmanifest",
           "/*.css",
           "/*.js"
-        ] 
+        ]
       }
     },
     {
@@ -26,6 +27,12 @@
         ]
       }
     }
-  ] , "dataGroups": []
-
+  ],
+  "dataGroups": [],
+  "navigationUrls": [
+    "/**",
+    "!/api/**",
+    "!**/customer/**",
+    "!**/preorder-form/**"
+  ]
 }
