@@ -13,35 +13,12 @@
 
 /* Header Section */
 .header-section {
-  display: flex;
   justify-content: center;
   /* Center the header content */
   align-items: center;
   padding: 10px;
-  background-color: rgba(0, 16, 46, 1);
-  cursor: pointer;
-  /* Make header clickable */
 }
 
-.header-section a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  /* Make entire header clickable */
-  text-decoration: none;
-  color: inherit;
-}
-
-.header-section img {
-  max-width: 100%;
-  height: 100px;
-  /* Limit the height to 100px */
-  width: auto;
-  /* Maintain aspect ratio */
-  border-radius: 8px;
-  display: block;
-}
 
 /* PreOrders Table */
 .table {
