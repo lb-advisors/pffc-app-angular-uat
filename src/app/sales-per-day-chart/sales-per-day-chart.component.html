@@ -1,6 +1,0 @@
-<canvas *ngIf="chartData$ | async as chartData; else loading" baseChart [data]="chartData" [type]="'bar'" [options]="barChartOptions"></canvas>
-
-<ng-template #loading>
-    <canvas baseChart [data]="" [type]="'bar'" [options]="barChartOptions"></canvas>
-</ng-template>
-Sales per Day

@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { User } from '../models/user.model ';
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "src/environments/environment";
+import { User } from "../models/user.model ";
 
 @Injectable({
   providedIn: 'root',
@@ -33,13 +33,11 @@ export class AuthService {
 
   // Retrieve the token (from sessionStorage first, then fallback to localStorage)
   getToken(): string | null {
-    const token = localStorage.getItem(this.tokenKey);
-    return token;
+    return localStorage.getItem(this.tokenKey);
   }
 
   getFullname(): string | null {
-    const token = localStorage.getItem(this.fullnameKey);
-    return token;
+    return localStorage.getItem(this.fullnameKey);
   }
 
   // Check if the user is logged in by verifying if a token exists
@@ -51,7 +49,7 @@ export class AuthService {
   // Optional: method to log out
   logout(): void {
     localStorage.removeItem(this.tokenKey);
-    this.router.navigate(['/login']);
+    void this.router.navigate(['/login']);
   }
 
   // Check if token exists and is not expired

@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'https://uat-pffc.onrender.com/api',
+  apiUrl: 'https://pffc-app-uat-latest.onrender.com/api',
 };
