@@ -1,20 +1,20 @@
- .install-banner {
-     text-align: center;
-     padding-top: 0px;
-     padding-bottom: 10px;
- }
+.install-banner {
+  text-align: center;
+  padding-top: 0;
+  padding-bottom: 10px;
+}
 
- button[mat-raised-button] {
-     font-size: 14px;
-     font-family: inherit;
-     background-color: #003366;
-     padding: 8px;
-     color: white;
-     border: none;
-     border-radius: 4px;
-     cursor: pointer;
- }
+button[mat-raised-button] {
+  font-size: 14px;
+  font-family: inherit;
+  background-color: #036;
+  padding: 8px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
- button[mat-raised-button]:hover {
-     background-color: #002855;
- }
+button[mat-raised-button]:hover {
+  background-color: #002855;
+}

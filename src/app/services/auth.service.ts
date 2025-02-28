@@ -3,27 +3,39 @@ import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "src/environments/environment";
-import { User } from "../models/user.model ";
+import { LoginResponse } from "../models/login-response.model ";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class AuthService {
-  private tokenKey = 'authToken';
-  private fullnameKey = 'fullname';
+  private tokenKey = "authToken";
+  private fullnameKey = "fullname";
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) {}
 
-  login(username: string, password: string): Observable<User> {
-    return this.http.post<User>(`${environment.apiUrl}/public/auth/login`, { username, password });
+  login(username: string, password: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(
+      `${environment.apiUrl}/public/auth/login`,
+      { username, password },
+    );
   }
 
   passwordRequest(username: string): Observable<unknown> {
-    return this.http.post<unknown>(`${environment.apiUrl}/public/auth/password-request`, { username });
+    return this.http.post<unknown>(
+      `${environment.apiUrl}/public/auth/password-request`,
+      { username },
+    );
   }
 
   passwordReset(password: string, token: string): Observable<unknown> {
-    return this.http.post<unknown>(`${environment.apiUrl}/public/auth/password-reset`, { password, token });
+    return this.http.post<unknown>(
+      `${environment.apiUrl}/public/auth/password-reset`,
+      { password, token },
+    );
   }
 
   saveFullnameAndToken(fullname: string, token: string): void {
@@ -49,7 +61,7 @@ export class AuthService {
   // Optional: method to log out
   logout(): void {
     localStorage.removeItem(this.tokenKey);
-    void this.router.navigate(['/login']);
+    void this.router.navigate(["/login"]);
   }
 
   // Check if token exists and is not expired

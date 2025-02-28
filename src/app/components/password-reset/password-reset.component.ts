@@ -1,25 +1,49 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule, ParamMap } from '@angular/router';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { SnackbarService } from 'src/app/services/snackbar.service';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from "@angular/core";
+import {
+  ActivatedRoute,
+  ParamMap,
+  Router,
+  RouterModule,
+} from "@angular/router";
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators,
+} from "@angular/forms";
+import { AuthService } from "src/app/services/auth.service";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
+import { CommonModule, NgOptimizedImage } from "@angular/common";
+import { SnackbarService } from "src/app/services/snackbar.service";
 
 @Component({
-  selector: 'app-password-reset',
-  templateUrl: './password-reset.component.html',
-  styleUrls: ['./password-reset.component.css'],
+  selector: "app-password-reset",
+  templateUrl: "./password-reset.component.html",
+  styleUrls: ["./password-reset.component.css"],
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, RouterModule],
+  imports: [
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    NgOptimizedImage,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PasswordResetComponent implements OnInit {
   passwordResetForm: FormGroup;
-  token: string = '';
+  token: string = "";
   mismatchedPassword: boolean = false;
 
   constructor(
@@ -31,21 +55,37 @@ export class PasswordResetComponent implements OnInit {
     private snackbarService: SnackbarService,
   ) {
     this.passwordResetForm = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.minLength(5), this.specialCharacterValidator]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(5), this.specialCharacterValidator]],
+      password: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(5),
+          this.specialCharacterValidator,
+        ],
+      ],
+      confirmPassword: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(5),
+          this.specialCharacterValidator,
+        ],
+      ],
     });
   }
 
   ngOnInit(): void {
-    this.passwordResetForm.get('confirmPassword')?.valueChanges.subscribe(() => {
-      this.mismatchedPassword = false;
-    });
+    this.passwordResetForm
+      .get("confirmPassword")
+      ?.valueChanges.subscribe(() => {
+        this.mismatchedPassword = false;
+      });
 
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.token = params.get('token') || '';
+      this.token = params.get("token") || "";
       if (!this.token) {
         // no JWT found
-        this.router.navigate(['/login']);
+        this.router.navigate(["/login"]);
       }
     });
   }
@@ -60,8 +100,8 @@ export class PasswordResetComponent implements OnInit {
 
     this.authService.passwordReset(password, this.token).subscribe({
       next: () => {
-        this.snackbarService.showSuccess('Your password has been reset');
-        this.router.navigate(['/login']); // Navigate to /products on success
+        this.snackbarService.showSuccess("Your password has been reset");
+        this.router.navigate(["/login"]); // Navigate to /products on success
       },
     });
   }

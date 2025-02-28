@@ -4,26 +4,10 @@
   margin: 20px 0;
 }
 
-.nav-button {
-  background-color: rgba(0, 16, 46, 1);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 1.2em;
-  margin: 0 10px;
-  transition: background-color 0.3s;
-}
-
-.nav-button:hover {
-  background-color: rgba(0, 16, 46, 1);
-}
-
 .user-info {
   margin-left: 20px; /* Indents the user-info text */
   font-size: 1.1em;
-  color: rgba(0, 16, 46, 1); /* Matches button color for consistency */
+  color: rgb(0 16 46 / 100%); /* Matches button color for consistency */
   padding: 10px 0;
 }
 
@@ -45,8 +29,7 @@
 .image2 {
   margin-top: 65px; /* Moves the smalllogo image down */
   margin-left: 50px;
-  transform: scale(0.8);
-  background-color: rgba(0, 16, 46, 1);
+  background-color: rgb(0 16 46 / 100%);
   transform: scale(1.4); /* Scales up the nature cure image slightly */
 }
 
@@ -58,36 +41,19 @@
 
 .image3 {
   transform: scale(1); /* Scales up the nature cure image slightly */
-  margin-left: 0px;
+  margin-left: 0;
   border: none;
 }
 
-.container {
-  width: 90%;
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #ffffff;
-  color: #000000;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
 
 /* Media Queries for Mobile Optimization */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .button-container {
     flex-direction: column;
     align-items: center;
   }
 
-  .nav-button {
-    width: 80%;
-    margin: 10px 0;
-  }
 
-  
   .grid-image {
     width: 90%; /* Adjust the size of the images to fit the screen */
     height: auto; /* Maintain the aspect ratio */

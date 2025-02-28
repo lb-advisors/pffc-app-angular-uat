@@ -2,23 +2,23 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Pacific Fresh Fish Company App</title>
-    <script type="text/javascript">
-        // Redirect to index.html with the path preserved as a query parameter
-        const url = window.location.pathname
-        const segments = url.split('/').filter((segment) => segment); // Split and filter out empty segments
+  <meta charset="utf-8" />
+  <title>Pacific Fresh Fish Company App</title>
+  <script type="text/javascript">
+    // Redirect to index.html with the path preserved as a query parameter
+    const url = window.location.pathname;
+    //const segments = url.split('/').filter((segment) => segment); // Split and filter out empty segments
 
-        if (window.location.host.indexOf('fish') > -1) {
-            basePathSegments = 0;
-            relativePath = segments.slice(basePathSegments).join('/');
-            window.location.replace(`/index.html?redirect=${relativePath}`);
-        } else {
-            basePathSegments = 1; // Number of segments in the base path
-            const relativePath = segments.slice(basePathSegments).join('/');
-            window.location.replace(`/${segments[0]}/index.html?redirect=${relativePath}`);
-        }
-    </script>
+    if (window.location.host.indexOf("fish") > -1) {
+      basePathSegments = 0;
+      relativePath = segments.slice(basePathSegments).join("/");
+      window.location.replace(`/index.html?redirect=${relativePath}`);
+    } else {
+      basePathSegments = 1; // Number of segments in the base path
+      const relativePath = segments.slice(basePathSegments).join("/");
+      window.location.replace(`/${segments[0]}/index.html?redirect=${relativePath}`);
+    }
+  </script>
 </head>
 
 <body>

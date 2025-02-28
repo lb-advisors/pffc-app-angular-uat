@@ -1,242 +1,252 @@
 .content {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .container {
-    width: 90%;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    color: #000000;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+  text-align: center;
 }
 
 /* Make entire image-container clickable */
 .image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: rgba(0, 16, 46, 1);
-    text-decoration: none;
-    color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgb(0 16 46 / 100%);
+  text-decoration: none;
+  color: inherit;
 }
 
 .image-container img {
-    max-width: 100%;
-    height: 100px;
-    border-radius: 8px;
+  max-width: 100%;
+  height: 100px;
+  border-radius: 8px;
 }
 
 .inventory-title {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 32px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 32px;
 }
 
 /* Updated Search Bar */
 .search-bar {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .search-bar input {
-    width: 100%;
-    max-width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 100%;
+  max-width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .filter-btn,
 .relevant-items-btn {
-    background-color: #a9a9a9;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    padding: 6px 12px;
-    cursor: pointer;
-    font-size: 14px;
-    margin: 0px;
-    width: 120px;
+  background-color: #a9a9a9;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 0;
+  width: 120px;
 }
 
 .filter-btn:hover,
 .relevant-items-btn:hover {
-    background-color: #888888;
+  background-color: #888;
 }
 
 /* Filter Group and Dropdowns */
 .filters,
 .button-row {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
 .filter-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
 }
 
 .filter-group label {
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #333;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #333;
 }
 
 .filters select,
 .filters input[type="text"],
 .filters input[type="number"] {
-    font-size: 14px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 120px;
-    height: 28px;
-    box-sizing: border-box;
-    max-width: 120px;
+  font-size: 14px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 120px;
+  height: 28px;
+  box-sizing: border-box;
+  max-width: 120px;
 }
 
 #comp-cost-min {
-    font-size: 14px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 120px;
-    height: 28px;
-    box-sizing: border-box;
-    max-width: 120px;
+  font-size: 14px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 120px;
+  height: 28px;
+  box-sizing: border-box;
+  max-width: 120px;
 }
 
 .inventory-grid {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
 .inventory-grid th,
 .inventory-grid td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: center;
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
 }
 
 .inventory-grid th {
-    background-color: #d3d3d3;
-    color: #333;
-    min-width: 75px;
+  background-color: #d3d3d3;
+  color: #333;
+  min-width: 75px;
 }
 
 /* Hover effect on table rows */
 .inventory-grid tr:hover {
-    background-color: whitesmoke;
-    cursor: pointer;
+  background-color: whitesmoke;
+  cursor: pointer;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
+  .container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
 
-    .container {
-        width: 100%;
-        margin: 0px;
-        padding: 0px;
-    }
+  /* Ensure .inventory-grid fits within .container */
+  .inventory-grid {
+    width: 100%;
+    table-layout: fixed;
 
-    /* Ensure .inventory-grid fits within .container */
-    .inventory-grid {
-        width: 100%;
-        table-layout: fixed;
-        /* Ensure columns don't expand beyond the container */
-        word-wrap: break-word;
-        /* Wrap text to prevent overflow */
-        overflow-x: hidden;
-    }
+    /* Ensure columns don't expand beyond the container */
+    word-wrap: break-word;
 
-    .inventory-grid th,
-    .inventory-grid td {
-        white-space: normal;
-        /* Allow wrapping of content inside cells */
-        font-size: 12px;
-        /* Adjust font size for better fit on mobile */
-    }
+    /* Wrap text to prevent overflow */
+    overflow-x: hidden;
+  }
 
-    /* Adjust filters layout to two rows */
-    .filters {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        /* Two filters per row */
-        gap: 10px;
-    }
+  .inventory-grid th,
+  .inventory-grid td {
+    white-space: normal;
 
-    .filter-group {
-        width: 100%;
-        max-width: none;
-        /* Allow full width for smaller screens */
-        text-align: center;
-    }
+    /* Allow wrapping of content inside cells */
+    font-size: 12px;
 
-    /* Handle case where one filter appears on the second row */
-    .filters> :nth-child(3) {
-        grid-column: span 2;
-        /* Center the third filter on the second row */
-        justify-self: center;
-    }
+    /* Adjust font size for better fit on mobile */
+  }
 
-    /* Adjust the size of filter inputs */
-    .filters select,
-    .filters input[type="text"],
-    .filters input[type="number"] {
-        width: 100%;
-        font-size: 12px;
-        padding: 5px;
-        box-sizing: border-box;
-    }
+  /* Adjust filters layout to two rows */
+  .filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
-    .inventory-grid tr.has-image {
-        background-color: #e6f7ff;
-        /* Light blue background */
-    }
+    /* Two filters per row */
+    gap: 10px;
+  }
+
+  .filter-group {
+    width: 100%;
+    max-width: none;
+
+    /* Allow full width for smaller screens */
+    text-align: center;
+  }
+
+  /* Handle case where one filter appears on the second row */
+  .filters > :nth-child(3) {
+    grid-column: span 2;
+
+    /* Center the third filter on the second row */
+    justify-self: center;
+  }
+
+  /* Adjust the size of filter inputs */
+  .filters select,
+  .filters input[type="text"],
+  .filters input[type="number"] {
+    width: 100%;
+    font-size: 12px;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+
+  .inventory-grid tr.has-image {
+    background-color: #e6f7ff;
+
+    /* Light blue background */
+  }
 
 }
 
 
 .sticky {
-    top: 0px;
-    position: -webkit-sticky;
-    position: sticky;
+  top: 0;
+  position: sticky;
 }
 
 
 .description-cell {
-    display: flex;
-    align-items: center;
-    /* Aligns the dot and text vertically */
-    gap: 8px;
-    /* Adds spacing between the dot and text */
+  display: flex;
+  align-items: center;
+
+  /* Aligns the dot and text vertically */
+  gap: 8px;
+
+  /* Adds spacing between the dot and text */
 }
 
 .blue-dot {
-    width: 10px;
-    height: 10px;
-    background-color: rgba(0, 16, 46, 1);
-    border-radius: 50%;
-    display: inline-block;
-    /*box-shadow: 0 0 4px rgba(0, 0, 255, 0.6); /* Optional: Add a glow effect */
+  width: 10px;
+  height: 10px;
+  background-color: rgb(0 16 46 / 100%);
+  border-radius: 50%;
+  display: inline-block;
+
+  /* box-shadow: 0 0 4px rgba(0, 0, 255, 0.6); /* Optional: Add a glow effect */
 }
 
 .inventory-grid tr.has-image {
-    background-color: #e6f7ff;
-    /* Light blue background */
+  background-color: #e6f7ff;
+
+  /* Light blue background */
 }
