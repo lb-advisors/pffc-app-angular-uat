@@ -1,11 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '../../services/products.service';
 import { InventoryItem } from 'src/app/models/product.model';
 import { BehaviorSubject, Subject, Subscription } from 'rxjs';
-import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -13,7 +11,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, InfiniteScrollDirective],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsComponent implements OnInit {
@@ -48,10 +46,7 @@ export class ProductsComponent implements OnInit {
   private inventoryItemsSubject = new BehaviorSubject<InventoryItem[]>([]);
   inventoryItems$ = this.inventoryItemsSubject.asObservable();
 
-  constructor(private productService: ProductService, private dialog: MatDialog) {
-  }
+  constructor(private productService: ProductService) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 }

@@ -1,35 +1,37 @@
 <div class="container">
-    <div class="login-container">
-        <div class="logo-container">
-            <img src="assets/logo.png" alt="Company Logo" class="logo">
-        </div>
-
-        <h1>Login</h1>
-        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-            <mat-form-field appearance="fill">
-                <mat-label>Username</mat-label>
-                <input matInput type="text" formControlName="username" placeholder="Enter your username" autocomplete="username">
-            </mat-form-field>
-
-            <mat-form-field appearance="fill">
-                <mat-label>Password</mat-label>
-                <input matInput type="password" formControlName="password" placeholder="Enter your password" autocomplete="current-password">
-            </mat-form-field>
-
-            <a [routerLink]="['/password-request']">
-                Forgot password?
-            </a>
-
-            <button mat-raised-button color="primary" type="submit" [disabled]="loading || loginForm.invalid">
-                <span *ngIf="!loading">Login</span>
-                <span *ngIf="loading">Logging in...</span>
-            </button>
-        </form>
-
-        <div *ngIf="errorMessage" class="error-message">
-            {{ errorMessage }}
-        </div>
+  <div class="login-container">
+    <div class="logo-container">
+      <img alt="Company Logo" class="logo" height="425" ngSrc="assets/logo.png" width="1235">
     </div>
+
+    <h1>Login</h1>
+    <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input autocomplete="username" formControlName="username" matInput placeholder="Enter your username"
+               type="text">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input autocomplete="current-password" formControlName="password" matInput placeholder="Enter your password"
+               type="password">
+      </mat-form-field>
+
+      <a [routerLink]="['/password-request']">
+        Forgot password?
+      </a>
+
+      <button [disabled]="loading || loginForm.invalid" color="primary" mat-raised-button type="submit">
+        <span *ngIf="!loading">Login</span>
+        <span *ngIf="loading">Logging in...</span>
+      </button>
+    </form>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </div>
 </div>
 
 <app-install-prompt></app-install-prompt>

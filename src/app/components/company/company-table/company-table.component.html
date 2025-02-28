@@ -1,0 +1,33 @@
+<div class="actions">
+  <button (click)="openAddDialog()" color="primary" mat-button>Add Row</button>
+  <button (click)="deleteSelectedRows()" [disabled]="selectedIds.size === 0" color="warn" mat-button>
+    Delete Selected
+  </button>
+</div>
+
+<table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
+  <ng-container matColumnDef="select">
+    <th *matHeaderCellDef mat-header-cell></th>
+    <td *matCellDef="let row" mat-cell>
+      <mat-checkbox (change)="toggleSelection(row.id, $event)"></mat-checkbox>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="id">
+    <th *matHeaderCellDef mat-header-cell> ID</th>
+    <td *matCellDef="let row" mat-cell> {{ row.id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th *matHeaderCellDef mat-header-cell> Name</th>
+    <td *matCellDef="let row" mat-cell> {{ row.name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th *matHeaderCellDef mat-header-cell> Description</th>
+    <td *matCellDef="let row" mat-cell> {{ row.description }}</td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+</table>

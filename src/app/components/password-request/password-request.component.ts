@@ -1,20 +1,36 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { SnackbarService } from 'src/app/services/snackbar.service';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+} from "@angular/core";
+import { Router, RouterModule } from "@angular/router";
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from "@angular/forms";
+import { AuthService } from "src/app/services/auth.service";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
+import { CommonModule, NgOptimizedImage } from "@angular/common";
+import { SnackbarService } from "src/app/services/snackbar.service";
 
 @Component({
-  selector: 'app-password-request',
-  templateUrl: './password-request.component.html',
-  styleUrls: ['./password-request.component.css'],
+  selector: "app-password-request",
+  templateUrl: "./password-request.component.html",
+  styleUrls: ["./password-request.component.css"],
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, RouterModule],
+  imports: [
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    NgOptimizedImage,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PasswordRequestComponent {
@@ -28,7 +44,7 @@ export class PasswordRequestComponent {
     private snackbarService: SnackbarService,
   ) {
     this.passwordRequestForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.email]],
+      username: ["", [Validators.required, Validators.email]],
     });
   }
 
@@ -37,8 +53,10 @@ export class PasswordRequestComponent {
 
     this.authService.passwordRequest(username).subscribe({
       next: () => {
-        this.snackbarService.showInfo(`An email has been sent to ${username} to reset your password`);
-        this.router.navigate(['/login']);
+        this.snackbarService.showInfo(
+          `An email has been sent to ${username} to reset your password`,
+        );
+        this.router.navigate(["/login"]);
       },
     });
   }
