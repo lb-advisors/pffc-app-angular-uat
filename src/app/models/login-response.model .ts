@@ -7,5 +7,5 @@ export interface LoginResponse {
 }
 
 export interface Authority {
-  authority: string;
+  authority: any;
 }

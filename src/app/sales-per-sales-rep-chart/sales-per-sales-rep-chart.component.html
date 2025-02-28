@@ -1,9 +1,0 @@
-<canvas *ngIf="chartData$ | async as chartData; else loading" baseChart [type]="'pie'" [datasets]="pieChartDatasets" [labels]="pieChartLabels" [options]="pieChartOptions"
-    [plugins]="pieChartPlugins" [legend]="pieChartLegend">
-</canvas>
-
-<ng-template #loading>
-    <canvas baseChart [data]="" [type]="'pie'" [options]="pieChartOptions"></canvas>
-</ng-template>
-
-Sales per Rep
