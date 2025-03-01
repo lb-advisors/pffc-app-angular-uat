@@ -1,17 +1,22 @@
-import { ChangeDetectionStrategy, Component, isDevMode, OnInit } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { environment } from 'src/environments/environment';
-import { Title, Meta } from '@angular/platform-browser';
-import { SwUpdate } from '@angular/service-worker';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  isDevMode,
+  OnInit,
+} from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+import { CommonModule } from "@angular/common";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatIconModule } from "@angular/material/icon";
+import { environment } from "src/environments/environment";
+import { Meta, Title } from "@angular/platform-browser";
+import { SwUpdate } from "@angular/service-worker";
 
 @Component({
   standalone: true,
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
   imports: [CommonModule, MatToolbarModule, MatIconModule, RouterOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -19,22 +24,31 @@ export class AppComponent implements OnInit {
   isDevMode: boolean = isDevMode();
   apiUrl = environment.apiUrl;
   showWarning = false;
+
   //isOrderForm: boolean = false;
 
-  constructor(private router: Router, private title: Title, private meta: Meta, private swUpdate: SwUpdate) {
+  constructor(
+    private title: Title,
+    private meta: Meta,
+    private swUpdate: SwUpdate,
+  ) {
     // Check that UAT is not using the prod backend
-    if (this.isDevMode && this.apiUrl.includes('prod')) {
+    if (this.isDevMode && this.apiUrl.includes("prod")) {
       this.showWarning = true;
-      alert('WARNING: Angular is in Dev mode but connected to production !!!');
+      alert("WARNING: Angular is in Dev mode but connected to production !!!");
     }
   }
 
   ngOnInit(): void {
-    this.title.setTitle('Pacific Fresh Fish Company App');
+    this.title.setTitle("Pacific Fresh Fish Company App");
     this.meta.addTags([
-      { name: 'description', content: 'Pacific Fresh Fish Company application created by lb-advisors' },
-      { name: 'keywords', content: 'PFF, lb-advisors, allintel' },
-      { name: 'robots', content: 'index, follow' },
+      {
+        name: "description",
+        content:
+          "Pacific Fresh Fish Company application created by lb-advisors",
+      },
+      { name: "keywords", content: "PFF, lb-advisors, Allintel" },
+      { name: "robots", content: "index, follow" },
     ]);
 
     this.checkForUpdate();
@@ -46,7 +60,9 @@ export class AppComponent implements OnInit {
         .checkForUpdate()
         .then((isUpdateAvailable) => {
           if (isUpdateAvailable) {
-            const confirmUpdate = confirm('A new version is available. Do you want to load it?');
+            const confirmUpdate = confirm(
+              "A new version is available. Do you want to load it?",
+            );
             if (confirmUpdate) {
               this.swUpdate.activateUpdate().then(() => {
                 window.location.reload();
@@ -55,7 +71,7 @@ export class AppComponent implements OnInit {
           }
         })
         .catch((error) => {
-          console.error('Error while checking for updates:', error);
+          console.error("Error while checking for updates:", error);
         });
     }
   }

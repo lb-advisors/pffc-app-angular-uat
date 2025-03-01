@@ -25,11 +25,8 @@
     "@angular/platform-browser-dynamic": "^18.2.12",
     "@angular/router": "^18.2.12",
     "@angular/service-worker": "^18.2.12",
-    "chart.js": "^4.3.0",
     "date-fns": "^3.6.0",
     "date-fns-tz": "^3.2.0",
-    "ng2-charts": "^7.0.0",
-    "ngx-bootstrap": "^18.0.0",
     "ngx-image-compress": "^18.1.5",
     "ngx-infinite-scroll": "^18.0.0",
     "rxjs": "~7.8.1",
@@ -38,19 +35,19 @@
     "zone.js": "~0.14.7"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.2.0",
-    "@angular-eslint/builder": "19.1.0",
-    "@angular-eslint/eslint-plugin": "19.1.0",
-    "@angular-eslint/eslint-plugin-template": "19.1.0",
-    "@angular-eslint/schematics": "19.1.0",
-    "@angular-eslint/template-parser": "19.1.0",
+    "@angular-devkit/build-angular": "^18.2.11",
+    "@angular-eslint/builder": "18.1.0",
+    "@angular-eslint/eslint-plugin": "18.1.0",
+    "@angular-eslint/eslint-plugin-template": "18.1.0",
+    "@angular-eslint/schematics": "18.1.0",
+    "@angular-eslint/template-parser": "18.1.0",
     "@angular/cli": "^18.2.11",
     "@angular/compiler-cli": "^18.1.0",
     "@eslint/js": "^9.21.0",
     "@types/jasmine": "~5.1.4",
-    "@typescript-eslint/eslint-plugin": "^8.0.0",
-    "@typescript-eslint/parser": "^8.0.0",
-    "eslint": "^9.8.0",
+    "@typescript-eslint/eslint-plugin": "7.15.0",
+    "@typescript-eslint/parser": "7.15.0",
+    "eslint": "^8.57.1",
     "globals": "^16.0.0",
     "jasmine-core": "~5.1.2",
     "karma": "~6.4.3",
@@ -63,6 +60,6 @@
     "stylelint-config-standard-scss": "^14.0.0",
     "stylelint-scss": "^6.11.1",
     "typescript": "5.4",
-    "typescript-eslint": "^8.0.0"
+    "typescript-eslint": "^8.25.0"
   }
 }

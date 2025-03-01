@@ -42,7 +42,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
 
-  { path: "**", redirectTo: "home" }, // Wildcard route to handle unmatched paths, redirect to login
+  { path: "**", redirectTo: "home" }, // Wildcard route to handle unmatched paths, redirect to log in
 ];
 
 @NgModule({
