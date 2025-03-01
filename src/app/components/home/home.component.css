@@ -1,100 +1,133 @@
 .button-container {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.nav-button {
+    background-color: rgb(0 16 46 / 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.2em;
+    margin: 0 10px;
+    transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+    background-color: rgb(0 16 46 / 100%);
 }
 
 .user-info {
-  margin-left: 20px; /* Indents the user-info text */
-  font-size: 1.1em;
-  color: rgb(0 16 46 / 100%); /* Matches button color for consistency */
-  padding: 10px 0;
+    margin-left: 20px; /* Indents the user-info text */
+    font-size: 1.1em;
+    color: rgb(0 16 46 / 100%); /* Matches button color for consistency */
+    padding: 10px 0;
 }
 
 .image-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  width: 100%;
-  max-width: 400px;
-  margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
 }
 
 .grid-image {
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
 }
 
 /* Adjustments for individual images */
 .image2 {
-  margin-top: 65px; /* Moves the smalllogo image down */
-  margin-left: 50px;
-  background-color: rgb(0 16 46 / 100%);
-  transform: scale(1.4); /* Scales up the nature cure image slightly */
+    margin-top: 65px; /* Moves the smalllogo image down */
+    margin-left: 50px;
+    background-color: rgb(0 16 46 / 100%);
+    transform: scale(1.4); /* Scales up the nature cure image slightly */
 }
 
 .image4 {
-  transform: scale(1.4); /* Scales up the nature cure image slightly */
-  margin-top: 10px;
-  margin-left: 50px;
+    transform: scale(1.4); /* Scales up the nature cure image slightly */
+    margin-top: 10px;
+    margin-left: 50px;
 }
 
 .image3 {
-  transform: scale(1); /* Scales up the nature cure image slightly */
-  margin-left: 0;
-  border: none;
+    transform: scale(1); /* Scales up the nature cure image slightly */
+    margin-left: 0;
+    border: none;
 }
 
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+    text-align: center;
+}
 
 /* Media Queries for Mobile Optimization */
 @media (width <= 768px) {
-  .button-container {
-    flex-direction: column;
-    align-items: center;
-  }
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-button {
+        width: 80%;
+        margin: 10px 0;
+    }
 
 
-  .grid-image {
-    width: 90%; /* Adjust the size of the images to fit the screen */
-    height: auto; /* Maintain the aspect ratio */
-    margin: 0 auto; /* Center the images */
-  }
+    .grid-image {
+        width: 90%; /* Adjust the size of the images to fit the screen */
+        height: auto; /* Maintain the aspect ratio */
+        margin: 0 auto; /* Center the images */
+    }
 
-  .image-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Single-column grid for mobile */
-    gap: 10px; /* Spacing between images */
-  }
+    .image-grid {
+        display: grid;
+        grid-template-columns: 1fr; /* Single-column grid for mobile */
+        gap: 10px; /* Spacing between images */
+    }
 
-  /* Image 1 */
-  .image1 {
-    width: 90%; /* Adjust the size to fit within the screen */
-    height: auto; /* Maintain aspect ratio */
-    margin: 0 auto; /* Center the image */
-  }
+    /* Image 1 */
+    .image1 {
+        width: 90%; /* Adjust the size to fit within the screen */
+        height: auto; /* Maintain aspect ratio */
+        margin: 0 auto; /* Center the image */
+    }
 
-  /* Image 2 */
-  .image2 {
-    width: 90%;
-    height: auto;
-    margin: 0 auto;
-    transform: scale(1); /* Reset scaling for mobile */
-  }
+    /* Image 2 */
+    .image2 {
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+        transform: scale(1); /* Reset scaling for mobile */
+    }
 
-  /* Image 3 */
-  .image3 {
-    width: 90%;
-    height: auto;
-    margin: 0 auto;
-    transform: scale(1); /* Reset scaling for mobile */
-  }
+    /* Image 3 */
+    .image3 {
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+        transform: scale(1); /* Reset scaling for mobile */
+    }
 
-  /* Image 4 */
-  .image4 {
-    width: 90%;
-    height: auto;
-    margin: 0 auto;
-    transform: scale(1); /* Reset scaling for mobile */
-  }
+    /* Image 4 */
+    .image4 {
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+        transform: scale(1); /* Reset scaling for mobile */
+    }
 }
 
