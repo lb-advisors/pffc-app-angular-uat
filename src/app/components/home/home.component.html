@@ -1,12 +1,8 @@
 <div class="page container">
   <div class="button-container">
-    <button class="nav-button" (click)="navigateTo('products')">Products</button>
-    <button class="nav-button" (click)="navigateTo('order-links')">New Order</button>
-    <button class="nav-button" (click)="navigateTo('orders')">Existing Orders</button>
-    <button class="nav-button" (click)="navigateTo('preorder-links')">Preorders</button> <!-- New Button -->
-    <button class="nav-button" (click)="navigateTo('driver')">Routes</button>
-    <button class="nav-button" (click)="navigateTo('reports')">Reports</button>
-    <button class="nav-button logout-button" (click)="logout()">Logout</button>
+    <button (click)="navigateTo('products')" class="nav-button">Products</button>
+    <button (click)="navigateTo('test')" class="nav-button">Just a Test</button>
+    <button (click)="logout()" class="nav-button logout-button">Logout</button>
   </div>
 
   <div class="button-container user-info">
@@ -14,6 +10,6 @@
   </div>
 
   <div class="image-grid">
-    <img ngSrc="assets/logo.png" alt="Logo Image" class="grid-image image2" height="425" width="1235">
+    <img alt="Logo Image" class="grid-image image2" height="425" ngSrc="assets/logo.png" width="1235">
   </div>
 </div>
