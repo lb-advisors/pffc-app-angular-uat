@@ -7,7 +7,7 @@
   <script type="text/javascript">
     // Redirect to index.html with the path preserved as a query parameter
     const url = window.location.pathname;
-    //const segments = url.split('/').filter((segment) => segment); // Split and filter out empty segments
+    const segments = url.split("/").filter((segment) => segment); // Split and filter out empty segments
 
     if (window.location.host.indexOf("fish") > -1) {
       basePathSegments = 0;
