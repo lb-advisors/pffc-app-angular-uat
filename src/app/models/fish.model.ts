@@ -11,7 +11,6 @@ export interface FishPostDto {
   description: string;
 }
 
-export interface FishPutDto {
-  id: number;
+export interface FishPatchDto {
   description: string;
 }

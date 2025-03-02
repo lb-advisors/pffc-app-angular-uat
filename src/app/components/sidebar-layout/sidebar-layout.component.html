@@ -1,9 +1,12 @@
+<link href="sidebar-layout.component.css" rel="stylesheet">
 <div class="sidebar-container">
   <mat-toolbar color="primary">
     <button (click)="toggleSidebar()" [matTooltip]="sidebarOpened() ? 'Hide menu' : 'Show menu'" mat-icon-button>
       <mat-icon>{{ sidebarOpened() ? 'menu_open' : 'menu' }}</mat-icon>
     </button>
     <span class="toolbar-title">PFFC Application</span>
+    <span *ngIf="firstName() as name" class="logged-in">Logged in as {{ name }}</span>
+
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container">
@@ -18,7 +21,7 @@
       <mat-nav-list>
         <a mat-list-item routerLink="/dashboard" routerLinkActive="active-link">
           <mat-icon matListItemIcon>dashboard</mat-icon>
-          <span matListItemTitle>Dashboard</span>
+          <span matListItemTitle>Home</span>
         </a>
 
         <a mat-list-item routerLink="/fish" routerLinkActive="active-link">

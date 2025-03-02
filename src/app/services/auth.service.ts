@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
@@ -11,6 +11,8 @@ import { LoginResponse } from "../models/login-response.model ";
 export class AuthService {
   private tokenKey = "authToken";
   private fullnameKey = "fullname";
+  private _firstName = signal<string | null>(null);
+  firstName = this._firstName.asReadonly();
 
   constructor(
     private http: HttpClient,
@@ -20,7 +22,10 @@ export class AuthService {
   login(username: string, password: string): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(
       `${environment.apiUrl}/public/auth/login`,
-      { username, password },
+      {
+        username,
+        password,
+      },
     );
   }
 
@@ -55,12 +60,15 @@ export class AuthService {
   // Check if the user is logged in by verifying if a token exists
   isLoggedIn(): boolean {
     const token = localStorage.getItem(this.tokenKey);
+    this._firstName.set(this.getFullname());
     return !!token;
   }
 
   // Optional: method to log out
   logout(): void {
     localStorage.removeItem(this.tokenKey);
+    localStorage.removeItem(this.fullnameKey);
+    this._firstName.set(null);
     void this.router.navigate(["/login"]);
   }
 

@@ -44,3 +44,8 @@ mat-expansion-panel {
 mat-expansion-panel-header {
   padding: 0 16px;
 }
+
+.logged-in {
+  flex: 1; /* Take up remaining space */
+  text-align: right; /* Center text horizontally */
+}

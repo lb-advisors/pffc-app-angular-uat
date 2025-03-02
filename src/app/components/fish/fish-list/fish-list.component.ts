@@ -20,14 +20,14 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { SelectionModel } from "@angular/cdk/collections";
-import { FishService } from "../fish.service";
 import { ConfirmationService } from "../../confirmation-dialog/confirmation-service.service";
-import { Fish } from "../../../models/fish.model";
+import { Fish, FishPatchDto, FishPostDto } from "../../../models/fish.model";
 import { FishDialogComponent } from "../fish-dialog/fish-dialog.component";
-import { SnackbarService } from "../../../services/snackbar.service";
 import { MatSort, MatSortModule } from "@angular/material/sort";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
+import { FishService } from "../fish.service";
+import { SnackbarService } from "../../../services/snackbar.service";
 import { SearchTableService } from "../../../services/search-table.service";
 
 @Component({
@@ -50,8 +50,6 @@ import { SearchTableService } from "../../../services/search-table.service";
 })
 export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatSort) sort!: MatSort;
-  fish = signal<Fish[]>([]);
-  searchQuery = signal<string>("");
   dataSource = new MatTableDataSource<Fish>([]);
   displayedColumns: string[] = [
     "select",
@@ -61,6 +59,8 @@ export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
     "actions",
   ];
   selection = new SelectionModel<Fish>(true, []);
+  searchQuery = signal<string>("");
+
   // Entity type identifier for search service
   private readonly ENTITY_TYPE = "fish";
   private destroy$ = new Subject<void>();
@@ -72,14 +72,14 @@ export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
   private searchTableService = inject(SearchTableService);
 
   constructor() {
-    // Effect to reactively update dataSource when fish data changes
+    // Effect to update the table data whenever the fishes signal changes
     effect(() => {
-      this.updateTable();
+      this.updateTable(this.fishService.fishes());
     });
   }
 
   ngOnInit(): void {
-    this.loadFishes();
+    // No need to call loadFishes() as the service loads data on construction
     this.configureDataSource();
     this.setupSearch();
   }
@@ -109,8 +109,6 @@ export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
       // Handle different data types for sorting
       if (typeof value === "string") {
         return value.toLowerCase(); // Case-insensitive string sorting
-        //} else if (value instanceof Date) {
-        //  return value.getTime(); // Date sorting
       } else {
         return value; // Default for numbers and other types
       }
@@ -145,17 +143,6 @@ export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
     };
   }
 
-  loadFishes(): void {
-    this.fishService
-      .getAllFish()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (data) => {
-          this.fish.set(data);
-        },
-      });
-  }
-
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected(): boolean {
     const numSelected = this.selection.selected.length;
@@ -182,17 +169,10 @@ export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
     dialogRef
       .afterClosed()
       .pipe(takeUntil(this.destroy$))
-      .subscribe((result) => {
+      .subscribe((result: FishPostDto) => {
         if (result) {
-          this.fishService
-            .createFish(result)
-            .pipe(takeUntil(this.destroy$))
-            .subscribe({
-              next: () => {
-                this.loadFishes();
-                this.snackBarService.showSuccess("Fish added successfully");
-              },
-            });
+          this.fishService.createFish(result);
+          this.snackBarService.showSuccess("Fish added successfully");
         }
       });
   }
@@ -208,15 +188,12 @@ export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((result) => {
         if (result) {
-          this.fishService
-            .updateFish({ id: fish.id, description: result.description })
-            .pipe(takeUntil(this.destroy$))
-            .subscribe({
-              next: () => {
-                this.loadFishes();
-                this.snackBarService.showSuccess("Fish updated successfully");
-              },
-            });
+          const update: FishPatchDto = {
+            description: result.description,
+          };
+
+          this.fishService.updateFish(fish.id, update);
+          this.snackBarService.showSuccess("Fish updated successfully");
         }
       });
   }
@@ -227,15 +204,8 @@ export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((confirmed) => {
         if (confirmed) {
-          this.fishService
-            .deleteFish(fish.id)
-            .pipe(takeUntil(this.destroy$))
-            .subscribe({
-              next: () => {
-                this.loadFishes();
-                this.snackBarService.showSuccess("Fish deleted successfully");
-              },
-            });
+          this.fishService.deleteFish(fish.id);
+          this.snackBarService.showSuccess("Fish deleted successfully");
         }
       });
   }
@@ -253,18 +223,11 @@ export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((confirmed) => {
         if (confirmed) {
-          this.fishService
-            .deleteManyFish(selectedIds)
-            .pipe(takeUntil(this.destroy$))
-            .subscribe({
-              next: () => {
-                this.loadFishes();
-                this.selection.clear();
-                this.snackBarService.showSuccess(
-                  "Selected fish deleted successfully",
-                );
-              },
-            });
+          this.fishService.deleteManyFish(selectedIds);
+          this.selection.clear();
+          this.snackBarService.showSuccess(
+            "Selected fish deleted successfully",
+          );
         }
       });
   }
@@ -274,9 +237,9 @@ export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.searchTableService.updateSearchQuery(this.ENTITY_TYPE, value);
   }
 
-  // Function to update table data when signals change
-  updateTable() {
-    this.dataSource.data = this.fish();
+  // Function to update table data
+  private updateTable(fishes: Fish[]): void {
+    this.dataSource.data = fishes;
 
     // Reapply current filter
     if (this.searchQuery()) {

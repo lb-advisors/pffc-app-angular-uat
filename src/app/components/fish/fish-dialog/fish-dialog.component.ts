@@ -55,7 +55,10 @@ export class FishDialogComponent implements OnInit {
 
   onSubmit(): void {
     if (this.fishForm.valid) {
-      this.dialogRef.close(this.fishForm.getRawValue());
+      this.dialogRef.close({
+        id: this.data.fish?.id,
+        ...this.fishForm.getRawValue(),
+      });
     }
   }
 
