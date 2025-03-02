@@ -2828,7 +2828,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const environment = {
   production: false,
-  apiUrl: "http://localhost:8080/api"
+  apiUrl: "https://pffc-app-uat-latest.onrender.com/api"
 };
 
 /***/ }),
