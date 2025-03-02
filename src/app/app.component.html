@@ -1,14 +1,15 @@
 <main>
-    <router-outlet></router-outlet>
+  <app-loading-indicator></app-loading-indicator>
+  <router-outlet></router-outlet>
 </main>
 
 <!-- Footer -->
 <footer class="mat-drawer-container">
-    <div class="container">
-        <div class="text-align-center">
-            © 2024 - Pacific Fresh Fish Company
-            <div *ngIf="isDevMode" class="dev-mode">UAT ENVIRONMENT</div>
-            <div *ngIf="isDevMode" class="dev-mode">{{apiUrl}}</div>
-        </div>
+  <div class="container">
+    <div class="text-align-center">
+      © 2024 - Pacific Fresh Fish Company
+      <div *ngIf="isDevMode" class="dev-mode">UAT ENVIRONMENT</div>
+      <div *ngIf="isDevMode" class="dev-mode">{{ apiUrl }}</div>
     </div>
+  </div>
 </footer>

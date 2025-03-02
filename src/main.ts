@@ -22,6 +22,7 @@ import {
 import { RouterModule } from "@angular/router";
 import { AuthInterceptor } from "./app/interceptors/auth.interceptor";
 import { provideServiceWorker } from "@angular/service-worker";
+import { MatSortModule } from "@angular/material/sort";
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -40,6 +41,7 @@ bootstrapApplication(AppComponent, {
       MatListModule,
       MatMenuModule,
       MatSnackBarModule,
+      MatSortModule,
     ),
     { provide: ErrorHandler, useClass: GlobalErrorHandlerService },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

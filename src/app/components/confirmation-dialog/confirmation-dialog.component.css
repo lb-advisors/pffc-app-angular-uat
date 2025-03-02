@@ -1,0 +1,10 @@
+/* src/app/components/confirmation-dialog/confirmation-dialog.component.scss */
+
+mat-dialog-content {
+  min-width: 300px;
+  margin-bottom: 16px;
+}
+
+p {
+  white-space: pre-line;
+}

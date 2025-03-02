@@ -11,13 +11,20 @@ import { MatIconModule } from "@angular/material/icon";
 import { environment } from "src/environments/environment";
 import { Meta, Title } from "@angular/platform-browser";
 import { SwUpdate } from "@angular/service-worker";
+import { LoadingIndicatorComponent } from "./components/loading-indicator/loading-indicator.component";
 
 @Component({
   standalone: true,
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
-  imports: [CommonModule, MatToolbarModule, MatIconModule, RouterOutlet],
+  imports: [
+    CommonModule,
+    MatToolbarModule,
+    MatIconModule,
+    RouterOutlet,
+    LoadingIndicatorComponent,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {

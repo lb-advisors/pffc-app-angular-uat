@@ -1,0 +1,63 @@
+/* src/app/components/fish-list/fish-list.component.scss */
+
+.fish-container {
+  padding: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.table-container {
+  margin-top: 16px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-mdc-row:hover {
+  background-color: rgb(0 0 0 / 4%);
+}
+
+.table-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin: 16px 0;
+}
+
+.no-data {
+  padding: 20px;
+  text-align: center;
+  font-style: italic;
+  color: rgb(0 0 0 / 54%);
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background: #f1f1f1;
+  border-radius: 20px;
+  padding: 5px 10px;
+  width: 200px;
+}
+
+.margin-right {
+  margin-right: 5px;
+}
+
+.search-icon {
+  color: gray;
+  margin-right: 5px;
+}
+
+input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+}
+
