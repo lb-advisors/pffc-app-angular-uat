@@ -9,6 +9,7 @@ import { PasswordRequestComponent } from "./components/password-request/password
 import { PasswordResetComponent } from "./components/password-reset/password-reset.component";
 import { SidebarLayoutComponent } from "./components/sidebar-layout/sidebar-layout.component";
 import { FishListComponent } from "./components/fish/fish-list/fish-list.component";
+import { CategoryListComponent } from "./components/categoty/category-list/category-list.component";
 
 const routes: Routes = [
   {
@@ -43,6 +44,12 @@ const routes: Routes = [
         path: "fish",
         component: FishListComponent,
         title: "Fish example",
+        canActivate: [AuthGuard],
+      },
+      {
+        path: "category",
+        component: CategoryListComponent,
+        title: "Category example",
         canActivate: [AuthGuard],
       },
 

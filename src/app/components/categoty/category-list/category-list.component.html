@@ -1,0 +1,86 @@
+<!-- src/app/components/Category-list/category-list.component.html -->
+
+<div class="Category-container">
+  <mat-toolbar color="primary">
+    <span>Category Management</span>
+
+    <span class="toolbar-spacer"></span>
+
+    <div class="search-container margin-right">
+      <mat-icon class="search-icon">search</mat-icon>
+      <input (input)="onSearch($event)" [value]="searchQuery()" placeholder="Search..." type="text">
+    </div>
+
+    <button (click)="openAddDialog()" class="margin-right" color="accent" mat-mini-fab matTooltip="Add new Category">
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <button (click)="deleteSelectedCategories()" [disabled]="selection.selected.length === 0"
+            color="accent"
+            mat-raised-button>
+      <mat-icon>delete</mat-icon>
+      Delete Selected ({{ selection.selected.length }})
+    </button>
+  </mat-toolbar>
+
+
+  <div class="mat-elevation-z8 table-container">
+    <table [dataSource]="dataSource" mat-table matSort matSortActive="name" matSortDirection="asc">
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th *matHeaderCellDef mat-header-cell>
+          <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </th>
+        <td *matCellDef="let row" mat-cell>
+          <mat-checkbox (change)="$event ? selection.toggle(row) : null"
+                        (click)="$event.stopPropagation()"
+                        [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th *matHeaderCellDef arrowPosition="before" mat-header-cell mat-sort-header> ID</th>
+        <td *matCellDef="let category" mat-cell> {{ category.id }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef arrowPosition="before" mat-header-cell mat-sort-header> Name</th>
+        <td *matCellDef="let category" mat-cell> {{ category.categoryName }}</td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th *matHeaderCellDef mat-header-cell> Actions</th>
+        <td *matCellDef="let category" mat-cell>
+          <button (click)="openEditDialog(category)" color="primary" mat-icon-button matTooltip="Edit">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button (click)="deleteCategory(category)" color="warn" mat-icon-button matTooltip="Delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+
+      <!-- No Results Row -->
+      <tr *ngIf="dataSource.filteredData.length === 0" class="mat-row">
+        <td class="mat-cell" colspan="5">
+          No results matching "{{ searchQuery() }}"
+        </td>
+      </tr>
+    </table>
+
+    <div *ngIf="dataSource.data.length === 0" class="no-data">
+      <p>No Category data available</p>
+    </div>
+  </div>
+</div>

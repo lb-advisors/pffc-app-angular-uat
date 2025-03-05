@@ -1,0 +1,22 @@
+<!-- src/app/components/category-dialog/category-dialog.component.html -->
+
+<h2 mat-dialog-title>{{ dialogTitle }}</h2>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="categoryForm">
+  <mat-dialog-content>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Name</mat-label>
+      <input formControlName="categoryName" matInput placeholder="Enter category name">
+      <mat-error *ngIf="categoryForm.get('categoryName')?.hasError('required')">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button (click)="onCancel()" mat-button type="button">Cancel</button>
+    <button [disabled]="categoryForm.invalid" color="primary" mat-raised-button type="submit">
+      {{ data.mode === 'add' ? 'Add' : 'Update' }}
+    </button>
+  </mat-dialog-actions>
+</form>

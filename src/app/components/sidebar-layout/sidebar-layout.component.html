@@ -1,4 +1,3 @@
-<link href="sidebar-layout.component.css" rel="stylesheet">
 <div class="sidebar-container">
   <mat-toolbar color="primary">
     <button (click)="toggleSidebar()" [matTooltip]="sidebarOpened() ? 'Hide menu' : 'Show menu'" mat-icon-button>
@@ -24,9 +23,9 @@
           <span matListItemTitle>Home</span>
         </a>
 
-        <a mat-list-item routerLink="/fish" routerLinkActive="active-link">
+        <a mat-list-item routerLink="/category" routerLinkActive="active-link">
           <mat-icon matListItemIcon>business</mat-icon>
-          <span matListItemTitle>Fish (example)</span>
+          <span matListItemTitle>Category (example)</span>
         </a>
       </mat-nav-list>
 
