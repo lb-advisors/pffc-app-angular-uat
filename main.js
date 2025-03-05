@@ -555,7 +555,7 @@ __webpack_require__.r(__webpack_exports__);
 function CategoryListComponent_th_19_Template(rf, ctx) {
   if (rf & 1) {
     const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "th", 21)(1, "mat-checkbox", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "th", 22)(1, "mat-checkbox", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("change", function CategoryListComponent_th_19_Template_mat_checkbox_change_1_listener($event) {
       _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r1);
       const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"]();
@@ -572,7 +572,7 @@ function CategoryListComponent_th_19_Template(rf, ctx) {
 function CategoryListComponent_td_20_Template(rf, ctx) {
   if (rf & 1) {
     const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "td", 23)(1, "mat-checkbox", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "td", 24)(1, "mat-checkbox", 25);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("change", function CategoryListComponent_td_20_Template_mat_checkbox_change_1_listener($event) {
       const row_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r3).$implicit;
       const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"]();
@@ -592,14 +592,14 @@ function CategoryListComponent_td_20_Template(rf, ctx) {
 }
 function CategoryListComponent_th_22_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "th", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "th", 26);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](1, " ID");
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
   }
 }
 function CategoryListComponent_td_23_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "td", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "td", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
   }
@@ -611,14 +611,14 @@ function CategoryListComponent_td_23_Template(rf, ctx) {
 }
 function CategoryListComponent_th_25_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "th", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "th", 27);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](1, " Name");
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
   }
 }
 function CategoryListComponent_td_26_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "td", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "td", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
   }
@@ -630,7 +630,7 @@ function CategoryListComponent_td_26_Template(rf, ctx) {
 }
 function CategoryListComponent_th_28_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "th", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "th", 22);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](1, " Actions");
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
   }
@@ -638,7 +638,7 @@ function CategoryListComponent_th_28_Template(rf, ctx) {
 function CategoryListComponent_td_29_Template(rf, ctx) {
   if (rf & 1) {
     const _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "td", 23)(1, "button", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "td", 24)(1, "button", 28);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function CategoryListComponent_td_29_Template_button_click_1_listener() {
       const category_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r7).$implicit;
       const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"]();
@@ -647,7 +647,7 @@ function CategoryListComponent_td_29_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](2, "mat-icon");
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](3, "edit");
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](4, "button", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](4, "button", 29);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function CategoryListComponent_td_29_Template_button_click_4_listener() {
       const category_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r7).$implicit;
       const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"]();
@@ -660,17 +660,17 @@ function CategoryListComponent_td_29_Template(rf, ctx) {
 }
 function CategoryListComponent_tr_30_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](0, "tr", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](0, "tr", 30);
   }
 }
 function CategoryListComponent_tr_31_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](0, "tr", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](0, "tr", 31);
   }
 }
 function CategoryListComponent_tr_32_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "tr", 30)(1, "td", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "tr", 32)(1, "td", 33);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]()();
   }
@@ -682,7 +682,7 @@ function CategoryListComponent_tr_32_Template(rf, ctx) {
 }
 function CategoryListComponent_div_33_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "div", 32)(1, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "div", 34)(1, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](2, "No Category data available");
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]()();
   }
@@ -860,7 +860,7 @@ class CategoryListComponent {
       features: [_angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵStandaloneFeature"]],
       decls: 34,
       vars: 8,
-      consts: [[1, "Category-container"], ["color", "primary"], [1, "toolbar-spacer"], [1, "search-container", "margin-right"], [1, "search-icon"], ["placeholder", "Search...", "type", "text", 3, "input", "value"], ["color", "accent", "mat-mini-fab", "", "matTooltip", "Add new Category", 1, "margin-right", 3, "click"], ["color", "accent", "mat-raised-button", "", 3, "click", "disabled"], [1, "mat-elevation-z8", "table-container"], ["mat-table", "", "matSort", "", "matSortActive", "name", "matSortDirection", "asc", 3, "dataSource"], ["matColumnDef", "select"], ["mat-header-cell", "", 4, "matHeaderCellDef"], ["mat-cell", "", 4, "matCellDef"], ["matColumnDef", "id"], ["arrowPosition", "before", "mat-header-cell", "", "mat-sort-header", "", 4, "matHeaderCellDef"], ["matColumnDef", "name"], ["matColumnDef", "actions"], ["mat-header-row", "", 4, "matHeaderRowDef"], ["mat-row", "", 4, "matRowDef", "matRowDefColumns"], ["class", "mat-row", 4, "ngIf"], ["class", "no-data", 4, "ngIf"], ["mat-header-cell", ""], [3, "change", "checked", "indeterminate"], ["mat-cell", ""], [3, "change", "click", "checked"], ["arrowPosition", "before", "mat-header-cell", "", "mat-sort-header", ""], ["color", "primary", "mat-icon-button", "", "matTooltip", "Edit", 3, "click"], ["color", "warn", "mat-icon-button", "", "matTooltip", "Delete", 3, "click"], ["mat-header-row", ""], ["mat-row", ""], [1, "mat-row"], ["colspan", "5", 1, "mat-cell"], [1, "no-data"]],
+      consts: [[1, "Category-container"], ["color", "primary"], [1, "toolbar-spacer"], [1, "search-container", "margin-right"], [1, "search-icon"], ["placeholder", "Search...", "type", "text", 3, "input", "value"], ["color", "accent", "mat-mini-fab", "", "matTooltip", "Add new Category", 1, "margin-right", 3, "click"], ["color", "accent", "mat-raised-button", "", 3, "click", "disabled"], [1, "mat-elevation-z8", "table-container"], ["mat-table", "", "matSort", "", "matSortActive", "categoryName", "matSortDirection", "asc", 3, "dataSource"], ["matColumnDef", "select"], ["mat-header-cell", "", 4, "matHeaderCellDef"], ["mat-cell", "", 4, "matCellDef"], ["matColumnDef", "id"], ["mat-header-cell", "", "mat-sort-header", "", 4, "matHeaderCellDef"], ["matColumnDef", "name"], ["mat-header-cell", "", "mat-sort-header", "categoryName", 4, "matHeaderCellDef"], ["matColumnDef", "actions"], ["mat-header-row", "", 4, "matHeaderRowDef"], ["mat-row", "", 4, "matRowDef", "matRowDefColumns"], ["class", "mat-row", 4, "ngIf"], ["class", "no-data", 4, "ngIf"], ["mat-header-cell", ""], [3, "change", "checked", "indeterminate"], ["mat-cell", ""], [3, "change", "click", "checked"], ["mat-header-cell", "", "mat-sort-header", ""], ["mat-header-cell", "", "mat-sort-header", "categoryName"], ["color", "primary", "mat-icon-button", "", "matTooltip", "Edit", 3, "click"], ["color", "warn", "mat-icon-button", "", "matTooltip", "Delete", 3, "click"], ["mat-header-row", ""], ["mat-row", ""], [1, "mat-row"], ["colspan", "5", 1, "mat-cell"], [1, "no-data"]],
       template: function CategoryListComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "div", 0)(1, "mat-toolbar", 1)(2, "span");
@@ -899,14 +899,14 @@ class CategoryListComponent {
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtemplate"](22, CategoryListComponent_th_22_Template, 2, 0, "th", 14)(23, CategoryListComponent_td_23_Template, 2, 1, "td", 12);
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementContainerEnd"]();
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementContainerStart"](24, 15);
-          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtemplate"](25, CategoryListComponent_th_25_Template, 2, 0, "th", 14)(26, CategoryListComponent_td_26_Template, 2, 1, "td", 12);
+          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtemplate"](25, CategoryListComponent_th_25_Template, 2, 0, "th", 16)(26, CategoryListComponent_td_26_Template, 2, 1, "td", 12);
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementContainerEnd"]();
-          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementContainerStart"](27, 16);
+          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementContainerStart"](27, 17);
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtemplate"](28, CategoryListComponent_th_28_Template, 2, 0, "th", 11)(29, CategoryListComponent_td_29_Template, 7, 0, "td", 12);
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementContainerEnd"]();
-          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtemplate"](30, CategoryListComponent_tr_30_Template, 1, 0, "tr", 17)(31, CategoryListComponent_tr_31_Template, 1, 0, "tr", 18)(32, CategoryListComponent_tr_32_Template, 3, 1, "tr", 19);
+          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtemplate"](30, CategoryListComponent_tr_30_Template, 1, 0, "tr", 18)(31, CategoryListComponent_tr_31_Template, 1, 0, "tr", 19)(32, CategoryListComponent_tr_32_Template, 3, 1, "tr", 20);
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtemplate"](33, CategoryListComponent_div_33_Template, 3, 0, "div", 20);
+          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtemplate"](33, CategoryListComponent_div_33_Template, 3, 0, "div", 21);
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]()();
         }
         if (rf & 2) {
