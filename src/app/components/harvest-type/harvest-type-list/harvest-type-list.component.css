@@ -37,7 +37,8 @@ th.mat-header-cell {
   border-radius: 20px;
   padding: 5px 10px;
   width: 200px;
-  position: relative; /* Added for positioning the clear button */
+  position: relative;
+  margin-left: 5px;
 }
 
 .margin-right {
