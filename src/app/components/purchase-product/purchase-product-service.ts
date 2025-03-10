@@ -21,9 +21,7 @@ export class PurchaseProductService {
   // Exposed computed signals
   public purchaseProducts = computed(() => this.purchaseProductsList());
   private totalElements = signal<number>(0);
-  public total = computed(() => this.totalElements());
   private totalPages = signal<number>(0);
-  public pages = computed(() => this.totalPages());
   private currentPage = signal<number>(0);
   public page = computed(() => this.currentPage());
   public hasMoreData = computed(
@@ -34,13 +32,10 @@ export class PurchaseProductService {
   private loading = signal<boolean>(false);
   public isLoading = computed(() => this.loading());
   private searchTerm = signal<string>("");
-  public currentSearchTerm = computed(() => this.searchTerm());
 
   private sortField = signal<string>("purchaseProductDescription");
-  public currentSortField = computed(() => this.sortField());
 
   private sortDirection = signal<string>("asc");
-  public currentSortDirection = computed(() => this.sortDirection());
 
   constructor() {
     // Initial load of first page

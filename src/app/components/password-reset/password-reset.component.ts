@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-} from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
 import {
   ActivatedRoute,
   ParamMap,
@@ -56,7 +51,6 @@ export class PasswordResetComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private cdr: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private snackbarService: SnackbarService,
@@ -108,7 +102,7 @@ export class PasswordResetComponent implements OnInit {
     this.authService.passwordReset(password, this.token).subscribe({
       next: () => {
         this.snackbarService.showSuccess("Your password has been reset");
-        this.router.navigate(["/login"]); // Navigate to /products on success
+        void this.router.navigate(["/login"]); // Navigate to /products on success
       },
     });
   }

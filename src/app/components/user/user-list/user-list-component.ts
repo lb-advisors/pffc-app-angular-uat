@@ -54,7 +54,8 @@ import { UserViewDialogComponent } from "../user-view-dialog/user-view-dialog.co
 export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatSort) sort!: MatSort;
   dataSource = new MatTableDataSource<UserGetDto>([]);
-  displayedColumns: string[] = [
+  displayedColumns: string[] = [];
+  allColumns: string[] = [
     "select",
     "id",
     "username",
@@ -87,6 +88,8 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     // No need to call loadUsers() as the service loads data on construction
     this.configureDataSource();
+    this.setDisplayedColumns();
+    window.onresize = () => this.setDisplayedColumns();
     this.setupSearch();
   }
 
@@ -99,6 +102,14 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
     this.searchTableService.destroySearch(this.ENTITY_TYPE);
+  }
+
+  setDisplayedColumns() {
+    if (window.innerWidth < 768) {
+      this.displayedColumns = ["id", "username", "fullName", "actions"]; // Only show essential columns on mobile
+    } else {
+      this.displayedColumns = this.allColumns; // Show all columns on larger screens
+    }
   }
 
   /**

@@ -3,12 +3,10 @@ import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./components/home/home.component";
 import { LoginComponent } from "./components/login/login.component";
 import { LogoutComponent } from "./components/logout/logout.component";
-import { ProductsComponent } from "./components/purchase-product/products.component";
 import { AuthGuard } from "./guards/auth.guard";
 import { PasswordRequestComponent } from "./components/password-request/password-request.component";
 import { PasswordResetComponent } from "./components/password-reset/password-reset.component";
 import { SidebarLayoutComponent } from "./components/sidebar-layout/sidebar-layout.component";
-import { FishListComponent } from "./components/fish/fish-list/fish-list.component";
 import { CategoryListComponent } from "./components/categoty/category-list/category-list.component";
 import { UserListComponent } from "./components/user/user-list/user-list-component";
 import { HelpComponent } from "./components/help/help.component";
@@ -44,18 +42,6 @@ const routes: Routes = [
         title: "Password Reset",
       },
       { path: "help", component: HelpComponent, title: "Help" },
-      {
-        path: "products",
-        component: ProductsComponent,
-        title: "Products",
-        canActivate: [AuthGuard],
-      },
-      {
-        path: "fish",
-        component: FishListComponent,
-        title: "Fish example",
-        canActivate: [AuthGuard],
-      },
       {
         path: "categories",
         component: CategoryListComponent,

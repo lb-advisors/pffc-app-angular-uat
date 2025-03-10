@@ -48,7 +48,7 @@ export class DataComponent implements OnInit, AfterViewInit {
   private readonly DATA: DataItem[] = [
     {
       name: "Customers",
-      description: "List of customers",
+      description: "List of customers - not implemented yet",
       route: "/customers",
     },
     {
@@ -63,8 +63,8 @@ export class DataComponent implements OnInit, AfterViewInit {
     },
     {
       name: "Sale products",
-      description: "List of sale products",
-      route: "/settings",
+      description: "List of sale products - not implemented yet",
+      route: "/sales-products",
     },
     {
       name: "Category",
@@ -104,7 +104,7 @@ export class DataComponent implements OnInit, AfterViewInit {
       sortHeaderId: string,
     ) => {
       const value = data[sortHeaderId as keyof DataItem];
-      return typeof value === "string" ? value.toLowerCase() : value;
+      return value.toLowerCase();
     };
   }
 
@@ -125,7 +125,7 @@ export class DataComponent implements OnInit, AfterViewInit {
    * Navigate to the specified route
    */
   navigateTo(route: string): void {
-    this.router.navigate([route]);
+    void this.router.navigate([route]);
   }
 
   /**

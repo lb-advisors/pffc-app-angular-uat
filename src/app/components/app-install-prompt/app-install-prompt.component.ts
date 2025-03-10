@@ -62,11 +62,17 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
 
   promptInstall() {
     if (this.deferredPrompt) {
-      this.deferredPrompt.prompt(); // Show the install prompt
-      this.deferredPrompt.userChoice.then(() => {
-        this.deferredPrompt = null;
-        this.pwaService.updateValue(false);
-      });
+      // Store the prompt() promise and handle it
+      this.deferredPrompt
+        .prompt()
+        .then(() => {
+          // After prompt() resolves, then handle the user choice
+          return this.deferredPrompt?.userChoice;
+        })
+        .then(() => {
+          this.deferredPrompt = null;
+          this.pwaService.updateValue(false);
+        });
     }
   }
 
@@ -86,7 +92,8 @@ export class AppInstallPromptComponent implements OnInit, OnDestroy {
     const isStandalone = window.matchMedia(
       "(display-mode: standalone)",
     ).matches;
-    const isIOSStandalone = (navigator as any).standalone === true;
+    const isIOSStandalone = (navigator as Navigator & { standalone?: boolean })
+      .standalone;
     const isFullscreen = window.innerHeight === screen.height;
 
     return isStandalone || isIOSStandalone || isFullscreen;

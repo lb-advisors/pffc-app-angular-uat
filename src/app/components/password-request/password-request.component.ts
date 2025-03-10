@@ -1,8 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-} from "@angular/core";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { Router, RouterModule } from "@angular/router";
 import {
   FormBuilder,
@@ -43,7 +39,6 @@ export class PasswordRequestComponent {
 
   constructor(
     private router: Router,
-    private cdr: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private snackbarService: SnackbarService,
@@ -61,7 +56,7 @@ export class PasswordRequestComponent {
         this.snackbarService.showInfo(
           `An email has been sent to ${username} to reset your password`,
         );
-        this.router.navigate(["/login"]);
+        void this.router.navigate(["/login"]);
       },
     });
   }

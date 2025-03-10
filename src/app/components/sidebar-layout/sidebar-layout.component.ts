@@ -6,7 +6,7 @@ import {
   signal,
   ViewChild,
 } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { CommonModule, NgOptimizedImage } from "@angular/common";
 import { RouterModule, RouterOutlet } from "@angular/router";
 import { MatSidenav, MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
@@ -33,6 +33,7 @@ import { AuthService } from "../../services/auth.service";
     MatExpansionModule,
     MatDividerModule,
     MatTooltipModule,
+    NgOptimizedImage,
   ],
   templateUrl: "sidebar-layout.component.html",
   styleUrl: "sidebar-layout.component.css",
