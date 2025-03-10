@@ -5,11 +5,16 @@
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].rules[0].oneOf[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].rules[0].oneOf[0].use[2]!./src/styles.css?ngGlobalStyle ***!
   \**********************************************************************************************************************************************************************************************************************/
-/* You can add global styles to this file, and also import other style files */
-
 body {
   margin: 0;
+  width: max-content;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@media (width >= 768px) {
+  body {
+    width: 100%;
+  }
 }
 
 a,
@@ -47,6 +52,26 @@ a:hover {
   --mdc-snackbar-container-color: #EFF;
 }
 
+.text-align-center {
+  text-align: center;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  padding-top: .5rem;
+  background-color: #f5f5f5;
+  flex: 1;
+}
+
+.main-card {
+  width: 100%;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+}
+
+th.mat-mdc-header-cell {
+  font-weight: bold;
+}
 
 
 /*# sourceMappingURL=styles.css.map*/
