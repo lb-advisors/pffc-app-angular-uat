@@ -17,6 +17,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { OriginGetDto } from "../../../models/origin.model";
+import { AutoMarkTouchedDirective } from "../../../directives/auto-mark-touched.directive";
 
 interface DialogData {
   mode: "add" | "edit";
@@ -33,6 +34,7 @@ interface DialogData {
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
+    AutoMarkTouchedDirective,
   ],
   templateUrl: "./origin-dialog.component.html",
   styleUrls: ["./origin-dialog.component.css"],

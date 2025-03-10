@@ -30,6 +30,7 @@ import {
   MatDatepickerToggle,
 } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
+import { AutoMarkTouchedDirective } from "../../../directives/auto-mark-touched.directive";
 
 interface DialogData {
   mode: "add" | "edit";
@@ -53,6 +54,7 @@ interface DialogData {
     ReactiveFormsModule,
     MatDatepickerInput,
     MatDatepickerToggle,
+    AutoMarkTouchedDirective,
   ],
   templateUrl: "./vendor-dialog.component.html",
   styleUrls: ["./vendor-dialog.component.css"],

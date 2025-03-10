@@ -2,7 +2,7 @@
 
 <h2 mat-dialog-title>{{ dialogTitle }}</h2>
 
-<form (ngSubmit)="onSubmit()" [formGroup]="categoryForm">
+<form (ngSubmit)="onSubmit()" [autoMarkTouched]="categoryForm" [formGroup]="categoryForm">
   <mat-dialog-content>
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Name</mat-label>

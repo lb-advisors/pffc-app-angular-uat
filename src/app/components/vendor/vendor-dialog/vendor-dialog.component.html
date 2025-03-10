@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>{{ dialogTitle }}</h2>
 
-<form (ngSubmit)="onSubmit()" [formGroup]="vendorForm">
+<form (ngSubmit)="onSubmit()" [autoMarkTouched]="vendorForm" [formGroup]="vendorForm">
   <mat-dialog-content>
     <div class="form-row">
       <mat-form-field appearance="fill" class="form-field">
@@ -99,12 +99,19 @@
     <div class="form-row">
       <mat-form-field appearance="fill" class="form-field">
         <mat-label>Credit Terms Days</mat-label>
-        <input formControlName="creditTermsDays" matInput placeholder="Enter credit terms days" type="number">
+        <input formControlName="creditTermsDays" matInput min="0" placeholder="Enter credit terms days" type="number">
+        <mat-error *ngIf="vendorForm.get('creditTermsDays')?.hasError('min')">
+          Credit Terms Days cannot be negative
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="form-field">
         <mat-label>Credit Limit Amount</mat-label>
-        <input formControlName="creditLimitAmount" matInput placeholder="Enter credit limit amount" type="number">
+        <input formControlName="creditLimitAmount" matInput min="0" placeholder="Enter credit limit amount"
+               type="number">
+        <mat-error *ngIf="vendorForm.get('creditLimitAmount')?.hasError('min')">
+          Credit Limit Amount cannot be negative
+        </mat-error>
       </mat-form-field>
     </div>
 

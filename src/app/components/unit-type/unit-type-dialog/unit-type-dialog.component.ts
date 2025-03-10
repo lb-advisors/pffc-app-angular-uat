@@ -17,6 +17,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { UnitTypeGetDto } from "../../../models/unit-type.model";
+import { AutoMarkTouchedDirective } from "../../../directives/auto-mark-touched.directive";
 
 interface DialogData {
   mode: "add" | "edit";
@@ -33,6 +34,7 @@ interface DialogData {
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
+    AutoMarkTouchedDirective,
   ],
   templateUrl: "./unit-type-dialog.component.html",
   styleUrls: ["./unit-type-dialog.component.css"],

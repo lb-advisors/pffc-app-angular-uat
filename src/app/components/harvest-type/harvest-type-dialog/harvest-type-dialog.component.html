@@ -2,7 +2,7 @@
 
 <h2 mat-dialog-title>{{ dialogTitle }}</h2>
 
-<form (ngSubmit)="onSubmit()" [formGroup]="harvestTypeForm">
+<form (ngSubmit)="onSubmit()" [autoMarkTouched]="harvestTypeForm" [formGroup]="harvestTypeForm">
   <mat-dialog-content>
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Name</mat-label>

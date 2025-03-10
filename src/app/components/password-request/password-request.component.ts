@@ -15,6 +15,7 @@ import { SnackbarService } from "src/app/services/snackbar.service";
 import { MatToolbar } from "@angular/material/toolbar";
 import { MatCardModule } from "@angular/material/card";
 import { MatIcon } from "@angular/material/icon";
+import { AutoMarkTouchedDirective } from "../../directives/auto-mark-touched.directive";
 
 @Component({
   selector: "app-password-request",
@@ -31,6 +32,7 @@ import { MatIcon } from "@angular/material/icon";
     ReactiveFormsModule,
     RouterModule,
     MatToolbar,
+    AutoMarkTouchedDirective,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

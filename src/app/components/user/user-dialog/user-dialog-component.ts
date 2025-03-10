@@ -25,6 +25,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { UserGetDto } from "../../../models/user.model";
+import { AutoMarkTouchedDirective } from "../../../directives/auto-mark-touched.directive";
 
 interface DialogData {
   mode: "add" | "edit";
@@ -44,6 +45,7 @@ interface DialogData {
     MatCheckboxModule,
     MatSlideToggleModule,
     ReactiveFormsModule,
+    AutoMarkTouchedDirective,
   ],
   templateUrl: "./user-dialog-component.html",
   styleUrls: ["./user-dialog-component.css"],

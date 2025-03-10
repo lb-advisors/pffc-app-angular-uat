@@ -22,6 +22,7 @@ import { SnackbarService } from "src/app/services/snackbar.service";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
+import { AutoMarkTouchedDirective } from "../../directives/auto-mark-touched.directive";
 
 @Component({
   selector: "app-password-reset",
@@ -38,6 +39,7 @@ import { MatIconModule } from "@angular/material/icon";
     MatIconModule,
     ReactiveFormsModule,
     RouterModule,
+    AutoMarkTouchedDirective,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

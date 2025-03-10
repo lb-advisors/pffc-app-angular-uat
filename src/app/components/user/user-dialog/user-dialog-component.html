@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>{{ dialogTitle }}</h2>
 
-<form (ngSubmit)="onSubmit()" [formGroup]="userForm">
+<form (ngSubmit)="onSubmit()" [autoMarkTouched]="userForm" [formGroup]="userForm">
   <mat-dialog-content>
     <div class="form-row">
       <mat-form-field appearance="fill" class="form-field">

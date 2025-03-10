@@ -23,6 +23,7 @@ import { MatIcon } from "@angular/material/icon";
 import { AppInstallPromptComponent } from "../app-install-prompt/app-install-prompt.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { environment } from "../../../environments/environment";
+import { AutoMarkTouchedDirective } from "../../directives/auto-mark-touched.directive";
 
 @Component({
   selector: "app-login",
@@ -40,6 +41,7 @@ import { environment } from "../../../environments/environment";
     ReactiveFormsModule,
     RouterModule,
     AppInstallPromptComponent,
+    AutoMarkTouchedDirective,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

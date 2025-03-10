@@ -32,6 +32,7 @@ import { CategoryGetDto } from "../../../models/category.model";
 import { UnitTypeGetDto } from "../../../models/unit-type.model";
 import { UserNameGetDto } from "../../../models/user-name.model";
 import { HarvestTypeGetDto } from "../../../models/harvest-type.model";
+import { AutoMarkTouchedDirective } from "../../../directives/auto-mark-touched.directive";
 
 interface DialogData {
   mode: "add" | "edit";
@@ -56,6 +57,7 @@ interface DialogData {
     MatCheckboxModule,
     MatSlideToggleModule,
     ReactiveFormsModule,
+    AutoMarkTouchedDirective,
   ],
   templateUrl: "./purchase-product-dialog.component.html",
   styleUrls: ["./purchase-product-dialog.component.css"],

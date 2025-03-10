@@ -17,6 +17,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { HarvestTypeGetDto } from "../../../models/harvest-type.model";
+import { AutoMarkTouchedDirective } from "../../../directives/auto-mark-touched.directive";
 
 interface DialogData {
   mode: "add" | "edit";
@@ -33,6 +34,7 @@ interface DialogData {
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
+    AutoMarkTouchedDirective,
   ],
   templateUrl: "./harvest-type-dialog.component.html",
   styleUrls: ["./harvest-type-dialog.component.css"],

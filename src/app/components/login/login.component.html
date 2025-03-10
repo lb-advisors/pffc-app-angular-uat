@@ -9,7 +9,7 @@
     <mat-card class="main-card">
       <mat-card-content>
 
-        <form (ngSubmit)="onLogin()" [formGroup]="loginForm" class="login-form">
+        <form (ngSubmit)="onLogin()" [autoMarkTouched]="loginForm" [formGroup]="loginForm" class="login-form">
           <h2 class="form-title">Sign in to your account</h2>
 
           <mat-form-field appearance="outline" class="full-width">

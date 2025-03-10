@@ -17,6 +17,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { CategoryGetDto } from "../../../models/category.model";
+import { AutoMarkTouchedDirective } from "../../../directives/auto-mark-touched.directive";
 
 interface DialogData {
   mode: "add" | "edit";
@@ -33,6 +34,7 @@ interface DialogData {
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
+    AutoMarkTouchedDirective,
   ],
   templateUrl: "./category-dialog.component.html",
   styleUrls: ["./category-dialog.component.css"],
