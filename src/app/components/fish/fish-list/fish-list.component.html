@@ -1,4 +1,4 @@
-<!-- src/app/components/fish-list/fish-list.component.html -->
+<!-- src/app/components/fish-list/unit-type-list.component.html -->
 
 <div class="fish-container">
   <mat-toolbar color="primary">
@@ -23,13 +23,12 @@
     </button>
   </mat-toolbar>
 
-
   <div class="mat-elevation-z8 table-container">
-    <table [dataSource]="dataSource" mat-table matSort matSortActive="name" matSortDirection="asc">
+    <table [dataSource]="dataSource" class="sticky-table" mat-table matSort matSortActive="name" matSortDirection="asc">
 
       <!-- Checkbox Column -->
       <ng-container matColumnDef="select">
-        <th *matHeaderCellDef mat-header-cell>
+        <th *matHeaderCellDef class="sticky-header" mat-header-cell>
           <mat-checkbox (change)="$event ? toggleAllRows() : null"
                         [checked]="selection.hasValue() && isAllSelected()"
                         [indeterminate]="selection.hasValue() && !isAllSelected()">
@@ -45,25 +44,27 @@
 
       <!-- ID Column -->
       <ng-container matColumnDef="id">
-        <th *matHeaderCellDef arrowPosition="before" mat-header-cell mat-sort-header> ID</th>
+        <th *matHeaderCellDef arrowPosition="before" class="sticky-header" mat-header-cell mat-sort-header> ID</th>
         <td *matCellDef="let fish" mat-cell> {{ fish.id }}</td>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="name">
-        <th *matHeaderCellDef arrowPosition="before" mat-header-cell mat-sort-header> Name</th>
+        <th *matHeaderCellDef arrowPosition="before" class="sticky-header" mat-header-cell mat-sort-header> Name</th>
         <td *matCellDef="let fish" mat-cell> {{ fish.name }}</td>
       </ng-container>
 
       <!-- Description Column -->
       <ng-container matColumnDef="description">
-        <th *matHeaderCellDef arrowPosition="before" mat-header-cell mat-sort-header> Description</th>
+        <th *matHeaderCellDef arrowPosition="before" class="sticky-header" mat-header-cell mat-sort-header>
+          Description
+        </th>
         <td *matCellDef="let fish" mat-cell> {{ fish.description }}</td>
       </ng-container>
 
       <!-- Actions Column -->
       <ng-container matColumnDef="actions">
-        <th *matHeaderCellDef mat-header-cell> Actions</th>
+        <th *matHeaderCellDef class="sticky-header" mat-header-cell> Actions</th>
         <td *matCellDef="let fish" mat-cell>
           <button (click)="openEditDialog(fish)" color="primary" mat-icon-button matTooltip="Edit">
             <mat-icon>edit</mat-icon>

@@ -1,4 +1,4 @@
-// src/app/components/category-dialog/category-dialog.component.ts
+// src/app/components/category-dialog/unit-type-dialog.component.ts
 
 import { Component, inject, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
@@ -16,11 +16,11 @@ import {
   ReactiveFormsModule,
   Validators,
 } from "@angular/forms";
-import { Category } from "../../../models/category.model";
+import { CategoryGetDto } from "../../../models/category.model";
 
 interface DialogData {
   mode: "add" | "edit";
-  category?: Category;
+  category?: CategoryGetDto;
 }
 
 @Component({

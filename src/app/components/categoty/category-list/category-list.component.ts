@@ -1,4 +1,4 @@
-// src/app/components/category-list/category-list.component.ts
+// src/app/components/category-list/unit-type-list.component.ts
 
 import {
   AfterViewInit,
@@ -22,7 +22,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { SelectionModel } from "@angular/cdk/collections";
 import { ConfirmationService } from "../../confirmation-dialog/confirmation-service.service";
 import {
-  Category,
+  CategoryGetDto,
   CategoryPatchDto,
   CategoryPostDto,
 } from "../../../models/category.model";
@@ -54,9 +54,9 @@ import { SearchTableService } from "../../../services/search-table.service";
 })
 export class CategoryListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatSort) sort!: MatSort;
-  dataSource = new MatTableDataSource<Category>([]);
+  dataSource = new MatTableDataSource<CategoryGetDto>([]);
   displayedColumns: string[] = ["select", "id", "name", "actions"];
-  selection = new SelectionModel<Category>(true, []);
+  selection = new SelectionModel<CategoryGetDto>(true, []);
   searchQuery = signal<string>("");
 
   // Entity type identifier for search service
@@ -72,7 +72,7 @@ export class CategoryListComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor() {
     // Effect to update the table data whenever the categoryes signal changes
     effect(() => {
-      this.updateTable(this.categoryService.categoryes());
+      this.updateTable(this.categoryService.categories());
     });
   }
 
@@ -99,10 +99,10 @@ export class CategoryListComponent implements OnInit, AfterViewInit, OnDestroy {
   configureSort(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.sortingDataAccessor = (
-      data: Category,
+      data: CategoryGetDto,
       sortHeaderId: string,
     ) => {
-      const value = data[sortHeaderId as keyof Category];
+      const value = data[sortHeaderId as keyof CategoryGetDto];
 
       // Handle different data types for sorting
       if (typeof value === "string") {
@@ -131,7 +131,10 @@ export class CategoryListComponent implements OnInit, AfterViewInit, OnDestroy {
    */
   configureDataSource(): void {
     // Define custom filter logic that searches across all fields
-    this.dataSource.filterPredicate = (category: Category, filter: string) => {
+    this.dataSource.filterPredicate = (
+      category: CategoryGetDto,
+      filter: string,
+    ) => {
       const searchStr = filter.toLowerCase();
       return (
         category.id.toString().includes(searchStr) ||
@@ -174,7 +177,7 @@ export class CategoryListComponent implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  openEditDialog(category: Category): void {
+  openEditDialog(category: CategoryGetDto): void {
     const dialogRef = this.dialog.open(CategoryDialogComponent, {
       width: "400px",
       data: { mode: "edit", category },
@@ -195,7 +198,7 @@ export class CategoryListComponent implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  deleteCategory(category: Category): void {
+  deleteCategory(category: CategoryGetDto): void {
     this.confirmationService
       .confirmDeletion(`category "${category.categoryName}"`)
       .pipe(takeUntil(this.destroy$))
@@ -234,8 +237,18 @@ export class CategoryListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.searchTableService.updateSearchQuery(this.ENTITY_TYPE, value);
   }
 
+  /**
+   * Clear the search input
+   */
+  clearSearch(inputElement: HTMLInputElement): void {
+    inputElement.value = "";
+    this.searchQuery.set("");
+    this.dataSource.filter = "";
+    inputElement.focus();
+  }
+
   // Function to update table data
-  private updateTable(categories: Category[]): void {
+  private updateTable(categories: CategoryGetDto[]): void {
     this.dataSource.data = categories;
 
     // Reapply current filter

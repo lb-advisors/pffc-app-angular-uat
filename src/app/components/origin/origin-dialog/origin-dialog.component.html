@@ -1,0 +1,22 @@
+<!-- src/app/components/origin-dialog/unit-type-dialog.component.html -->
+
+<h2 mat-dialog-title>{{ dialogTitle }}</h2>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="originForm">
+  <mat-dialog-content>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Name</mat-label>
+      <input formControlName="originName" matInput placeholder="Enter origin name">
+      <mat-error *ngIf="originForm.get('originName')?.hasError('required')">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button (click)="onCancel()" mat-button type="button">Cancel</button>
+    <button [disabled]="originForm.invalid" color="primary" mat-raised-button type="submit">
+      {{ data.mode === 'add' ? 'Add' : 'Update' }}
+    </button>
+  </mat-dialog-actions>
+</form>

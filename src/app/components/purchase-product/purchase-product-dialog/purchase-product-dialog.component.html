@@ -1,0 +1,146 @@
+<h2 mat-dialog-title>{{ dialogTitle }}</h2>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="productForm">
+  <mat-dialog-content>
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Product Description</mat-label>
+        <input formControlName="purchaseProductDescription" matInput placeholder="Enter product description">
+        <mat-error *ngIf="productForm.get('purchaseProductDescription')?.hasError('required')">
+          Product description is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Pack Size</mat-label>
+        <input formControlName="packSize" matInput placeholder="Enter pack size" type="number">
+        <mat-error *ngIf="productForm.get('packSize')?.hasError('required')">
+          Pack size is required
+        </mat-error>
+        <mat-error *ngIf="productForm.get('packSize')?.hasError('min')">
+          Pack size must be greater than or equal to 0
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Default Cost Price</mat-label>
+        <input formControlName="defaultCostPrice" matInput placeholder="Enter default cost price" type="number">
+        <mat-error *ngIf="productForm.get('defaultCostPrice')?.hasError('required')">
+          Default cost price is required
+        </mat-error>
+        <mat-error *ngIf="productForm.get('defaultCostPrice')?.hasError('min')">
+          Default cost price must be greater than or equal to 0
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>HarvestType</mat-label>
+        <mat-select formControlName="harvestTypeId">
+          <mat-option *ngFor="let harvestType of data.harvestTypes" [value]="harvestType.id">
+            {{ harvestType.harvestType }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="productForm.get('harvestTypeId')?.hasError('required')">
+          Harvest type is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Shelf Life (days)</mat-label>
+        <input formControlName="shelfLife" matInput placeholder="Enter shelf life in days" type="number">
+        <mat-error *ngIf="productForm.get('shelfLife')?.hasError('min')">
+          Shelf life must be greater than or equal to 0
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Rotation Days</mat-label>
+        <input formControlName="rotationDays" matInput placeholder="Enter rotation days" type="number">
+        <mat-error *ngIf="productForm.get('rotationDays')?.hasError('min')">
+          Rotation days must be greater than or equal to 0
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Origin</mat-label>
+        <mat-select formControlName="originId">
+          <mat-option *ngFor="let origin of data.origins" [value]="origin.id">
+            {{ origin.originName }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="productForm.get('originId')?.hasError('required')">
+          Origin is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="categoryId">
+          <mat-option *ngFor="let category of data.categories" [value]="category.id">
+            {{ category.categoryName }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="productForm.get('categoryId')?.hasError('required')">
+          Category is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Unit Type</mat-label>
+        <mat-select formControlName="unitTypeId">
+          <mat-option *ngFor="let unitType of data.unitTypes" [value]="unitType.id">
+            {{ unitType.unitTypeName }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="productForm.get('unitTypeId')?.hasError('required')">
+          Unit type is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Default Buyer</mat-label>
+        <mat-select formControlName="defaultBuyerUserId">
+          <mat-option *ngFor="let defaultBuyerUser of data.defaultBuyerUsers" [value]="defaultBuyerUser.id">
+            {{ defaultBuyerUser.firstName }} {{ defaultBuyerUser.lastName }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="productForm.get('defaultBuyerUserId')?.hasError('required')">
+          Default buyer is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="toggles-row">
+      <mat-slide-toggle formControlName="isFixedPack">Fixed Pack</mat-slide-toggle>
+      <mat-slide-toggle formControlName="isActive">Active</mat-slide-toggle>
+      <mat-slide-toggle formControlName="isAllowLbs">Allow Lbs</mat-slide-toggle>
+      <mat-slide-toggle formControlName="nonInventory">Non-Inventory</mat-slide-toggle>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Notes</mat-label>
+        <textarea formControlName="notes" matInput placeholder="Enter notes" rows="3"></textarea>
+      </mat-form-field>
+    </div>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button (click)="onCancel()" mat-button type="button">Cancel</button>
+    <button [disabled]="productForm.invalid" color="primary" mat-raised-button type="submit">
+      {{ data.mode === 'add' ? 'Add' : 'Update' }}
+    </button>
+  </mat-dialog-actions>
+</form>

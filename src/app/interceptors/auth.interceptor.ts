@@ -29,11 +29,16 @@ export class AuthInterceptor implements HttpInterceptor {
         },
       });
 
-      loadingService.setLoading(true);
+      const url = new URL(req.urlWithParams, window.location.origin);
+      const queryParams = url.searchParams;
+      const isInfiniteScroll =
+        queryParams.has("page") && queryParams.get("page") !== "0";
+
+      if (!isInfiniteScroll) loadingService.setLoading(true);
       return next.handle(clonedRequest).pipe(
         finalize(() => {
           // Stop loading when the request completes (success or error)
-          loadingService.setLoading(false);
+          if (!isInfiniteScroll) loadingService.setLoading(false);
         }),
       );
     }

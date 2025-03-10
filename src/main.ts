@@ -23,6 +23,7 @@ import { RouterModule } from "@angular/router";
 import { AuthInterceptor } from "./app/interceptors/auth.interceptor";
 import { provideServiceWorker } from "@angular/service-worker";
 import { MatSortModule } from "@angular/material/sort";
+import { MatNativeDateModule } from "@angular/material/core";
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -51,5 +52,6 @@ bootstrapApplication(AppComponent, {
       enabled: !isDevMode(),
       registrationStrategy: "registerWhenStable:30000",
     }),
+    importProvidersFrom(MatNativeDateModule),
   ],
 }).catch((err) => console.error(err));

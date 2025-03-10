@@ -14,8 +14,11 @@ import { AuthService } from "src/app/services/auth.service";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
-import { CommonModule, NgOptimizedImage } from "@angular/common";
+import { CommonModule } from "@angular/common";
 import { SnackbarService } from "src/app/services/snackbar.service";
+import { MatToolbar } from "@angular/material/toolbar";
+import { MatCardModule } from "@angular/material/card";
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: "app-password-request",
@@ -27,9 +30,11 @@ import { SnackbarService } from "src/app/services/snackbar.service";
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatCardModule,
+    MatIcon,
     ReactiveFormsModule,
     RouterModule,
-    NgOptimizedImage,
+    MatToolbar,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -44,7 +49,7 @@ export class PasswordRequestComponent {
     private snackbarService: SnackbarService,
   ) {
     this.passwordRequestForm = this.formBuilder.group({
-      username: ["", [Validators.required, Validators.email]],
+      username: ["", [Validators.required]],
     });
   }
 

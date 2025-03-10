@@ -1,0 +1,56 @@
+<h2 mat-dialog-title>User Details</h2>
+<mat-dialog-content>
+  <div class="info-section">
+    <div class="detail-item">
+      <span class="info-label">Username:</span>
+      <span>{{ data.user.username }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Full Name:</span>
+      <span>{{ data.user.firstName }} {{ data.user.lastName }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Email Address:</span>
+      <span>{{ data.user.emailAddress || 'Not provided' }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Email Signature:</span>
+      <span>{{ data.user.emailSignature || 'Not provided' }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Phone Number:</span>
+      <span>{{ data.user.phoneNumber || 'Not provided' }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Phone Carrier:</span>
+      <span>{{ data.user.phoneCarrier || 'Not provided' }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Preferred Contact:</span>
+      <span>{{ data.user.preferredContact || 'Not provided' }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Commission Based:</span>
+      <span>{{ data.user.isCommission ? 'Yes' : 'No' }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Status:</span>
+      <span [ngClass]="getStatusClass()">{{ getStatusText() }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Last Login:</span>
+      <span>{{ data.user.lastLoginAt ? (data.user.lastLoginAt | date:'medium') : 'Never' }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Login Count:</span>
+      <span>{{ data.user.loginCount }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Failed Login Attempts:</span>
+      <span>{{ data.user.failedLoginAttemptsCount }}</span>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button (click)="close()" mat-button>Close</button>
+</mat-dialog-actions>

@@ -1,35 +1,56 @@
 <div class="sidebar-container">
   <mat-toolbar color="primary">
-    <button (click)="toggleSidebar()" [matTooltip]="sidebarOpened() ? 'Hide menu' : 'Show menu'" mat-icon-button>
-      <mat-icon>{{ sidebarOpened() ? 'menu_open' : 'menu' }}</mat-icon>
-    </button>
-    <span class="toolbar-title">PFFC Application</span>
-    <span *ngIf="firstName() as name" class="logged-in">Logged in as {{ name }}</span>
+    <div class="toolbar-left">
+      <button (click)="toggleSidebar()" [matTooltip]="sidebarOpened() ? 'Hide menu' : 'Show menu'" mat-icon-button>
+        <mat-icon>{{ sidebarOpened() ? 'menu_open' : 'menu' }}</mat-icon>
+      </button>
+      <span class="toolbar-title">PFFC Application</span>
+    </div>
 
+    <div class="toolbar-center">
+      <img alt="Logo" class="logo" src="./assets/logo.png">
+    </div>
+
+    <div class="toolbar-right">
+      <span *ngIf="firstName() as name" class="logged-in">Logged in as {{ name }}</span>
+    </div>
   </mat-toolbar>
-
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer [opened]="sidebarOpened()" class="sidenav" mode="side">
-      <div class="sidenav-header">
-        <h2>Menu</h2>
-      </div>
-
-      <mat-divider></mat-divider>
-
       <!-- Regular menu items -->
       <mat-nav-list>
         <a mat-list-item routerLink="/dashboard" routerLinkActive="active-link">
           <mat-icon matListItemIcon>dashboard</mat-icon>
           <span matListItemTitle>Home</span>
         </a>
-
-        <a mat-list-item routerLink="/category" routerLinkActive="active-link">
-          <mat-icon matListItemIcon>business</mat-icon>
-          <span matListItemTitle>Category (example)</span>
+        
+        <a mat-list-item routerLink="/data" routerLinkActive="active-link">
+          <mat-icon matListItemIcon>storage</mat-icon>
+          <span matListItemTitle>Data Explorer</span>
         </a>
       </mat-nav-list>
 
       <mat-divider></mat-divider>
+
+      <mat-accordion>
+        <mat-expansion-panel class="mat-elevation-z0">
+          <mat-nav-list>
+            <a mat-list-item routerLink="/users" routerLinkActive="active-link">
+              <mat-icon matListItemIcon>people</mat-icon>
+              <span matListItemTitle>Users</span>
+            </a>
+            <a mat-list-item routerLink="/admin/roles" routerLinkActive="active-link">
+              <mat-icon matListItemIcon>verified_user</mat-icon>
+              <span matListItemTitle>Roles</span>
+            </a>
+            <a mat-list-item routerLink="/admin/permissions" routerLinkActive="active-link">
+              <mat-icon matListItemIcon>security</mat-icon>
+              <span matListItemTitle>Permissions</span>
+            </a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+
 
       <!-- Expandable menu items with submenus -->
       <mat-accordion>
@@ -44,7 +65,7 @@
           </mat-expansion-panel-header>
 
           <mat-nav-list>
-            <a mat-list-item routerLink="/admin/users" routerLinkActive="active-link">
+            <a mat-list-item routerLink="/users" routerLinkActive="active-link">
               <mat-icon matListItemIcon>people</mat-icon>
               <span matListItemTitle>Users</span>
             </a>

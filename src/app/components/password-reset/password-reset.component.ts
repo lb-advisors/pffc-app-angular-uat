@@ -22,8 +22,11 @@ import { AuthService } from "src/app/services/auth.service";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
-import { CommonModule, NgOptimizedImage } from "@angular/common";
+import { CommonModule } from "@angular/common";
 import { SnackbarService } from "src/app/services/snackbar.service";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatCardModule } from "@angular/material/card";
+import { MatIconModule } from "@angular/material/icon";
 
 @Component({
   selector: "app-password-reset",
@@ -35,9 +38,11 @@ import { SnackbarService } from "src/app/services/snackbar.service";
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatIconModule,
     ReactiveFormsModule,
     RouterModule,
-    NgOptimizedImage,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -45,6 +50,8 @@ export class PasswordResetComponent implements OnInit {
   passwordResetForm: FormGroup;
   token: string = "";
   mismatchedPassword: boolean = false;
+  hidePassword = true;
+  hideConfirmPassword = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -85,7 +92,7 @@ export class PasswordResetComponent implements OnInit {
       this.token = params.get("token") || "";
       if (!this.token) {
         // no JWT found
-        this.router.navigate(["/login"]);
+        void this.router.navigate(["/login"]);
       }
     });
   }
@@ -111,5 +118,13 @@ export class PasswordResetComponent implements OnInit {
     // Regular expression for special characters
     const hasSpecialCharacter = /[!@#$%^&*(),.?":{}|<>]/.test(value);
     return hasSpecialCharacter ? null : { noSpecialCharacter: true };
+  }
+
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
+  }
+
+  toggleConfirmPasswordVisibility() {
+    this.hideConfirmPassword = !this.hideConfirmPassword;
   }
 }

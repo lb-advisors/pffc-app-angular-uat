@@ -13,10 +13,30 @@
 .table-container {
   margin-top: 16px;
   overflow: auto;
+  max-height: 600px; /* Adjust this value as needed */
+}
+
+.sticky-table {
+  width: 100%;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+  font-weight: bold;
+  text-align: left;
 }
 
 table {
   width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.mat-mdc-header-cell {
+  text-align: left !important;
 }
 
 .mat-mdc-row:hover {
@@ -60,4 +80,3 @@ input {
   background: transparent;
   width: 100%;
 }
-

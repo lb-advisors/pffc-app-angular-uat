@@ -1,8 +1,8 @@
-// src/app/services/category.service.ts
+// src/app/services/unit-type.service.ts
 
 import { computed, inject, Injectable, signal } from "@angular/core";
 import {
-  Category,
+  CategoryGetDto,
   CategoryPatchDto,
   CategoryPostDto,
 } from "../../models/category.model";
@@ -14,24 +14,24 @@ import { HttpClient } from "@angular/common/http";
 })
 export class CategoryService {
   private http = inject(HttpClient);
-  private baseUrl = `${environment.apiUrl}/category`;
+  private baseUrl = `${environment.apiUrl}/categories`;
 
   // State signals
-  private categoryList = signal<Category[]>([]);
+  private categoryList = signal<CategoryGetDto[]>([]);
 
   // Exposed computed signals
-  public categoryes = computed(() => this.categoryList());
+  public categories = computed(() => this.categoryList());
 
   constructor() {
     // Load category data immediately when service is injected
-    this.loadAllCategory();
+    this.loadAllCategories();
   }
 
   /**
    * Load all category from the API and update the signal
    */
-  loadAllCategory(): void {
-    this.http.get<Category[]>(this.baseUrl).subscribe({
+  loadAllCategories(): void {
+    this.http.get<CategoryGetDto[]>(this.baseUrl).subscribe({
       next: (data) => this.categoryList.set(data),
     });
   }
@@ -39,7 +39,7 @@ export class CategoryService {
   /**
    * Get a single category by ID
    */
-  getCategoryById(id: number): Category | undefined {
+  getCategoryById(id: number): CategoryGetDto | undefined {
     return this.categoryList().find((category) => category.id === id);
   }
 
@@ -47,7 +47,7 @@ export class CategoryService {
    * Create a new category
    */
   createCategory(category: CategoryPostDto): void {
-    this.http.post<Category>(this.baseUrl, category).subscribe({
+    this.http.post<CategoryGetDto>(this.baseUrl, category).subscribe({
       next: (newCategory) => {
         // Update the signal with the new category
         this.categoryList.update((list) => [...list, newCategory]);
@@ -60,7 +60,7 @@ export class CategoryService {
    */
   updateCategory(id: number, categoryUpdate: CategoryPatchDto): void {
     this.http
-      .patch<Category>(`${this.baseUrl}/${id}`, categoryUpdate)
+      .patch<CategoryGetDto>(`${this.baseUrl}/${id}`, categoryUpdate)
       .subscribe({
         next: (updatedCategory) => {
           // Update the specific category in the list

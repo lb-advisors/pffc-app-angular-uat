@@ -1,0 +1,112 @@
+<h2 mat-dialog-title>{{ dialogTitle }}</h2>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="userForm">
+  <mat-dialog-content>
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Username</mat-label>
+        <input formControlName="username" matInput placeholder="Enter username">
+        <mat-error *ngIf="userForm.get('username')?.hasError('required')">
+          Username is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="data.mode === 'add'" class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput placeholder="Enter password">
+        <mat-error *ngIf="userForm.get('password')?.hasError('required')">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>First Name</mat-label>
+        <input formControlName="firstName" matInput placeholder="Enter first name">
+        <mat-error *ngIf="userForm.get('firstName')?.hasError('required')">
+          First name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Last Name</mat-label>
+        <input formControlName="lastName" matInput placeholder="Enter last name">
+        <mat-error *ngIf="userForm.get('lastName')?.hasError('required')">
+          Last name is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Email Address</mat-label>
+        <input formControlName="emailAddress" matInput placeholder="Enter email address" type="email">
+        <mat-error *ngIf="userForm.get('emailAddress')?.hasError('required')">
+          Email address is required
+        </mat-error>
+        <mat-error *ngIf="userForm.get('emailAddress')?.hasError('email')">
+          Please enter a valid email address
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Email Signature</mat-label>
+        <textarea formControlName="emailSignature" matInput placeholder="Enter email signature" rows="3"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Phone Number</mat-label>
+        <input formControlName="phoneNumber" matInput placeholder="Enter phone number">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Phone Carrier</mat-label>
+        <input formControlName="phoneCarrier" matInput placeholder="Enter phone carrier">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Preferred Contact</mat-label>
+        <input formControlName="preferredContact" matInput placeholder="Enter preferred Contact">
+      </mat-form-field>
+    </div>
+
+    <div class="toggles-row">
+      <mat-slide-toggle color="primary" formControlName="isCommission">Commission Based</mat-slide-toggle>
+      <mat-slide-toggle color="primary" formControlName="isEnabled">Enabled</mat-slide-toggle>
+      <mat-slide-toggle color="warn" formControlName="isLocked">Locked</mat-slide-toggle>
+    </div>
+
+    <div *ngIf="data.mode === 'edit'" class="info-section">
+      <h3>Account Information</h3>
+      <p>
+        <span class="info-label">Last Login:</span>
+        <span>{{ data.user?.lastLoginAt ? (data.user?.lastLoginAt | date:'medium') : 'Never' }}</span>
+      </p>
+      <p>
+        <span class="info-label">Login Count:</span>
+        <span>{{ data.user?.loginCount }}</span>
+      </p>
+      <p>
+        <span class="info-label">Failed Login Attempts:</span>
+        <span>{{ data.user?.failedLoginAttemptsCount }}</span>
+      </p>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button (click)="onCancel()" mat-button type="button">Cancel</button>
+    <button [disabled]="userForm.invalid" color="primary" mat-raised-button type="submit">
+      {{ data.mode === 'add' ? 'Add' : 'Update' }}
+    </button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,161 @@
+<h2 mat-dialog-title>{{ dialogTitle }}</h2>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="vendorForm">
+  <mat-dialog-content>
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Vendor Name</mat-label>
+        <input formControlName="vendorName" matInput placeholder="Enter vendor name">
+        <mat-error *ngIf="vendorForm.get('vendorName')?.hasError('required')">
+          Vendor name is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Address 1</mat-label>
+        <input formControlName="address1" matInput placeholder="Enter address 1">
+
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Address 2</mat-label>
+        <input formControlName="address2" matInput placeholder="Enter address 2">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>City</mat-label>
+        <input formControlName="city" matInput placeholder="Enter city">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>State</mat-label>
+        <input formControlName="state" matInput placeholder="Enter state">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Zip</mat-label>
+        <input formControlName="zip" matInput placeholder="Enter zip">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Country</mat-label>
+        <input formControlName="country" matInput placeholder="Enter country">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Phone Number</mat-label>
+        <input formControlName="phoneNumber" matInput placeholder="Enter phone number">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Vendor Rep Name</mat-label>
+        <input formControlName="vendorRepName" matInput placeholder="Enter vendor rep name">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Vendor Rep Phone Number</mat-label>
+        <input formControlName="vendorRepPhoneNumber" matInput placeholder="Enter vendor rep phone number">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Vendor Rep Email Address</mat-label>
+        <input formControlName="vendorRepEmailAddress" matInput placeholder="Enter vendor rep email address"
+               type="email">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Accounting Name</mat-label>
+        <input formControlName="accountingName" matInput placeholder="Enter accounting name">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Accounting Phone Number</mat-label>
+        <input formControlName="accountingPhoneNumber" matInput placeholder="Enter accounting phone number">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Accounting Email Address</mat-label>
+        <input formControlName="accountingEmailAddress" matInput placeholder="Enter accounting email address"
+               type="email">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Credit Terms Days</mat-label>
+        <input formControlName="creditTermsDays" matInput placeholder="Enter credit terms days" type="number">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Credit Limit Amount</mat-label>
+        <input formControlName="creditLimitAmount" matInput placeholder="Enter credit limit amount" type="number">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Vendor Notes</mat-label>
+        <textarea formControlName="vendorNotes" matInput placeholder="Enter vendor notes" rows="3"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Logistics Notes</mat-label>
+        <textarea formControlName="logisticsNotes" matInput placeholder="Enter logistics notes" rows="3"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Accounting Notes</mat-label>
+        <textarea formControlName="accountingNotes" matInput placeholder="Enter accounting notes" rows="3"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Last Aging Request Date</mat-label>
+        <input
+          [matDatepicker]="lastAgingPicker"
+          formControlName="lastAgingRequestDate"
+          matInput
+          placeholder="MM/DD/YYYY">
+        <mat-datepicker-toggle [for]="lastAgingPicker" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #lastAgingPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Last Aging Request Time</mat-label>
+        <input
+          formControlName="lastAgingRequestTime"
+          matInput
+          placeholder="HH:MM"
+          type="time">
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button (click)="onCancel()" mat-button type="button">Cancel</button>
+    <button [disabled]="vendorForm.invalid" color="primary" mat-raised-button type="submit">
+      {{ data.mode === 'add' ? 'Add' : 'Update' }}
+    </button>
+  </mat-dialog-actions>
+</form>

@@ -1,7 +1,7 @@
-// src/app/services/fish.service.ts
+// src/app/services/unit-type.service.ts
 
 import { computed, inject, Injectable, signal } from "@angular/core";
-import { Fish, FishPatchDto, FishPostDto } from "../../models/fish.model";
+import { FishGetDto, FishPatchDto, FishPostDto } from "../../models/fish.model";
 import { environment } from "../../../environments/environment";
 import { HttpClient } from "@angular/common/http";
 
@@ -13,7 +13,7 @@ export class FishService {
   private baseUrl = `${environment.apiUrl}/fish`;
 
   // State signals
-  private fishList = signal<Fish[]>([]);
+  private fishList = signal<FishGetDto[]>([]);
 
   // Exposed computed signals
   public fishes = computed(() => this.fishList());
@@ -27,7 +27,7 @@ export class FishService {
    * Load all fish from the API and update the signal
    */
   loadAllFish(): void {
-    this.http.get<Fish[]>(this.baseUrl).subscribe({
+    this.http.get<FishGetDto[]>(this.baseUrl).subscribe({
       next: (data) => this.fishList.set(data),
     });
   }
@@ -35,7 +35,7 @@ export class FishService {
   /**
    * Get a single fish by ID
    */
-  getFishById(id: number): Fish | undefined {
+  getFishById(id: number): FishGetDto | undefined {
     return this.fishList().find((fish) => fish.id === id);
   }
 
@@ -43,7 +43,7 @@ export class FishService {
    * Create a new fish
    */
   createFish(fish: FishPostDto): void {
-    this.http.post<Fish>(this.baseUrl, fish).subscribe({
+    this.http.post<FishGetDto>(this.baseUrl, fish).subscribe({
       next: (newFish) => {
         // Update the signal with the new fish
         this.fishList.update((list) => [...list, newFish]);
@@ -55,7 +55,7 @@ export class FishService {
    * Update an existing fish
    */
   updateFish(id: number, fishUpdate: FishPatchDto): void {
-    this.http.patch<Fish>(`${this.baseUrl}/${id}`, fishUpdate).subscribe({
+    this.http.patch<FishGetDto>(`${this.baseUrl}/${id}`, fishUpdate).subscribe({
       next: (updatedFish) => {
         // Update the specific fish in the list
         this.fishList.update((list) =>

@@ -1,0 +1,61 @@
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-mdc-row:hover {
+  background-color: rgb(0 0 0 / 4%);
+}
+
+.no-data {
+  padding: 20px;
+  text-align: center;
+  font-style: italic;
+  color: rgb(0 0 0 / 54%);
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background: #f1f1f1;
+  border-radius: 20px;
+  padding: 5px 10px;
+  width: 200px;
+  position: relative; /* Added for positioning the clear button */
+}
+
+.margin-right {
+  margin-right: 5px;
+}
+
+.search-icon {
+  color: gray;
+  margin-right: 5px;
+}
+
+input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+}
+
+.clear-search {
+  cursor: pointer;
+  color: gray;
+}
+
+.action-buttons {
+  white-space: nowrap;
+}
+
+.mat-primary-text {
+  color: #3f51b5;
+}
+
+.mat-accent-text {
+  color: #ff4081;
+}
+
+.mat-warn-text {
+  color: #f44336;
+}

@@ -1,4 +1,11 @@
-import { Component, computed, inject, signal, ViewChild } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  signal,
+  ViewChild,
+} from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule, RouterOutlet } from "@angular/router";
 import { MatSidenav, MatSidenavModule } from "@angular/material/sidenav";
@@ -29,6 +36,7 @@ import { AuthService } from "../../services/auth.service";
   ],
   templateUrl: "sidebar-layout.component.html",
   styleUrl: "sidebar-layout.component.css",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarLayoutComponent {
   @ViewChild("drawer") drawer!: MatSidenav;

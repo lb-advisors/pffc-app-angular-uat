@@ -1,0 +1,113 @@
+<div
+  (scrolled)="onScroll()"
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  [scrollWindow]="false"
+  class="container"
+  infiniteScroll
+>
+  <mat-toolbar color="primary">
+    <span>Purchase Products</span>
+
+    <span class="toolbar-spacer"></span>
+
+    <div class="search-container margin-right">
+      <mat-icon class="search-icon">search</mat-icon>
+      <input #searchInput (input)="onSearch($event)" [value]="searchQuery()" placeholder="Search..." type="text">
+      <mat-icon (click)="clearSearch(searchInput)" *ngIf="searchQuery().length > 0" class="clear-search">close
+      </mat-icon>
+    </div>
+
+    <button (click)="openAddDialog()" class="margin-right" color="accent" mat-mini-fab
+            matTooltip="Add new Purchase Product">
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <button (click)="deleteSelectedPurchaseProducts()" [disabled]="selection.selected.length === 0"
+            color="accent"
+            mat-raised-button>
+      <mat-icon>delete</mat-icon>
+      Delete Selected ({{ selection.selected.length }})
+    </button>
+  </mat-toolbar>
+
+  <div class="mat-elevation-z8 main-container">
+    <table [dataSource]="dataSource" mat-table matSort matSortActive="purchaseProductDescription"
+           matSortDirection="asc">
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th *matHeaderCellDef mat-header-cell>
+          <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </th>
+        <td *matCellDef="let product" mat-cell>
+          <mat-checkbox (change)="$event ? selection.toggle(product) : null"
+                        (click)="$event.stopPropagation()"
+                        [checked]="selection.isSelected(product)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>ID</th>
+        <td *matCellDef="let product" mat-cell>{{ product.id }}</td>
+      </ng-container>
+
+      <!-- Description Column -->
+      <ng-container matColumnDef="purchaseProductDescription">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Description</th>
+        <td *matCellDef="let product" mat-cell>{{ product.purchaseProductDescription }}</td>
+      </ng-container>
+
+      <!-- Category Column -->
+      <ng-container matColumnDef="category">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Category</th>
+        <td *matCellDef="let product" mat-cell>{{ product.category?.categoryName }}</td>
+      </ng-container>
+
+      <!-- Origin Column -->
+      <ng-container matColumnDef="origin">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Origin</th>
+        <td *matCellDef="let product" mat-cell>{{ product.origin?.originName }}</td>
+      </ng-container>
+
+      <!-- Pack Size Column -->
+      <ng-container matColumnDef="packSize">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Pack Size</th>
+        <td *matCellDef="let product" mat-cell>{{ product.packSize }} {{ product.unitType?.name }}</td>
+      </ng-container>
+
+      <!-- Cost Price Column -->
+      <ng-container matColumnDef="defaultCostPrice">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Default Cost</th>
+        <td *matCellDef="let product" mat-cell>{{ product.defaultCostPrice | currency }}</td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th *matHeaderCellDef mat-header-cell>Actions</th>
+        <td *matCellDef="let product" class="action-buttons" mat-cell>
+          <button (click)="openViewDialog(product)" color="primary" mat-icon-button matTooltip="View Details">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button (click)="openEditDialog(product)" color="primary" mat-icon-button matTooltip="Edit">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button (click)="deletePurchaseProduct(product)" color="warn" mat-icon-button matTooltip="Delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    </table>
+  </div>
+  <div *ngIf="dataSource.data.length === 0" class="no-data">
+    <p>No purchase products available</p>
+  </div>
+</div>

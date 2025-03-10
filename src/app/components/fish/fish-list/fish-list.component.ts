@@ -1,4 +1,4 @@
-// src/app/components/fish-list/fish-list.component.ts
+// src/app/components/fish-list/unit-type-list.component.ts
 
 import {
   AfterViewInit,
@@ -21,7 +21,11 @@ import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { SelectionModel } from "@angular/cdk/collections";
 import { ConfirmationService } from "../../confirmation-dialog/confirmation-service.service";
-import { Fish, FishPatchDto, FishPostDto } from "../../../models/fish.model";
+import {
+  FishGetDto,
+  FishPatchDto,
+  FishPostDto,
+} from "../../../models/fish.model";
 import { FishDialogComponent } from "../fish-dialog/fish-dialog.component";
 import { MatSort, MatSortModule } from "@angular/material/sort";
 import { Subject } from "rxjs";
@@ -50,7 +54,7 @@ import { SearchTableService } from "../../../services/search-table.service";
 })
 export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatSort) sort!: MatSort;
-  dataSource = new MatTableDataSource<Fish>([]);
+  dataSource = new MatTableDataSource<FishGetDto>([]);
   displayedColumns: string[] = [
     "select",
     "id",
@@ -58,7 +62,7 @@ export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
     "description",
     "actions",
   ];
-  selection = new SelectionModel<Fish>(true, []);
+  selection = new SelectionModel<FishGetDto>(true, []);
   searchQuery = signal<string>("");
 
   // Entity type identifier for search service
@@ -101,10 +105,10 @@ export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
   configureSort(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.sortingDataAccessor = (
-      data: Fish,
+      data: FishGetDto,
       sortHeaderId: string,
     ) => {
-      const value = data[sortHeaderId as keyof Fish];
+      const value = data[sortHeaderId as keyof FishGetDto];
 
       // Handle different data types for sorting
       if (typeof value === "string") {
@@ -133,7 +137,7 @@ export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
    */
   configureDataSource(): void {
     // Define custom filter logic that searches across all fields
-    this.dataSource.filterPredicate = (fish: Fish, filter: string) => {
+    this.dataSource.filterPredicate = (fish: FishGetDto, filter: string) => {
       const searchStr = filter.toLowerCase();
       return (
         fish.id.toString().includes(searchStr) ||
@@ -177,7 +181,7 @@ export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  openEditDialog(fish: Fish): void {
+  openEditDialog(fish: FishGetDto): void {
     const dialogRef = this.dialog.open(FishDialogComponent, {
       width: "400px",
       data: { mode: "edit", fish },
@@ -198,7 +202,7 @@ export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  deleteFish(fish: Fish): void {
+  deleteFish(fish: FishGetDto): void {
     this.confirmationService
       .confirmDeletion(`fish "${fish.name}"`)
       .pipe(takeUntil(this.destroy$))
@@ -238,7 +242,7 @@ export class FishListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   // Function to update table data
-  private updateTable(fishes: Fish[]): void {
+  private updateTable(fishes: FishGetDto[]): void {
     this.dataSource.data = fishes;
 
     // Reapply current filter

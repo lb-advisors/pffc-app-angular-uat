@@ -1,6 +1,6 @@
 // src/app/models/fish.model.ts
 
-export interface Fish {
+export interface FishGetDto {
   id: number;
   name: string;
   description: string;

@@ -1,0 +1,68 @@
+<h2 mat-dialog-title>Purchase Product Details</h2>
+<mat-dialog-content>
+  <div class="info-section">
+    <div class="detail-item">
+      <span class="info-label">Product Description:</span>
+      <span>{{ data.purchaseProduct.purchaseProductDescription }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Pack Size:</span>
+      <span>{{ data.purchaseProduct.packSize }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Default Cost Price:</span>
+      <span>{{ data.purchaseProduct.defaultCostPrice | currency }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Harvest Type:</span>
+      <span>{{ data.purchaseProduct.harvestType?.harvestType }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Shelf Life:</span>
+      <span>{{ data.purchaseProduct.shelfLife }} days</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Fixed Pack:</span>
+      <span>{{ data.purchaseProduct.isFixedPack ? 'Yes' : 'No' }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Active:</span>
+      <span>{{ data.purchaseProduct.isActive ? 'Yes' : 'No' }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Allow Lbs:</span>
+      <span>{{ data.purchaseProduct.isAllowLbs ? 'Yes' : 'No' }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Rotation Days:</span>
+      <span>{{ data.purchaseProduct.rotationDays }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Non-Inventory:</span>
+      <span>{{ data.purchaseProduct.nonInventory ? 'Yes' : 'No' }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Default Buyer:</span>
+      <span>{{ data.purchaseProduct.defaultBuyerUser?.firstName }} {{ data.purchaseProduct.defaultBuyerUser?.lastName }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Origin:</span>
+      <span>{{ data.purchaseProduct.origin?.originName }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Category:</span>
+      <span>{{ data.purchaseProduct.category?.categoryName }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Unit Type:</span>
+      <span>{{ data.purchaseProduct.unitType?.unitTypeName }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="info-label">Notes:</span>
+      <span>{{ data.purchaseProduct.notes }}</span>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button (click)="close()" mat-button>Close</button>
+</mat-dialog-actions>

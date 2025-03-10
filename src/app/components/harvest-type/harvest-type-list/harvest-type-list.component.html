@@ -1,0 +1,84 @@
+<!-- src/app/components/HarvestType-list/unit-type-list.component.html -->
+
+<div>
+  <mat-toolbar color="primary">
+    <span>Harvest Types</span>
+
+    <span class="toolbar-spacer"></span>
+
+    <div class="search-container margin-right">
+      <mat-icon class="search-icon">search</mat-icon>
+      <input #searchInput (input)="onSearch($event)" [value]="searchQuery()" placeholder="Search..." type="text">
+      <mat-icon (click)="clearSearch(searchInput)" *ngIf="searchQuery().length > 0" class="clear-search">close
+      </mat-icon>
+    </div>
+
+    <button (click)="openAddDialog()" class="margin-right" color="accent" mat-mini-fab matTooltip="Add new HarvestType">
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <button (click)="deleteSelectedCategories()" [disabled]="selection.selected.length === 0"
+            color="accent"
+            mat-raised-button>
+      <mat-icon>delete</mat-icon>
+      Delete Selected ({{ selection.selected.length }})
+    </button>
+  </mat-toolbar>
+
+
+  <div class="mat-elevation-z8 main-container">
+    <table [dataSource]="dataSource" mat-table matSort matSortActive="harvestType" matSortDirection="asc">
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th *matHeaderCellDef mat-header-cell>
+          <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </th>
+        <td *matCellDef="let row" mat-cell>
+          <mat-checkbox (change)="$event ? selection.toggle(row) : null"
+                        (click)="$event.stopPropagation()"
+                        [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> ID</th>
+        <td *matCellDef="let harvestType" mat-cell> {{ harvestType.id }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header="harvestType"> Name</th>
+        <td *matCellDef="let harvestType" mat-cell> {{ harvestType.harvestType }}</td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th *matHeaderCellDef mat-header-cell> Actions</th>
+        <td *matCellDef="let harvestType" mat-cell>
+          <button (click)="openEditDialog(harvestType)" color="primary" mat-icon-button matTooltip="Edit">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button (click)="deleteHarvestType(harvestType)" color="warn" mat-icon-button matTooltip="Delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns ; sticky: true" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    </table>
+  </div>
+
+  <div *ngIf="dataSource.data.length > 0 && dataSource.filteredData.length === 0" class="no-data">
+    <p>No results matching "{{ searchQuery() }}</p>
+  </div>
+  <div *ngIf="dataSource.data.length === 0" class="no-data">
+    <p>No HarvestType data available</p>
+  </div>
+</div>

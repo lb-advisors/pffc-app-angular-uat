@@ -1,14 +1,16 @@
-<!-- src/app/components/Category-list/category-list.component.html -->
+<!-- src/app/components/Category-list/unit-type-list.component.html -->
 
-<div class="Category-container">
+<div>
   <mat-toolbar color="primary">
-    <span>Category Management</span>
+    <span>Categories</span>
 
     <span class="toolbar-spacer"></span>
 
     <div class="search-container margin-right">
       <mat-icon class="search-icon">search</mat-icon>
-      <input (input)="onSearch($event)" [value]="searchQuery()" placeholder="Search..." type="text">
+      <input #searchInput (input)="onSearch($event)" [value]="searchQuery()" placeholder="Search..." type="text">
+      <mat-icon (click)="clearSearch(searchInput)" *ngIf="searchQuery().length > 0" class="clear-search">close
+      </mat-icon>
     </div>
 
     <button (click)="openAddDialog()" class="margin-right" color="accent" mat-mini-fab matTooltip="Add new Category">
@@ -24,7 +26,7 @@
   </mat-toolbar>
 
 
-  <div class="mat-elevation-z8 table-container">
+  <div class="mat-elevation-z8 main-container">
     <table [dataSource]="dataSource" mat-table matSort matSortActive="categoryName" matSortDirection="asc">
 
       <!-- Checkbox Column -->
@@ -68,19 +70,15 @@
         </td>
       </ng-container>
 
-      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matHeaderRowDef="displayedColumns ; sticky: true" mat-header-row></tr>
       <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
-
-      <!-- No Results Row -->
-      <tr *ngIf="dataSource.filteredData.length === 0" class="mat-row">
-        <td class="mat-cell" colspan="5">
-          No results matching "{{ searchQuery() }}"
-        </td>
-      </tr>
     </table>
+  </div>
 
-    <div *ngIf="dataSource.data.length === 0" class="no-data">
-      <p>No Category data available</p>
-    </div>
+  <div *ngIf="dataSource.data.length > 0 && dataSource.filteredData.length === 0" class="no-data">
+    <p>No results matching "{{ searchQuery() }}</p>
+  </div>
+  <div *ngIf="dataSource.data.length === 0" class="no-data">
+    <p>No Category data available</p>
   </div>
 </div>

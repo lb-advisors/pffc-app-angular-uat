@@ -1,0 +1,51 @@
+<div>
+  <mat-toolbar color="primary">
+    <span>Data Explorer</span>
+
+    <span class="toolbar-spacer"></span>
+
+    <div class="search-container margin-right">
+      <mat-icon class="search-icon">search</mat-icon>
+      <input #searchInput (input)="onSearch($event)" [value]="searchQuery()" placeholder="Search..." type="text">
+      <mat-icon (click)="clearSearch(searchInput)" *ngIf="searchQuery().length > 0" class="clear-search">close
+      </mat-icon>
+    </div>
+  </mat-toolbar>
+
+  <div class="mat-elevation-z8 main-container">
+    <table [dataSource]="dataSource" mat-table matSort matSortActive="name" matSortDirection="asc">
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
+        <td *matCellDef="let item" mat-cell>{{ item.name }}</td>
+      </ng-container>
+
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Description</th>
+        <td *matCellDef="let item" mat-cell>{{ item.description }}</td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th *matHeaderCellDef mat-header-cell>Actions</th>
+        <td *matCellDef="let item" class="action-buttons" mat-cell>
+          <button (click)="navigateTo(item.route)" color="primary" mat-icon-button matTooltip="View">
+            <mat-icon>visibility</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" class="data-row" mat-row></tr>
+    </table>
+  </div>
+
+  <div *ngIf="dataSource.data.length > 0 && dataSource.filteredData.length === 0" class="no-data">
+    <p>No results matching "{{ searchQuery() }}</p>
+  </div>
+  <div *ngIf="dataSource.data.length === 0" class="no-data">
+    <p>No data available</p>
+  </div>
+</div>

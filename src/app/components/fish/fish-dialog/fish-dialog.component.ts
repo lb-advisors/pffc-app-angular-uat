@@ -1,4 +1,4 @@
-// src/app/components/fish-dialog/fish-dialog.component.ts
+// src/app/components/fish-dialog/unit-type-dialog.component.ts
 
 import { Component, inject, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
@@ -16,11 +16,11 @@ import {
   ReactiveFormsModule,
   Validators,
 } from "@angular/forms";
-import { Fish } from "../../../models/fish.model";
+import { FishGetDto } from "../../../models/fish.model";
 
 interface DialogData {
   mode: "add" | "edit";
-  fish?: Fish;
+  fish?: FishGetDto;
 }
 
 @Component({

@@ -1,37 +1,88 @@
-<div class="container">
-  <div class="login-container">
-    <div class="logo-container">
-      <img alt="Company Logo" class="logo" height="425" ngSrc="assets/logo.png" width="1235">
-    </div>
+<div>
+  <!-- Header section -->
+  <mat-toolbar class="header-toolbar" color="primary">
+    <span>Login</span>
+  </mat-toolbar>
 
-    <h1>Login</h1>
-    <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
-      <mat-form-field appearance="fill">
-        <mat-label>Username</mat-label>
-        <input autocomplete="username" formControlName="username" matInput placeholder="Enter your username"
-               type="text">
-      </mat-form-field>
+  <!-- Card container for the form -->
+  <div class="main-container">
+    <mat-card class="main-card">
+      <mat-card-content>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input autocomplete="current-password" formControlName="password" matInput placeholder="Enter your password"
-               type="password">
-      </mat-form-field>
+        <form (ngSubmit)="onLogin()" [formGroup]="loginForm" class="login-form">
+          <h2 class="form-title">Sign in to your account</h2>
 
-      <a [routerLink]="['/password-request']">
-        Forgot password?
-      </a>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Username</mat-label>
+            <input
+              autocomplete="username"
+              formControlName="username"
+              matInput
+              placeholder="Enter your username"
+              type="text">
+            <mat-icon matPrefix>person</mat-icon>
+            <mat-error *ngIf="loginForm.get('username')?.invalid">
+              Username is required
+            </mat-error>
+          </mat-form-field>
 
-      <button [disabled]="loading || loginForm.invalid" color="primary" mat-raised-button type="submit">
-        <span *ngIf="!loading">Login</span>
-        <span *ngIf="loading">Logging in...</span>
-      </button>
-    </form>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Password</mat-label>
+            <input
+              [type]="hidePassword ? 'password' : 'text'"
+              autocomplete="current-password"
+              formControlName="password"
+              matInput
+              placeholder="Enter your password">
+            <mat-icon matPrefix>lock</mat-icon>
+            <button
+              (click)="togglePasswordVisibility()"
+              aria-label="Toggle password visibility"
+              mat-icon-button
+              matSuffix
+              type="button">
+              <mat-icon>{{ hidePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+            </button>
+            <mat-error *ngIf="loginForm.get('password')?.invalid">
+              Password is required
+            </mat-error>
+          </mat-form-field>
 
-    <div *ngIf="errorMessage" class="error-message">
-      {{ errorMessage }}
-    </div>
+          <div class="forgot-password">
+            <a [routerLink]="['/password-request']" class="forgot-link">
+              Forgot password?
+            </a>
+          </div>
+
+          <div class="form-actions">
+            <button
+              [disabled]="loading || loginForm.invalid"
+              class="login-button"
+              color="primary"
+              mat-raised-button
+              type="submit">
+              <span *ngIf="!loading">Login</span>
+            </button>
+          </div>
+
+          <div *ngIf="errorMessage" class="error-message">
+            <mat-icon>error_outline</mat-icon>
+            {{ errorMessage }}
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
 
 <app-install-prompt></app-install-prompt>
+
+<footer class="text-align-center">
+  <div>
+    © 2025- Pacific Fresh Fish Company
+  </div>
+  <div *ngIf="isDevMode">UAT ENVIRONMENT</div>
+  <div *ngIf="isDevMode">{{ apiUrl }}</div>
+</footer>
+
+

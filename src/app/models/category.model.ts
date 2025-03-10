@@ -1,6 +1,6 @@
 // src/app/models/category.model.ts
 
-export interface Category {
+export interface CategoryGetDto {
   id: number;
   categoryName: string;
 }

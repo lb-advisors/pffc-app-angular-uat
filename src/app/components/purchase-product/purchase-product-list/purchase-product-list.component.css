@@ -1,0 +1,55 @@
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-mdc-row:hover {
+  background-color: rgb(0 0 0 / 4%);
+}
+
+.no-data {
+  padding: 20px;
+  text-align: center;
+  font-style: italic;
+  color: rgb(0 0 0 / 54%);
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background: #f1f1f1;
+  border-radius: 20px;
+  padding: 5px 10px;
+  width: 200px;
+  position: relative;
+}
+
+.margin-right {
+  margin-right: 5px;
+}
+
+.search-icon {
+  color: gray;
+  margin-right: 5px;
+}
+
+input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+}
+
+.clear-search {
+  cursor: pointer;
+  color: gray;
+}
+
+.action-buttons {
+  white-space: nowrap;
+}
+
+.container {
+  height: calc(100vh - 90px);
+  overflow-y: auto;
+}
+

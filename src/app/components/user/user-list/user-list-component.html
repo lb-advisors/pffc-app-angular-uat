@@ -1,0 +1,110 @@
+<div>
+  <mat-toolbar color="primary">
+    <span>Users</span>
+
+    <span class="toolbar-spacer"></span>
+
+    <div class="search-container margin-right">
+      <mat-icon class="search-icon">search</mat-icon>
+      <input #searchInput (input)="onSearch($event)" [value]="searchQuery()" placeholder="Search..." type="text">
+      <mat-icon (click)="clearSearch(searchInput)" *ngIf="searchQuery().length > 0" class="clear-search">close
+      </mat-icon>
+    </div>
+
+    <button (click)="openAddDialog()" class="margin-right" color="accent" mat-mini-fab matTooltip="Add new User">
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <button (click)="deleteSelectedUsers()" [disabled]="selection.selected.length === 0"
+            color="accent"
+            mat-raised-button>
+      <mat-icon>delete</mat-icon>
+      Delete Selected ({{ selection.selected.length }})
+    </button>
+  </mat-toolbar>
+
+  <div class="mat-elevation-z8 main-container">
+    <table [dataSource]="dataSource" mat-table matSort matSortActive="username" matSortDirection="asc">
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th *matHeaderCellDef mat-header-cell>
+          <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </th>
+        <td *matCellDef="let row" mat-cell>
+          <mat-checkbox (change)="$event ? selection.toggle(row) : null"
+                        (click)="$event.stopPropagation()"
+                        [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> ID</th>
+        <td *matCellDef="let user" mat-cell> {{ user.id }}</td>
+      </ng-container>
+
+      <!-- Username Column -->
+      <ng-container matColumnDef="username">
+        <th *matHeaderCellDef class="mat-typography font-weight-bold" mat-header-cell mat-sort-header> Username</th>
+        <td *matCellDef="let user" mat-cell> {{ user.username }}</td>
+      </ng-container>
+
+      <!-- Full Name Column -->
+      <ng-container matColumnDef="fullName">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Full Name</th>
+        <td *matCellDef="let user" mat-cell> {{ user.firstName }} {{ user.lastName }}</td>
+      </ng-container>
+
+      <!-- Commission Column -->
+      <ng-container matColumnDef="commission">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Commission</th>
+        <td *matCellDef="let user" mat-cell>
+          <span [ngClass]="'mat-' + getCommissionColor(user) + '-text'">
+            {{ getUserCommission(user) }}
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Status</th>
+        <td *matCellDef="let user" mat-cell>
+          <span [ngClass]="'mat-' + getStatusColor(user) + '-text'">
+            {{ getUserStatus(user) }}
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th *matHeaderCellDef mat-header-cell> Actions</th>
+        <td *matCellDef="let user" class="action-buttons" mat-cell>
+          <button (click)="openViewDialog(user)" color="primary" mat-icon-button matTooltip="View Details">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button (click)="openEditDialog(user)" color="primary" mat-icon-button matTooltip="Edit">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button (click)="deleteUser(user)" color="warn" mat-icon-button matTooltip="Delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    </table>
+
+    <div *ngIf="dataSource.data.length > 0 && dataSource.filteredData.length === 0" class="no-data">
+      <p>No results matching "{{ searchQuery() }}</p>
+    </div>
+    <div *ngIf="dataSource.data.length === 0" class="no-data">
+      <p>No user data available</p>
+    </div>
+  </div>
+</div>

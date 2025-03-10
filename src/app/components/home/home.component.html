@@ -1,15 +1,17 @@
-<div class="page container">
-  <div class="button-container">
-    <button (click)="navigateTo('products')" class="nav-button">Products</button>
-    <button (click)="navigateTo('test')" class="nav-button">Just a Test</button>
-    <button (click)="logout()" class="nav-button logout-button">Logout</button>
-  </div>
+<div>
+  <!-- Header section -->
+  <mat-toolbar class="header-toolbar" color="primary">
+    <span>Home</span>
+  </mat-toolbar>
 
-  <div class="button-container user-info">
-    Welcome, {{ username }}!
-  </div>
+  <!-- Card container for the form -->
+  <div class="main-container mat-elevation-z8">
+    <mat-card class="main-card">
+      <mat-card-content>
 
-  <div class="image-grid">
-    <img alt="Logo Image" class="grid-image image2" height="425" ngSrc="assets/logo.png" width="1235">
+        Welcome to the new PFFC application.
+
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
